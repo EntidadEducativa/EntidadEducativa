@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<title>Triangulo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="font-awesome-4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.min.css">
+
+    <script type='text/javascript' src='js/jquery.min.js'></script>
+    <script type='text/javascript' src='js/jquery.particleground.js'></script>
+    <script type='text/javascript' src='js/demo.js'></script>
+</head>
+
+<body class="gradent" >
+
+<div class="container" >
+    <div class="row">
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Triangulo</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#particles">Inicio</a></li>
+                        <li><a href="#que">Que somos</a></li>
+                        <li><a href="#cursos">Cursos</a></li>
+                        <li><a href="#contacto">Contactanos</a></li>
+                        <li><a href="#myModal11" data-toggle="modal">Entrar</a></li>
+                    </ul>
+
+
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+
+
+    <div id="myModal11" class="modal" data-easein="bounceUpIn"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></button>
+                    <h4 class="modal-title">Entrar</h4>
+                </div>
+                <div class="modal-body">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Entrar</a></li>
+                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Registrarce</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">User Name</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="User name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                </div>
+                            </form>
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane" id="profile">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">User Name</label>
+                                    <input type="email" class="form-control" id="userName" placeholder="User name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input type="password" class="form-control" id="password" placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Telefono</label>
+                                    <input type="email" class="form-control" id="phone" placeholder="User name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Documento</label>
+                                    <input type="password" class="form-control" id="userId" placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Rol</label>
+                                    <input type="email" class="form-control" id="userRole" placeholder="User name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Fecha nacimiento</label>
+                                    <div class="input-group date">
+                                        <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-6 col-md-6 col-xs-6">
+                            <button class="btn btn-success col-sm-12 col-xs-12" data-dismiss="modal" aria-hidden="true">OK</button>
+                        </div>
+                        <div class="col-md-8 col-sm-offset-0 col-md-offset-0 col-xs-offset-0"></div>
+                        <div class="col-md-2 col-sm-6 col-md-6 col-xs-6">
+                            <button class="btn btn-danger col-sm-12 col-xs-12" data-dismiss="modal" aria-hidden="true">Salir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <br>
+        <div  id="particles">
+            <div class="col-md-12"id="intro">
+                    <h1 class="text-center">INSTITUTO TRIANGULO </h1>
+                    <img style="width: 20%;height: auto;" class="img-responsive center-block" src="Images/appleSchool.svg">
+
+                <p class="text-center">Aprende con nosotros</p>
+            </div>
+        </div>
+
+    </div>
+
+    <br class="border">
+
+    <div class="row" id="que">
+        <div class="col-md-12">
+            <h2 class="text-center">QUE SOMOS</h2>
+            <div class="row">
+                <p class="text-justify col-md-6">
+                    Somos una entidad educativa la cual nos dedicamos a enseñar a todo publico,
+                    docentes, estudiantes, incluso nuestros miembros.
+                </p>
+                <img class="img-responsive img-rounded col-md-6" src="http://placehold.it/350x150">
+            </div>
+        </div>
+    </div>
+
+    <br class="border">
+
+    <div class="row" id="cursos">
+        <h2 class="text-center">CURSOS</h2>
+        <div class="col-md-4">
+            <div class="list-group-item">
+                <h3 class="text-center">IDIOMAS</h3>
+                <img style="width: 50%; height: auto;" class="img-responsive center-block" src="Images/globe.svg">
+                <p class="text-center text-justify">
+                    Tenemos cursos de distintos idiomas como ingles y frances.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="list-group-item">
+                <h3 class="text-center">INFORMATICA</h3>
+                <img style="width: 50%; height: auto;" class="img-responsive center-block" src="Images/brackets.svg">
+                <p class="text-center text-justify">
+                    Aprende  a programar en diferentes lenguajes de programacion entre otras cosas.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="list-group-item">
+                <h3 class="text-center">OTROS</h3>
+                <img style="width: 50%; height: auto;" class="img-responsive center-block" src="Images/pencil.svg">
+                <p class="text-center text-justify">
+                    Encuentra algo que quieras aprender de alguna area de interes
+                </p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row modal-footer" id="contacto">
+        <div class="col-lg-3">
+            Info grupo
+        </div>
+        <div class="col-md-7">
+            <i class="fa fa-twitter">REDES IMAGINARIAS</i>
+        </div>
+        <div class="col-md-2">
+            Informacion imaginaria empresa
+        </div>
+    </div>
+
+</div>
+
+
+<script src="js/bootstrap.min.js"></script>
+<script src="js/velocity.min.js"></script>
+<script src="js/velocity.ui.min.js"></script>
+<script>
+    // add the animation to the modal
+    $( ".modal" ).each(function(index) {
+        $(this).on('show.bs.modal', function (e) {
+            var open = $(this).attr('data-easein');
+            if(open == 'shake') {
+                $('.modal-dialog').velocity('callout.' + open);
+            } else if(open == 'pulse') {
+                $('.modal-dialog').velocity('callout.' + open);
+            } else if(open == 'tada') {
+                $('.modal-dialog').velocity('callout.' + open);
+            } else if(open == 'flash') {
+                $('.modal-dialog').velocity('callout.' + open);
+            }  else if(open == 'bounce') {
+                $('.modal-dialog').velocity('callout.' + open);
+            } else if(open == 'swing') {
+                $('.modal-dialog').velocity('callout.' + open);
+            }else {
+                $('.modal-dialog').velocity('transition.' + open);
+            }
+
+        });
+    });
+
+
+</script>
+</body>
+
+</html>
