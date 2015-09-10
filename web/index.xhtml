@@ -1,0 +1,289 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Triangulo</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+            <link rel="stylesheet" type="text/css" href="css/style.css"/>
+            <link rel="stylesheet" type="text/css" href="font-awesome-4.4.0/css/font-awesome.min.css"/>
+            <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.min.css"/>
+
+            <script type='text/javascript' src='js/jquery.min.js'></script>
+            <script type='text/javascript' src='js/jquery.particleground.js'></script>
+            <script type='text/javascript' src='js/demo.js'></script>
+    </head>
+    <h:body class="gradent" >
+        <div class="container" >
+            <div class="row">
+
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">Triangulo</a>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="#particles">Inicio</a></li>
+                                <li><a href="#que">Que somos</a></li>
+                                <li><a href="#cursos">Cursos</a></li>
+                                <li><a href="#contacto">Contactanos</a></li>
+                                <li><a href="#myModal11" data-toggle="modal">Entrar</a></li>
+                            </ul>
+
+
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container-fluid -->
+                </nav>
+            </div>
+
+            
+            <div id="myModal11" class="modal" data-easein="bounceUpIn"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></button>
+                            <h4 class="modal-title">Entrar</h4>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Entrar</a></li>
+                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Registrarce</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="home">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">User Name</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="User name"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Password</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
+                                        </div>
+                                    </form>
+                                </div>
+                                
+                                    <div role="tabpanel" class="tab-pane" id="profile">
+                                        <div class="row">
+                                            <h:form>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                <label for="exampleInputEmail1">User Name</label>
+                                                <h:inputText class="form-control" value="#{createAccount.userName}" required = "true" requiredMessage="Is necesary a name!" />                                            
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputPassword1">Password</label>
+                                                    <h:inputSecret class="form-control" value="#{createAccount.password}" required = "true" requiredMessage="Is necesary a password!" />
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Telefono</label>
+                                                    <h:inputText  class="form-control" value="#{createAccount.email}" required = "true" requiredMessage="Is necesary a 3mail!" />
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputPassword1">Documento</label>
+                                                    <h:inputText  class="form-control" value="#{createAccount.document}" required = "true" requiredMessage="Is necesary a name!" />
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Rol</label>
+                                                    <h:selectOneRadio value="#{createAccount.roll}" class="form-control">
+                                                            <f:selectItem itemValue="student" itemLabel="Estudiante" />
+                                                            <f:selectItem itemValue="teacher" itemLabel="Profesor" />   
+                                                    </h:selectOneRadio>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputPassword1">Fecha nacimiento</label>
+                                                    <div class="input-group date">
+                                                        <input type="text" class="form-control"/><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Nombre</label>
+                                                    <h:inputText  class="form-control" value="#{createAccount.name}" required = "true" requiredMessage="Is necesary a 3mail!" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputPassword1">Apellido</label>
+                                                    <h:inputText  class="form-control" value="#{createAccount.lastName}" required = "true" requiredMessage="Is necesary a name!" />
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Telfono</label>
+                                                    <h:inputText class="form-control" value="#{createAccount.telephone}" required = "true" requiredMessage="Is necesary a phone!" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputPassword1">Pais</label>
+                                                    <h:inputSecret class="form-control" value="#{createAccount.birthPlace}" required = "true" requiredMessage="Is necesary a county!" />
+
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label for="exampleInputPassword1">Direccion</label>
+                                                    <h:inputSecret class="form-control" value="#{createAccount.addres}" required = "true" requiredMessage="Is necesary a county!" />
+
+                                                </div>
+                 
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Genero</label>
+                                                    <h:selectOneRadio value="#{createAccount.gender}" class="form-control">
+                                                            <f:selectItem itemValue="male" itemLabel="Hombre" />
+                                                            <f:selectItem itemValue="female" itemLabel="Mujer" />   
+                                                    </h:selectOneRadio>
+                                                </div>
+                                     
+                                            </div>
+                                            <h:commandButton class="btn btn-success col-sm-12 col-xs-12"  action="#{createAccount.createAccount()}" value="Create"/>
+                                            <br/>
+                                            <label>Message = </label>
+                                            <h:outputText value="#{createAccount.message}"/>
+                                            </h:form>
+                                        </div>
+
+                                    
+                                </div>
+                              
+                            </div>
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-md-2 col-sm-6 col-md-6 col-xs-6">
+                                </div>
+                                <div class="col-md-8 col-sm-offset-0 col-md-offset-0 col-xs-offset-0"></div>
+                                <div class="col-md-2 col-sm-6 col-md-6 col-xs-6">
+                                    <button class="btn btn-danger col-sm-12 col-xs-12" data-dismiss="modal" aria-hidden="true">Salir</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="row">
+                <br/>
+                <div id="particles">
+                    <div class="col-lg-12" id="intro">
+                        <h1 class="text-center">INSTITUTO TRIANGULO </h1>
+                        <img style="width: 20%;height: auto;" class="img-responsive center-block" src="Images/appleSchool.svg"/>
+                        <p class="text-center">Aprende con nosotros</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <br class="border"/>
+
+            <div class="row" id="que">
+                <div class="col-md-12">
+                    <h2 class="text-center">QUE SOMOS</h2>
+                    <div class="row">
+                        <p class="text-justify col-md-6">
+                            Somos una entidad educativa la cual nos dedicamos a enseñar a todo publico,
+                            docentes, estudiantes, incluso nuestros miembros.
+                        </p>
+                        <img class="img-responsive img-rounded col-md-6" src="http://placehold.it/350x150"/>
+                    </div>
+                </div>
+            </div>
+
+            <br class="border"/>
+
+            <div class="row" id="cursos">
+                <h2 class="text-center">CURSOS</h2>
+                <div class="col-md-4">
+                    <div class="list-group-item">
+                        <h3 class="text-center">IDIOMAS</h3>
+                        <img style="width: 50%; height: auto;" class="img-responsive center-block" src="Images/globe.svg"/>
+                        <p class="text-center text-justify">
+                            Tenemos cursos de distintos idiomas como ingles y frances.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="list-group-item">
+                        <h3 class="text-center">INFORMATICA</h3>
+                        <img style="width: 50%; height: auto;" class="img-responsive center-block" src="Images/brackets.svg"/>
+                        <p class="text-center text-justify">
+                            Aprende  a programar en diferentes lenguajes de programacion entre otras cosas.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="list-group-item">
+                        <h3 class="text-center">OTROS</h3>
+                        <img style="width: 50%; height: auto;" class="img-responsive center-block" src="Images/pencil.svg"/>
+                        <p class="text-center text-justify">
+                            Encuentra algo que quieras aprender de alguna area de interes
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <div class="row modal-footer" id="contacto">
+                <div class="col-lg-3">
+                    Info grupo
+                </div>
+                <div class="col-md-7">
+                    <i class="fa fa-twitter">REDES IMAGINARIAS</i>
+                </div>
+                <div class="col-md-2">
+                    Informacion imaginaria empresa
+                </div>
+            </div>
+        </div>
+
+
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/velocity.min.js"></script>
+        <script src="js/velocity.ui.min.js"></script>
+        <script>
+            // add the animation to the modal
+            $( ".modal" ).each(function(index) {
+                $(this).on('show.bs.modal', function (e) {
+                    var open = $(this).attr('data-easein');
+                    if(open == 'shake') {
+                        $('.modal-dialog').velocity('callout.' + open);
+                    } else if(open == 'pulse') {
+                        $('.modal-dialog').velocity('callout.' + open);
+                    } else if(open == 'tada') {
+                        $('.modal-dialog').velocity('callout.' + open);
+                    } else if(open == 'flash') {
+                        $('.modal-dialog').velocity('callout.' + open);
+                    }  else if(open == 'bounce') {
+                        $('.modal-dialog').velocity('callout.' + open);
+                    } else if(open == 'swing') {
+                        $('.modal-dialog').velocity('callout.' + open);
+                    }else {
+                        $('.modal-dialog').velocity('transition.' + open);
+                    }
+
+                });
+            });
+
+
+        </script>
+
+    </h:body>
+</html>
+
