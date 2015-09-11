@@ -67,16 +67,21 @@
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="home">
-                                    <form>
+                                    <h:form>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">User Name</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="User name"/>
+                                            <h:inputText  class="form-control" value="#{createAccount.userName}" required = "true" requiredMessage="Is necesary a name!" />
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Password</label>
-                                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
+                                                                                 <h:inputSecret class="form-control" value="#{createAccount.password}" required = "true" requiredMessage="Is necesary a password!" />
+
                                         </div>
-                                    </form>
+                                        <h:commandButton class="btn btn-success col-sm-12 col-xs-12"  action="#{createAccount.findAccount()}" value="Size"/>
+                                            <br/>
+                                            <label>Message = </label>
+                                            <h:outputText value="#{createAccount.message}"/>
+                                    </h:form>
                                 </div>
                                 
                                     <div role="tabpanel" class="tab-pane" id="profile">

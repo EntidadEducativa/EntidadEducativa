@@ -161,5 +161,9 @@ public class CreateAccount {
         ManageAccount manageAccount = new ManageAccount();
         message = manageAccount.createAccount(name, document, userName, lastName, password, email, telephone, addres, birthDay, birthPlace, gender, roll);
     }
+    public void findAccount(){
+        ManageAccount manageAccount = new ManageAccount();
+        message = manageAccount.findAccount(userName, password);
+    }
     
 }
