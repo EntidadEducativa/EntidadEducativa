@@ -6,6 +6,11 @@
         </description>
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>DataAccess.Entity.Student</class>
+    <class>DataAccess.Entity.Administrative</class>
+    <class>DataAccess.Entity.Administrator</class>
+    <class>DataAccess.Entity.Course</class>
+    <class>DataAccess.Entity.Payment</class>
+    <class>DataAccess.Entity.Teacher</class>
     <validation-mode>CALLBACK</validation-mode>
     <properties>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>

@@ -6,6 +6,7 @@
 package DataAccess.Entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -15,12 +16,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -41,7 +44,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Student.findByEstTelephone", query = "SELECT s FROM Student s WHERE s.estTelephone = :estTelephone"),
     @NamedQuery(name = "Student.findByEstAddress", query = "SELECT s FROM Student s WHERE s.estAddress = :estAddress"),
     @NamedQuery(name = "Student.findByEstBirthday", query = "SELECT s FROM Student s WHERE s.estBirthday = :estBirthday"),
-    @NamedQuery(name = "Student.findByEstBirthplace", query = "SELECT s FROM Student s WHERE s.estBirthplace = :estBirthplace"),
     @NamedQuery(name = "Student.findByEstGender", query = "SELECT s FROM Student s WHERE s.estGender = :estGender"),
     @NamedQuery(name = "Student.findByEstRoll", query = "SELECT s FROM Student s WHERE s.estRoll = :estRoll")})
 public class Student implements Serializable {
@@ -77,28 +79,19 @@ public class Student implements Serializable {
     private String estPassword;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 20)
+    @Size(min = 1, max = 30)
     @Column(name = "est_email")
     private String estEmail;
     @Basic(optional = false)
     @NotNull
     @Column(name = "est_telephone")
-    private int estTelephone;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
+    private long estTelephone;
+    @Size(max = 20)
     @Column(name = "est_address")
     private String estAddress;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "est_birthday")
     @Temporal(TemporalType.DATE)
     private Date estBirthday;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
-    @Column(name = "est_birthplace")
-    private String estBirthplace;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
@@ -109,6 +102,8 @@ public class Student implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "est_roll")
     private String estRoll;
+    @OneToMany(mappedBy = "sTUDENTestid")
+    private Collection<Payment> paymentCollection;
 
     public Student() {
     }
@@ -117,7 +112,7 @@ public class Student implements Serializable {
         this.estId = estId;
     }
 
-    public Student(Integer estId, long estDocument, String estUsername, String estName, String estLastName, String estPassword, String estEmail, int estTelephone, String estAddress, Date estBirthday, String estBirthplace, String estGender, String estRoll) {
+    public Student(Integer estId, long estDocument, String estUsername, String estName, String estLastName, String estPassword, String estEmail, long estTelephone, String estGender, String estRoll) {
         this.estId = estId;
         this.estDocument = estDocument;
         this.estUsername = estUsername;
@@ -126,9 +121,6 @@ public class Student implements Serializable {
         this.estPassword = estPassword;
         this.estEmail = estEmail;
         this.estTelephone = estTelephone;
-        this.estAddress = estAddress;
-        this.estBirthday = estBirthday;
-        this.estBirthplace = estBirthplace;
         this.estGender = estGender;
         this.estRoll = estRoll;
     }
@@ -189,11 +181,11 @@ public class Student implements Serializable {
         this.estEmail = estEmail;
     }
 
-    public int getEstTelephone() {
+    public long getEstTelephone() {
         return estTelephone;
     }
 
-    public void setEstTelephone(int estTelephone) {
+    public void setEstTelephone(long estTelephone) {
         this.estTelephone = estTelephone;
     }
 
@@ -213,14 +205,6 @@ public class Student implements Serializable {
         this.estBirthday = estBirthday;
     }
 
-    public String getEstBirthplace() {
-        return estBirthplace;
-    }
-
-    public void setEstBirthplace(String estBirthplace) {
-        this.estBirthplace = estBirthplace;
-    }
-
     public String getEstGender() {
         return estGender;
     }
@@ -235,6 +219,15 @@ public class Student implements Serializable {
 
     public void setEstRoll(String estRoll) {
         this.estRoll = estRoll;
+    }
+
+    @XmlTransient
+    public Collection<Payment> getPaymentCollection() {
+        return paymentCollection;
+    }
+
+    public void setPaymentCollection(Collection<Payment> paymentCollection) {
+        this.paymentCollection = paymentCollection;
     }
 
     @Override

@@ -5,7 +5,7 @@
  */
 package GUI.Bean;
 
-import BusinessLogic.UserLogic.ManageAccount;
+import BusinessLogic.UserLogic.UserManagement;
 import DataAccess.Entity.Student;
 import java.sql.Date;
 import javax.faces.bean.ManagedBean;
@@ -37,7 +37,6 @@ public class CreateAccount {
 
     private Date birthDay;
 
-    private String birthPlace;
 
     private String gender;
 
@@ -123,14 +122,6 @@ public class CreateAccount {
         this.birthDay = birthDay;
     }
 
-    public String getBirthPlace() {
-        return birthPlace;
-    }
-
-    public void setBirthPlace(String birthPlace) {
-        this.birthPlace = birthPlace;
-    }
-
     public String getGender() {
         return gender;
     }
@@ -158,11 +149,11 @@ public class CreateAccount {
     
     
     public void createAccount(){
-        ManageAccount manageAccount = new ManageAccount();
-        message = manageAccount.createAccount(name, document, userName, lastName, password, email, telephone, addres, birthDay, birthPlace, gender, roll);
+        UserManagement manageAccount = new UserManagement();
+        message = manageAccount.createAccount(name, document, userName, lastName, password, email, telephone, addres, birthDay, gender, roll);
     }
     public void findAccount(){
-        ManageAccount manageAccount = new ManageAccount();
+        UserManagement manageAccount = new UserManagement();
         message = manageAccount.findAccount(userName, password);
     }
     

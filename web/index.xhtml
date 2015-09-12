@@ -84,37 +84,37 @@
                                     </h:form>
                                 </div>
 
+
                                 <div role="tabpanel" class="tab-pane" id="profile">
                                     <div class="row">
                                         <h:form>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Nombre de usuario</label>
-                                                    <h:inputText class="form-control" value="#{createAccount.userName}" required = "true" requiredMessage="Is necesary a name!" />                                            
+                                                    <h:inputText id="userName" class="form-control" value="#{createAccount.userName}" required = "true" requiredMessage="Falta nombre de usuario !" />  
+                                                    <h:message class="alert-danger" for="userName"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputPassword1">Contraseña</label>
-                                                    <h:inputSecret class="form-control" value="#{createAccount.password}" required = "true" requiredMessage="Is necesary a password!" />
+                                                    <h:inputSecret id="password" class="form-control" value="#{createAccount.password}" required = "true" requiredMessage="Falta Contraseña!" />
+                                                    <h:message class="alert-danger" for="password"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Nombres</label>
-                                                    <h:inputText  class="form-control" value="#{createAccount.name}" required = "true" requiredMessage="Is necesary a 3mail!" />
+                                                    <h:inputText id="name" class="form-control" value="#{createAccount.name}" required = "true" requiredMessage="Faltan nombres!" />
+                                                    <h:message class="alert-danger" for="name"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputPassword1">Apellidos</label>
-                                                    <h:inputText  class="form-control" value="#{createAccount.lastName}" required = "true" requiredMessage="Is necesary a name!" />
+                                                    <h:inputText id="lastName" class="form-control" value="#{createAccount.lastName}" required = "true" requiredMessage="Faltan apellidos!" />
+                                                    <h:message class="alert-danger" for="lastName"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputPassword1">Documento</label>
-                                                    <h:inputText  class="form-control" value="#{createAccount.document}" required = "true" requiredMessage="Is necesary a name!" />
+                                                    <h:inputText id="docum"  class="form-control" value="#{createAccount.document}" required = "true" requiredMessage="Falta documento!" />
+                                                    <h:message class="alert-danger" for="docum"/>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Genero</label>
-                                                    <h:selectOneMenu value="#{createAccount.gender}" class="form-control">
-                                                        <f:selectItem itemValue="male" itemLabel="Hombre   " />
-                                                        <f:selectItem itemValue="female" itemLabel="Mujer   " />   
-                                                    </h:selectOneMenu>
-                                                </div> 
+                                                
                                             </div>
 
                                             <div class="col-lg-6">
@@ -123,6 +123,7 @@
                                                     <div class="input-group date">
                                                         <input type="text" class="form-control"/><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                                                     </div>
+                                                    
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Rol</label>
@@ -134,24 +135,27 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Email</label>
-                                                    <h:inputText  class="form-control" value="#{createAccount.email}" required = "true" requiredMessage="Is necesary a 3mail!" />
-
+                                                    <h:inputText id="email" class="form-control" value="#{createAccount.email}" required = "true" requiredMessage="Falta email!" />
+                                                    <h:message class="alert-danger" for="email"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Telefono</label>
-                                                    <h:inputText class="form-control" value="#{createAccount.telephone}" required = "true" requiredMessage="Is necesary a phone!" />
+                                                    <h:inputText class="form-control" value="#{createAccount.telephone}" required = "true" requiredMessage="Falta telefono" />
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInputPassword1">País</label>
-                                                    <h:inputText class="form-control" value="#{createAccount.birthPlace}" required = "true" requiredMessage="Is necesary a county!" />
-
-                                                </div>
+                                                
 
                                                 <div class="form-group">
                                                     <label for="exampleInputPassword1">Dirección</label>
-                                                    <h:inputText class="form-control" value="#{createAccount.addres}" required = "true" requiredMessage="Is necesary a county!" />
-
+                                                    <h:inputText id="addre" class="form-control" value="#{createAccount.addres}"  />
+                                                    <h:message class="alert-danger" for="addre"/>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Genero</label>
+                                                    <h:selectOneMenu value="#{createAccount.gender}" class="form-control">
+                                                        <f:selectItem itemValue="male" itemLabel="Hombre   " />
+                                                        <f:selectItem itemValue="female" itemLabel="Mujer   " />   
+                                                    </h:selectOneMenu>
+                                                </div> 
 
 
 
