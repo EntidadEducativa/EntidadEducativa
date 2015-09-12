@@ -4,16 +4,16 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
-        <title>Triangulo</title>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-            <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-            <link rel="stylesheet" type="text/css" href="css/style.css"/>
-            <link rel="stylesheet" type="text/css" href="font-awesome-4.4.0/css/font-awesome.min.css"/>
-            <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.min.css"/>
+        <title>Entidad educativa</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="font-awesome-4.4.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.min.css"/>
 
-            <script type='text/javascript' src='js/jquery.min.js'></script>
-            <script type='text/javascript' src='js/jquery.particleground.js'></script>
-            <script type='text/javascript' src='js/demo.js'></script>
+        <script type='text/javascript' src='js/jquery.min.js'></script>
+        <script type='text/javascript' src='js/jquery.particleground.js'></script>
+        <script type='text/javascript' src='js/demo.js'></script>
     </head>
     <h:body class="gradent" >
         <div class="container" >
@@ -29,17 +29,17 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="#">Triangulo</a>
+                            <a class="navbar-brand" href="#">Entidad educativa</a>
                         </div>
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="#particles">Inicio</a></li>
-                                <li><a href="#que">Que somos</a></li>
-                                <li><a href="#cursos">Cursos</a></li>
-                                <li><a href="#contacto">Contactanos</a></li>
-                                <li><a href="#myModal11" data-toggle="modal">Entrar</a></li>
+                                <li><a href="#que">Quiénes somos</a></li>
+                                <!--<li><a href="#cursos">Cursos</a></li>-->
+                                <li><a href="#contacto">Contáctanos</a></li>
+                                <li><a href="#myModal11" data-toggle="modal">Ingresar</a></li>
                             </ul>
 
 
@@ -48,20 +48,20 @@
                 </nav>
             </div>
 
-            
+
             <div id="myModal11" class="modal" data-easein="bounceUpIn"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></button>
-                            <h4 class="modal-title">Entrar</h4>
+                            <h4 class="modal-title"></h4>
                         </div>
                         <div class="modal-body">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Entrar</a></li>
-                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Registrarce</a></li>
+                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Ingresar</a></li>
+                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Registrarse</a></li>
                             </ul>
 
                             <!-- Tab panes -->
@@ -69,106 +69,106 @@
                                 <div role="tabpanel" class="tab-pane active" id="home">
                                     <h:form>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">User Name</label>
+                                            <label for="exampleInputEmail1">Nombre de usuario</label>
                                             <h:inputText  class="form-control" value="#{createAccount.userName}" required = "true" requiredMessage="Is necesary a name!" />
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputPassword1">Password</label>
-                                                                                 <h:inputSecret class="form-control" value="#{createAccount.password}" required = "true" requiredMessage="Is necesary a password!" />
+                                            <label for="exampleInputPassword1">Contraseña</label>
+                                            <h:inputSecret class="form-control" value="#{createAccount.password}" required = "true" requiredMessage="Is necesary a password!" />
 
                                         </div>
-                                        <h:commandButton class="btn btn-success col-sm-12 col-xs-12"  action="#{createAccount.findAccount()}" value="Size"/>
-                                            <br/>
-                                            <label>Message = </label>
-                                            <h:outputText value="#{createAccount.message}"/>
+                                        <h:commandButton class="btn btn-success col-sm-6 col-xs-offset-3"  action="#{createAccount.findAccount()}" value="Iniciar sesión"/>
+                                        <br/>
+                                        <!--<label>Message = </label>-->
+                                        <h:outputText value="#{createAccount.message}"/>
                                     </h:form>
                                 </div>
-                                
-                                    <div role="tabpanel" class="tab-pane" id="profile">
-                                        <div class="row">
-                                            <h:form>
+
+                                <div role="tabpanel" class="tab-pane" id="profile">
+                                    <div class="row">
+                                        <h:form>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
-                                                <label for="exampleInputEmail1">User Name</label>
-                                                <h:inputText class="form-control" value="#{createAccount.userName}" required = "true" requiredMessage="Is necesary a name!" />                                            
+                                                    <label for="exampleInputEmail1">Nombre de usuario</label>
+                                                    <h:inputText class="form-control" value="#{createAccount.userName}" required = "true" requiredMessage="Is necesary a name!" />                                            
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="exampleInputPassword1">Password</label>
+                                                    <label for="exampleInputPassword1">Contraseña</label>
                                                     <h:inputSecret class="form-control" value="#{createAccount.password}" required = "true" requiredMessage="Is necesary a password!" />
-
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1">Telefono</label>
-                                                    <h:inputText  class="form-control" value="#{createAccount.email}" required = "true" requiredMessage="Is necesary a 3mail!" />
-
+                                                    <label for="exampleInputEmail1">Nombres</label>
+                                                    <h:inputText  class="form-control" value="#{createAccount.name}" required = "true" requiredMessage="Is necesary a 3mail!" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputPassword1">Apellidos</label>
+                                                    <h:inputText  class="form-control" value="#{createAccount.lastName}" required = "true" requiredMessage="Is necesary a name!" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputPassword1">Documento</label>
                                                     <h:inputText  class="form-control" value="#{createAccount.document}" required = "true" requiredMessage="Is necesary a name!" />
-
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1">Rol</label>
-                                                    <h:selectOneRadio value="#{createAccount.roll}" class="form-control">
-                                                            <f:selectItem itemValue="student" itemLabel="Estudiante" />
-                                                            <f:selectItem itemValue="teacher" itemLabel="Profesor" />   
-                                                    </h:selectOneRadio>
-                                                </div>
+                                                    <label for="exampleInputEmail1">Genero</label>
+                                                    <h:selectOneMenu value="#{createAccount.gender}" class="form-control">
+                                                        <f:selectItem itemValue="male" itemLabel="Hombre   " />
+                                                        <f:selectItem itemValue="female" itemLabel="Mujer   " />   
+                                                    </h:selectOneMenu>
+                                                </div> 
+                                            </div>
+
+                                            <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label for="exampleInputPassword1">Fecha nacimiento</label>
                                                     <div class="input-group date">
                                                         <input type="text" class="form-control"/><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-lg-6">
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1">Nombre</label>
-                                                    <h:inputText  class="form-control" value="#{createAccount.name}" required = "true" requiredMessage="Is necesary a 3mail!" />
+                                                    <label for="exampleInputEmail1">Rol</label>
+                                                    <h:selectOneMenu value="#{createAccount.roll}" class="form-control" >
+                                                        <f:selectItem itemValue="student" itemLabel="Estudiante" />
+                                                        <f:selectItem itemValue="teacher" itemLabel="Profesor" />
+                                                        <f:selectItem itemValue="administrative" itemLabel="Administrativo" />
+                                                    </h:selectOneMenu>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="exampleInputPassword1">Apellido</label>
-                                                    <h:inputText  class="form-control" value="#{createAccount.lastName}" required = "true" requiredMessage="Is necesary a name!" />
+                                                    <label for="exampleInputEmail1">Email</label>
+                                                    <h:inputText  class="form-control" value="#{createAccount.email}" required = "true" requiredMessage="Is necesary a 3mail!" />
 
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1">Telfono</label>
+                                                    <label for="exampleInputEmail1">Telefono</label>
                                                     <h:inputText class="form-control" value="#{createAccount.telephone}" required = "true" requiredMessage="Is necesary a phone!" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="exampleInputPassword1">Pais</label>
-                                                    <h:inputSecret class="form-control" value="#{createAccount.birthPlace}" required = "true" requiredMessage="Is necesary a county!" />
+                                                    <label for="exampleInputPassword1">País</label>
+                                                    <h:inputText class="form-control" value="#{createAccount.birthPlace}" required = "true" requiredMessage="Is necesary a county!" />
 
                                                 </div>
-                                                
+
                                                 <div class="form-group">
-                                                    <label for="exampleInputPassword1">Direccion</label>
-                                                    <h:inputSecret class="form-control" value="#{createAccount.addres}" required = "true" requiredMessage="Is necesary a county!" />
+                                                    <label for="exampleInputPassword1">Dirección</label>
+                                                    <h:inputText class="form-control" value="#{createAccount.addres}" required = "true" requiredMessage="Is necesary a county!" />
 
                                                 </div>
-                 
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Genero</label>
-                                                    <h:selectOneRadio value="#{createAccount.gender}" class="form-control">
-                                                            <f:selectItem itemValue="male" itemLabel="Hombre" />
-                                                            <f:selectItem itemValue="female" itemLabel="Mujer" />   
-                                                    </h:selectOneRadio>
-                                                </div>
-                                     
+
+
+
                                             </div>
-                                            <h:commandButton class="btn btn-success col-sm-12 col-xs-12"  action="#{createAccount.createAccount()}" value="Create"/>
+                                            <h:commandButton class="btn btn-success col-sm-6 col-xs-offset-3"  action="#{createAccount.createAccount()}" value="Registrarse"/>
                                             <br/>
-                                            <label>Message = </label>
+                                            <!--<label>Message = </label>-->
                                             <h:outputText value="#{createAccount.message}"/>
-                                            </h:form>
-                                        </div>
+                                        </h:form>
+                                    </div>
 
-                                    
+
                                 </div>
-                              
+
                             </div>
                         </div>
-                        
+
                         <div class="modal-footer">
                             <div class="row">
                                 <div class="col-md-2 col-sm-6 col-md-6 col-xs-6">
@@ -182,13 +182,13 @@
                     </div>
                 </div>
             </div>
-        
-            
+
+
             <div class="row">
                 <br/>
                 <div id="particles">
                     <div class="col-lg-12" id="intro">
-                        <h1 class="text-center">INSTITUTO TRIANGULO </h1>
+                        <h1 class="text-center">Entidad Educativa</h1>
                         <img style="width: 20%;height: auto;" class="img-responsive center-block" src="Images/appleSchool.svg"/>
                         <p class="text-center">Aprende con nosotros</p>
                     </div>
@@ -200,13 +200,22 @@
 
             <div class="row" id="que">
                 <div class="col-md-12">
-                    <h2 class="text-center">QUE SOMOS</h2>
+                    <h2 class="text-center">Quiénes somos</h2>
                     <div class="row">
                         <p class="text-justify col-md-6">
-                            Somos una entidad educativa la cual nos dedicamos a enseñar a todo publico,
-                            docentes, estudiantes, incluso nuestros miembros.
+                            Somos Comunidad dinámica en la formación integral de nuestros estudiantes, 
+                            a través de procesos y vivencia de valores católicos agustinianos desde una 
+                            actitud de búsqueda, de edificación de una comunidad fraterna y reflexiva, 
+                            y en construcción del conocimiento, que interioriza la realidad para 
+                            transformarla propiciando así su desarrollo personal y comunitario a plenitud.
+                            El Colegio Agustiniano hacia el año 2014, desde el lema “Amor y Ciencia”, 
+                            será en Floridablanca, una Institución reconocida por los procesos de formación 
+                            integral que desarrolla en sus estudiantes, desde sus dimensiones cognitiva, 
+                            afectiva, corporal, ética, social, espiritual y estética; y tienda hacia la 
+                            plenitud humana trascendente, en búsqueda de un ambiente armonioso inspirado 
+                            en el Evangelio y la Filosofía Agustiniana.
                         </p>
-                        <img class="img-responsive img-rounded col-md-6" src="http://placehold.it/350x150"/>
+                        <img class="img-responsive img-rounded col-md-6" src="Images/colegio.jpg"/>
                     </div>
                 </div>
             </div>
@@ -214,31 +223,34 @@
             <br class="border"/>
 
             <div class="row" id="cursos">
-                <h2 class="text-center">CURSOS</h2>
+                <h2 class="text-center">Contáctanos</h2>
                 <div class="col-md-4">
                     <div class="list-group-item">
-                        <h3 class="text-center">IDIOMAS</h3>
-                        <img style="width: 50%; height: auto;" class="img-responsive center-block" src="Images/globe.svg"/>
+                        <a href="http://www.facebook.com" target="_blank"><h3 class="text-center">Facebook</h3>
+                        <img style="width: 50%; height: 50%;" class="img-responsive center-block" src="Images/facebook.jpg"/>
+                        </a>
                         <p class="text-center text-justify">
-                            Tenemos cursos de distintos idiomas como ingles y frances.
+                           Podrás conseguir toda la informacion acerca de nuestra red social. Mantente conectado con nosotros!
                         </p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="list-group-item">
-                        <h3 class="text-center">INFORMATICA</h3>
-                        <img style="width: 50%; height: auto;" class="img-responsive center-block" src="Images/brackets.svg"/>
+                        <a href="http://www.twitter.com" target="_blank"><h3 class="text-center">Twitter</h3>
+                                <img style="width: 50%; height: 50%;" class="img-responsive center-block" src="Images/twiiter.png"/>
+                        </a>
                         <p class="text-center text-justify">
-                            Aprende  a programar en diferentes lenguajes de programacion entre otras cosas.
+                           Expresa lo que piensas, sugerencias, felicitaciones acerca de nuestra entidad.
                         </p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="list-group-item">
-                        <h3 class="text-center">OTROS</h3>
-                        <img style="width: 50%; height: auto;" class="img-responsive center-block" src="Images/pencil.svg"/>
-                        <p class="text-center text-justify">
-                            Encuentra algo que quieras aprender de alguna area de interes
+                        <a href="http://www.instagram.com" target="_blank"><h3 class="text-center">Instagram</h3>
+                            <img style="width: 50%; height: 50%;" class="img-responsive center-block" src="Images/instagram.jpg"/>
+                        </a>
+                            <p class="text-center text-justify">
+                            Encuentra y comparte tus momentos dentro de la entidad educativa.
                         </p>
                     </div>
                 </div>
@@ -247,13 +259,13 @@
             <br/>
             <div class="row modal-footer" id="contacto">
                 <div class="col-lg-3">
-                    Info grupo
+                    
                 </div>
                 <div class="col-md-7">
-                    <i class="fa fa-twitter">REDES IMAGINARIAS</i>
+                    
                 </div>
                 <div class="col-md-2">
-                    Informacion imaginaria empresa
+                    Entidad educativa.
                 </div>
             </div>
         </div>
@@ -264,22 +276,22 @@
         <script src="js/velocity.ui.min.js"></script>
         <script>
             // add the animation to the modal
-            $( ".modal" ).each(function(index) {
+            $(".modal").each(function (index) {
                 $(this).on('show.bs.modal', function (e) {
                     var open = $(this).attr('data-easein');
-                    if(open == 'shake') {
+                    if (open == 'shake') {
                         $('.modal-dialog').velocity('callout.' + open);
-                    } else if(open == 'pulse') {
+                    } else if (open == 'pulse') {
                         $('.modal-dialog').velocity('callout.' + open);
-                    } else if(open == 'tada') {
+                    } else if (open == 'tada') {
                         $('.modal-dialog').velocity('callout.' + open);
-                    } else if(open == 'flash') {
+                    } else if (open == 'flash') {
                         $('.modal-dialog').velocity('callout.' + open);
-                    }  else if(open == 'bounce') {
+                    } else if (open == 'bounce') {
                         $('.modal-dialog').velocity('callout.' + open);
-                    } else if(open == 'swing') {
+                    } else if (open == 'swing') {
                         $('.modal-dialog').velocity('callout.' + open);
-                    }else {
+                    } else {
                         $('.modal-dialog').velocity('transition.' + open);
                     }
 
