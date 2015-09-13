@@ -16,7 +16,7 @@ import java.sql.Date;
  * @author sergioalejandrodiazpinilla
  */
 public class UserManagement {
-    public String createAccount (String name,long document,String userName, String lastName ,String password ,String email,int telephone,String addres,int age,String gender,String roll){
+    public String createAccount (String name,long document,String userName, String lastName ,String password ,String email, long telephone,String addres,int age,String gender,String roll){
         
         if(roll.equals("student")){
             Student account = new Student();
