@@ -36,7 +36,7 @@ public class CreateAccount {
 
     private String email;
 
-    private int telephone;
+    private long telephone;
 
     private String addres;
 
@@ -109,11 +109,11 @@ public class CreateAccount {
         this.email = email;
     }
 
-    public int getTelephone() {
+    public long getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(int telephone) {
+    public void setTelephone(long telephone) {
         this.telephone = telephone;
     }
 
