@@ -105,14 +105,25 @@ public class UserManagement {
   
     }
 
-    public Student findAccount (String userName, String password){
+    public Student findStudent (String userName, String password){
         
-        StudentDAO accountDAO = new StudentDAO();
-        return accountDAO.findStu(userName,password);
+        StudentDAO stuDAO = new StudentDAO();
+        Student newstu;
+        return stuDAO.findStu(userName,password);
         
-            
-            
+    }
+    public Teacher findTeacher (String userName, String password){
         
+        TeacherDAO teaDAO = new TeacherDAO();
+        Teacher newtea;
+        return teaDAO.findStu(userName,password);
+              
+    }
+    public Administrative findAdministrative(String userName, String password){
         
+        AdministrativeDAO admDAO = new AdministrativeDAO();
+        Administrative newadm;
+        return admDAO.findStu(userName,password);
+         
     }
 }

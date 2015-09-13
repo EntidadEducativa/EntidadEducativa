@@ -167,6 +167,7 @@ public class CreateAccount {
         message = manageAccount.createAccount(name, document, userName, lastName, password, email, telephone, addres, age, gender, roll);
         login.setUserName(userName);
         login.setPassword(password);
+        login.setRoll(roll);
         login.login();
     }
     public void form() throws IOException{
