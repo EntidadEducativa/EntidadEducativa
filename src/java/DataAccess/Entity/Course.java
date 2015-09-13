@@ -7,6 +7,7 @@ package DataAccess.Entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -14,6 +15,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -22,6 +26,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -70,6 +75,18 @@ public class Course implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "course_estate")
     private String courseEstate;
+    @ManyToMany(mappedBy = "courseCollection")
+    private Collection<Administrator> administratorCollection;
+    @JoinTable(name = "PAYMENT_has_COURSE", joinColumns = {
+        @JoinColumn(name = "COURSE_course_id", referencedColumnName = "course_id")}, inverseJoinColumns = {
+        @JoinColumn(name = "PAYMENT_pay_id", referencedColumnName = "pay_id")})
+    @ManyToMany
+    private Collection<Payment> paymentCollection;
+    @JoinTable(name = "COURSE_has_TEACHER", joinColumns = {
+        @JoinColumn(name = "COURSE_course_id", referencedColumnName = "course_id")}, inverseJoinColumns = {
+        @JoinColumn(name = "TEACHER_teach_est_id", referencedColumnName = "teach_est_id")})
+    @ManyToMany
+    private Collection<Teacher> teacherCollection;
 
     public Course() {
     }
@@ -133,6 +150,33 @@ public class Course implements Serializable {
 
     public void setCourseEstate(String courseEstate) {
         this.courseEstate = courseEstate;
+    }
+
+    @XmlTransient
+    public Collection<Administrator> getAdministratorCollection() {
+        return administratorCollection;
+    }
+
+    public void setAdministratorCollection(Collection<Administrator> administratorCollection) {
+        this.administratorCollection = administratorCollection;
+    }
+
+    @XmlTransient
+    public Collection<Payment> getPaymentCollection() {
+        return paymentCollection;
+    }
+
+    public void setPaymentCollection(Collection<Payment> paymentCollection) {
+        this.paymentCollection = paymentCollection;
+    }
+
+    @XmlTransient
+    public Collection<Teacher> getTeacherCollection() {
+        return teacherCollection;
+    }
+
+    public void setTeacherCollection(Collection<Teacher> teacherCollection) {
+        this.teacherCollection = teacherCollection;
     }
 
     @Override

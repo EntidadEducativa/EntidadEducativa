@@ -7,12 +7,14 @@ package DataAccess.Entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -21,6 +23,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -47,6 +50,8 @@ public class Payment implements Serializable {
     @Column(name = "pay_date")
     @Temporal(TemporalType.DATE)
     private Date payDate;
+    @ManyToMany(mappedBy = "paymentCollection")
+    private Collection<Course> courseCollection;
     @JoinColumn(name = "ADMINISTRATIVE_adm_est_id1", referencedColumnName = "adm_est_id")
     @ManyToOne
     private Administrative aDMINISTRATIVEadmestid1;
@@ -86,6 +91,15 @@ public class Payment implements Serializable {
 
     public void setPayDate(Date payDate) {
         this.payDate = payDate;
+    }
+
+    @XmlTransient
+    public Collection<Course> getCourseCollection() {
+        return courseCollection;
+    }
+
+    public void setCourseCollection(Collection<Course> courseCollection) {
+        this.courseCollection = courseCollection;
     }
 
     public Administrative getADMINISTRATIVEadmestid1() {

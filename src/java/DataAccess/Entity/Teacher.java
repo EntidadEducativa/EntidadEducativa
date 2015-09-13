@@ -8,19 +8,17 @@ package DataAccess.Entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Collection;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -44,7 +42,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Teacher.findByTeachEmail", query = "SELECT t FROM Teacher t WHERE t.teachEmail = :teachEmail"),
     @NamedQuery(name = "Teacher.findByTeachTelephone", query = "SELECT t FROM Teacher t WHERE t.teachTelephone = :teachTelephone"),
     @NamedQuery(name = "Teacher.findByTeachAddress", query = "SELECT t FROM Teacher t WHERE t.teachAddress = :teachAddress"),
-    @NamedQuery(name = "Teacher.findByTeachBirthday", query = "SELECT t FROM Teacher t WHERE t.teachBirthday = :teachBirthday"),
+    @NamedQuery(name = "Teacher.findByTeachAge", query = "SELECT t FROM Teacher t WHERE t.teachAge = :teachAge"),
     @NamedQuery(name = "Teacher.findByTeachGender", query = "SELECT t FROM Teacher t WHERE t.teachGender = :teachGender"),
     @NamedQuery(name = "Teacher.findByTeachRoll", query = "SELECT t FROM Teacher t WHERE t.teachRoll = :teachRoll"),
     @NamedQuery(name = "Teacher.findByTeachProfile", query = "SELECT t FROM Teacher t WHERE t.teachProfile = :teachProfile"),
@@ -82,7 +80,7 @@ public class Teacher implements Serializable {
     private String teachPassword;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 30)
+    @Size(min = 1, max = 100)
     @Column(name = "teach_email")
     private String teachEmail;
     @Basic(optional = false)
@@ -92,9 +90,8 @@ public class Teacher implements Serializable {
     @Size(max = 20)
     @Column(name = "teach_address")
     private String teachAddress;
-    @Column(name = "teach_birthday")
-    @Temporal(TemporalType.DATE)
-    private Date teachBirthday;
+    @Column(name = "teach_age")
+    private Integer teachAge;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
@@ -115,6 +112,10 @@ public class Teacher implements Serializable {
     @NotNull
     @Column(name = "teach_salary")
     private BigDecimal teachSalary;
+    @ManyToMany(mappedBy = "teacherCollection")
+    private Collection<Course> courseCollection;
+    @ManyToMany(mappedBy = "teacherCollection")
+    private Collection<Administrator> administratorCollection;
     @OneToMany(mappedBy = "tEACHERteachestid")
     private Collection<Payment> paymentCollection;
 
@@ -212,12 +213,12 @@ public class Teacher implements Serializable {
         this.teachAddress = teachAddress;
     }
 
-    public Date getTeachBirthday() {
-        return teachBirthday;
+    public Integer getTeachAge() {
+        return teachAge;
     }
 
-    public void setTeachBirthday(Date teachBirthday) {
-        this.teachBirthday = teachBirthday;
+    public void setTeachAge(Integer teachAge) {
+        this.teachAge = teachAge;
     }
 
     public String getTeachGender() {
@@ -250,6 +251,24 @@ public class Teacher implements Serializable {
 
     public void setTeachSalary(BigDecimal teachSalary) {
         this.teachSalary = teachSalary;
+    }
+
+    @XmlTransient
+    public Collection<Course> getCourseCollection() {
+        return courseCollection;
+    }
+
+    public void setCourseCollection(Collection<Course> courseCollection) {
+        this.courseCollection = courseCollection;
+    }
+
+    @XmlTransient
+    public Collection<Administrator> getAdministratorCollection() {
+        return administratorCollection;
+    }
+
+    public void setAdministratorCollection(Collection<Administrator> administratorCollection) {
+        this.administratorCollection = administratorCollection;
     }
 
     @XmlTransient

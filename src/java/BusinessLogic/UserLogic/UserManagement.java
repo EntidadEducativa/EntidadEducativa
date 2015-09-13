@@ -16,7 +16,7 @@ import java.sql.Date;
  * @author sergioalejandrodiazpinilla
  */
 public class UserManagement {
-    public String createAccount (String name,long document,String userName, String lastName ,String password ,String email,int telephone,String addres,Date birthDay,String gender,String roll){
+    public String createAccount (String name,long document,String userName, String lastName ,String password ,String email,int telephone,String addres,int age,String gender,String roll){
         
         if(roll.equals("student")){
             Student account = new Student();
@@ -30,10 +30,7 @@ public class UserManagement {
             if (addres != null){
                 account.setEstAddress(addres);
             }
-            if(birthDay != null){
-                java.sql.Date sqlDate = new java.sql.Date(birthDay.getTime());
-                account.setEstBirthday(sqlDate);
-            }
+            account.setEstAge(age);
             account.setEstGender(gender);
             account.setEstRoll(roll);
 
@@ -57,12 +54,9 @@ public class UserManagement {
             account.setTeachEmail(email);
             account.setTeachTelephone(telephone);
             account.setTeachAddress(addres);
-            if(birthDay != null){
-                java.sql.Date sqlDate = new java.sql.Date(birthDay.getTime());
-                account.setTeachBirthday(sqlDate);
-            }else{
-                account.setTeachBirthday(null);
-            }
+
+            account.setTeachAge(age);
+
             
             account.setTeachGender(gender);
             account.setTeachRoll(roll);
@@ -89,13 +83,8 @@ public class UserManagement {
             account.setAdmEmail(email);
             account.setAdmTelephone(telephone);
             account.setAdmAddress(addres);
-            if(birthDay != null){
-                java.sql.Date sqlDate = new java.sql.Date(birthDay.getTime());
-                account.setAdmBirthday(sqlDate);
-            }else{
-                account.setAdmBirthday(null);
-            }
-            
+            account.setAdmAge(age);
+
             account.setAdmGender(gender);
             account.setAdmRoll(roll);
             account.setAdmDependence("-------");

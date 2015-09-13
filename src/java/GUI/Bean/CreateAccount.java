@@ -35,7 +35,7 @@ public class CreateAccount {
 
     private String addres;
 
-    private Date birthDay;
+    private int age;
 
 
     private String gender;
@@ -114,13 +114,15 @@ public class CreateAccount {
         this.addres = addres;
     }
 
-    public Date getBirthDay() {
-        return birthDay;
+    public int getAge() {
+        return age;
     }
 
-    public void setBirthDay(Date birthDay) {
-        this.birthDay = birthDay;
+    public void setAge(int age) {
+        this.age = age;
     }
+
+    
 
     public String getGender() {
         return gender;
@@ -150,7 +152,7 @@ public class CreateAccount {
     
     public void createAccount(){
         UserManagement manageAccount = new UserManagement();
-        message = manageAccount.createAccount(name, document, userName, lastName, password, email, telephone, addres, birthDay, gender, roll);
+        message = manageAccount.createAccount(name, document, userName, lastName, password, email, telephone, addres, age, gender, roll);
     }
     public void findAccount(){
         UserManagement manageAccount = new UserManagement();

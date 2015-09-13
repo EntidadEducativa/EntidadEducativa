@@ -7,19 +7,19 @@ package DataAccess.Entity;
 
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -43,7 +43,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Administrative.findByAdmEmail", query = "SELECT a FROM Administrative a WHERE a.admEmail = :admEmail"),
     @NamedQuery(name = "Administrative.findByAdmTelephone", query = "SELECT a FROM Administrative a WHERE a.admTelephone = :admTelephone"),
     @NamedQuery(name = "Administrative.findByAdmAddress", query = "SELECT a FROM Administrative a WHERE a.admAddress = :admAddress"),
-    @NamedQuery(name = "Administrative.findByAdmBirthday", query = "SELECT a FROM Administrative a WHERE a.admBirthday = :admBirthday"),
+    @NamedQuery(name = "Administrative.findByAdmAge", query = "SELECT a FROM Administrative a WHERE a.admAge = :admAge"),
     @NamedQuery(name = "Administrative.findByAdmGender", query = "SELECT a FROM Administrative a WHERE a.admGender = :admGender"),
     @NamedQuery(name = "Administrative.findByAdmRoll", query = "SELECT a FROM Administrative a WHERE a.admRoll = :admRoll"),
     @NamedQuery(name = "Administrative.findByAdmPosition", query = "SELECT a FROM Administrative a WHERE a.admPosition = :admPosition"),
@@ -81,7 +81,7 @@ public class Administrative implements Serializable {
     private String admPassword;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 30)
+    @Size(min = 1, max = 100)
     @Column(name = "adm_email")
     private String admEmail;
     @Basic(optional = false)
@@ -91,9 +91,8 @@ public class Administrative implements Serializable {
     @Size(max = 20)
     @Column(name = "adm_address")
     private String admAddress;
-    @Column(name = "adm_birthday")
-    @Temporal(TemporalType.DATE)
-    private Date admBirthday;
+    @Column(name = "adm_age")
+    private Integer admAge;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
@@ -114,6 +113,11 @@ public class Administrative implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "adm_dependence")
     private String admDependence;
+    @JoinTable(name = "ADMINISTRATOR_has_ADMINISTRATIVE", joinColumns = {
+        @JoinColumn(name = "ADMINISTRATIVE_adm_est_id", referencedColumnName = "adm_est_id")}, inverseJoinColumns = {
+        @JoinColumn(name = "ADMINISTRATOR_admin_id", referencedColumnName = "admin_id")})
+    @ManyToMany
+    private Collection<Administrator> administratorCollection;
     @OneToMany(mappedBy = "aDMINISTRATIVEadmestid1")
     private Collection<Payment> paymentCollection;
 
@@ -211,12 +215,12 @@ public class Administrative implements Serializable {
         this.admAddress = admAddress;
     }
 
-    public Date getAdmBirthday() {
-        return admBirthday;
+    public Integer getAdmAge() {
+        return admAge;
     }
 
-    public void setAdmBirthday(Date admBirthday) {
-        this.admBirthday = admBirthday;
+    public void setAdmAge(Integer admAge) {
+        this.admAge = admAge;
     }
 
     public String getAdmGender() {
@@ -249,6 +253,15 @@ public class Administrative implements Serializable {
 
     public void setAdmDependence(String admDependence) {
         this.admDependence = admDependence;
+    }
+
+    @XmlTransient
+    public Collection<Administrator> getAdministratorCollection() {
+        return administratorCollection;
+    }
+
+    public void setAdministratorCollection(Collection<Administrator> administratorCollection) {
+        this.administratorCollection = administratorCollection;
     }
 
     @XmlTransient
