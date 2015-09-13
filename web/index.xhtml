@@ -70,17 +70,17 @@
                                     <h:form>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Nombre de usuario</label>
-                                            <h:inputText  class="form-control" value="#{createAccount.userName}" required = "true" requiredMessage="Is necesary a name!" />
+                                            <h:inputText  class="form-control" value="#{login.userName}" required = "true" requiredMessage="Is necesary a name!" />
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Contraseña</label>
-                                            <h:inputSecret class="form-control" value="#{createAccount.password}" required = "true" requiredMessage="Is necesary a password!" />
+                                            <h:inputSecret class="form-control" value="#{login.password}" required = "true" requiredMessage="Is necesary a password!" />
 
                                         </div>
-                                        <h:commandButton class="btn btn-success col-sm-6 col-xs-offset-3"  action="#{createAccount.findAccount()}" value="Iniciar sesión"/>
+                                        <h:commandButton class="btn btn-success col-sm-6 col-xs-offset-3"  action="#{login.login()}" value="Iniciar sesión"/>
                                         <br/>
                                         <!--<label>Message = </label>-->
-                                        <h:outputText value="#{createAccount.message}"/>
+                                        <h:outputText value="#{login.message}"/>
                                     </h:form>
                                 </div>
 

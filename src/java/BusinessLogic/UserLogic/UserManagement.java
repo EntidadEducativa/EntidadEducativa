@@ -105,17 +105,13 @@ public class UserManagement {
   
     }
 
-    public String findAccount (String userName, String password){
+    public Student findAccount (String userName, String password){
         
         StudentDAO accountDAO = new StudentDAO();
-        Student loged=accountDAO.findStu(userName,password);
+        return accountDAO.findStu(userName,password);
         
             
-            if(loged != null){
-            return "Login exitoso,"+ loged.getEstUsername();
-        }else{
-            return "Usuario o contraseña incorrectos";
-        }
+            
         
         
     }

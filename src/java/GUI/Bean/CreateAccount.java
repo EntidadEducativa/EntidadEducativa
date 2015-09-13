@@ -7,8 +7,9 @@ package GUI.Bean;
 
 import BusinessLogic.UserLogic.UserManagement;
 import DataAccess.Entity.Student;
-import java.sql.Date;
+import java.io.IOException;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
 /**
@@ -18,6 +19,10 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 @ViewScoped
 public class CreateAccount {
+    
+    
+    @ManagedProperty("#{login}")
+    private Login login;
 
     private String name;
 
@@ -50,6 +55,12 @@ public class CreateAccount {
         
     }
 
+    public Login getLogin() {
+        return login;
+    }
+    public void setLogin(Login login) {
+        this.login = login;
+    }
     public String getName() {
         return name;
     }
@@ -150,13 +161,15 @@ public class CreateAccount {
     
     
     
-    public void createAccount(){
+    public void createAccount() throws IOException{
         UserManagement manageAccount = new UserManagement();
         message = manageAccount.createAccount(name, document, userName, lastName, password, email, telephone, addres, age, gender, roll);
+        login.setUserName(userName);
+        login.setPassword(password);
+        login.login();
     }
-    public void findAccount(){
-        UserManagement manageAccount = new UserManagement();
-        message = manageAccount.findAccount(userName, password);
-    }
+    
+    
+    
     
 }
