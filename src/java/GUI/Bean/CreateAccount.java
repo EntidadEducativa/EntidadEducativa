@@ -11,6 +11,7 @@ import java.io.IOException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -168,6 +169,11 @@ public class CreateAccount {
         login.setPassword(password);
         login.login();
     }
+    public void form() throws IOException{
+        FacesContext.getCurrentInstance().getExternalContext().redirect("user.xhtml");
+    }
+    
+    
     
     
     

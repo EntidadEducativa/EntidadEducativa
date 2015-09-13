@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="font-awesome-4.4.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.min.css"/>
+
+        <script type='text/javascript' src='js/jquery.min.js'></script>
+        <script type='text/javascript' src='js/jquery.particleground.js'></script>
+        <script type='text/javascript' src='js/demo.js'></script>
+    </h:head>
+    <h:body class="gradent">
+    
+        <div class="container">
+           
+            <div class="row" style="padding-top: 10%;">
+                <div class="col-md-3">
+                </div>
+                <h:form>
+                    <div class="col-md-6">
+                        <div class="row list-group-item">
+                            <img style="width: 20%; height: 20%;" class="img-responsive center-block" src="Images/appleSchool.svg"/>
+                            <h3 class="center-block text-center">Entidad educativa</h3>
+                            
+                    <h:form>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Nombre de usuario</label>
+                                <h:inputText id="userName" class="form-control" value="#{createAccount.userName}" required = "true" requiredMessage="Falta nombre de usuario !" />  
+                                <h:message class="alert-danger" for="userName"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Contraseña</label>
+                                <h:inputSecret id="password" class="form-control" value="#{createAccount.password}" required = "true" requiredMessage="Falta Contraseña!" />
+                                <h:message class="alert-danger" for="password"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Nombres</label>
+                                <h:inputText id="name" class="form-control" value="#{createAccount.name}" required = "true" requiredMessage="Faltan nombres!" />
+                                <h:message class="alert-danger" for="name"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Apellidos</label>
+                                <h:inputText id="lastName" class="form-control" value="#{createAccount.lastName}" required = "true" requiredMessage="Faltan apellidos!" />
+                                <h:message class="alert-danger" for="lastName"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Documento</label>
+                                <h:inputText id="docum"  class="form-control" value="#{createAccount.document}" required = "true" requiredMessage="Falta documento!" />
+                                <h:message class="alert-danger" for="docum"/>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Edad</label>
+                                <h:inputText id="age" class="form-control" value="#{createAccount.age}"  />
+
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Rol</label>
+                                <h:selectOneMenu value="#{createAccount.roll}" class="form-control" >
+                                    <f:selectItem itemValue="student" itemLabel="Estudiante" />
+                                    <f:selectItem itemValue="teacher" itemLabel="Profesor" />
+                                    <f:selectItem itemValue="administrative" itemLabel="Administrativo" />
+                                </h:selectOneMenu>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email</label>
+                                <h:inputText id="email" class="form-control" value="#{createAccount.email}" required = "true" requiredMessage="Falta email!" />
+                                <h:message class="alert-danger" for="email"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Telefono</label>
+                                <h:inputText class="form-control" value="#{createAccount.telephone}" required = "true" requiredMessage="Falta telefono" />
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Dirección</label>
+                                <h:inputText id="addre" class="form-control" value="#{createAccount.addres}"  />
+                                <h:message class="alert-danger" for="addre"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Genero</label>
+                                <h:selectOneMenu value="#{createAccount.gender}" class="form-control">
+                                    <f:selectItem itemValue="male" itemLabel="Hombre   " />
+                                    <f:selectItem itemValue="female" itemLabel="Mujer   " />   
+                                </h:selectOneMenu>
+                            </div> 
+
+
+
+                        </div>
+                        <h:commandButton class="btn btn-success col-sm-6 col-xs-offset-3"  action="#{createAccount.createAccount()}" value="Registrarse"/>
+                        <br/>
+                        <!--<label>Message = </label>-->
+                        <h:outputText value="#{createAccount.message}"/>
+                    </h:form>
+                </div>
+                    </div>
+                
+                
+                </h:form>
+                <div class="col-md-3">
+                    
+                </div>
+            </div>
+        </div>
+            
+       
+    </h:body>
+</html>
+
