@@ -70,6 +70,11 @@ public class Administrator implements Serializable {
         @JoinColumn(name = "COURSE_course_id", referencedColumnName = "course_id")})
     @ManyToMany
     private Collection<Course> courseCollection;
+    @JoinTable(name = "ADMINISTRATOR_has_TEACHER", joinColumns = {
+        @JoinColumn(name = "ADMINISTRATOR_admin_id", referencedColumnName = "admin_id")}, inverseJoinColumns = {
+        @JoinColumn(name = "TEACHER_teach_est_id", referencedColumnName = "teach_est_id")})
+    @ManyToMany
+    private Collection<Teacher> teacherCollection;
     @JoinTable(name = "ADMINISTRATOR_has_STUDENT", joinColumns = {
         @JoinColumn(name = "ADMINISTRATOR_admin_id", referencedColumnName = "admin_id")}, inverseJoinColumns = {
         @JoinColumn(name = "STUDENT_est_id", referencedColumnName = "est_id")})
@@ -77,11 +82,6 @@ public class Administrator implements Serializable {
     private Collection<Student> studentCollection;
     @ManyToMany(mappedBy = "administratorCollection")
     private Collection<Administrative> administrativeCollection;
-    @JoinTable(name = "ADMINISTRATOR_has_TEACHER", joinColumns = {
-        @JoinColumn(name = "ADMINISTRATOR_admin_id", referencedColumnName = "admin_id")}, inverseJoinColumns = {
-        @JoinColumn(name = "TEACHER_teach_est_id", referencedColumnName = "teach_est_id")})
-    @ManyToMany
-    private Collection<Teacher> teacherCollection;
 
     public Administrator() {
     }
@@ -148,6 +148,15 @@ public class Administrator implements Serializable {
     }
 
     @XmlTransient
+    public Collection<Teacher> getTeacherCollection() {
+        return teacherCollection;
+    }
+
+    public void setTeacherCollection(Collection<Teacher> teacherCollection) {
+        this.teacherCollection = teacherCollection;
+    }
+
+    @XmlTransient
     public Collection<Student> getStudentCollection() {
         return studentCollection;
     }
@@ -163,15 +172,6 @@ public class Administrator implements Serializable {
 
     public void setAdministrativeCollection(Collection<Administrative> administrativeCollection) {
         this.administrativeCollection = administrativeCollection;
-    }
-
-    @XmlTransient
-    public Collection<Teacher> getTeacherCollection() {
-        return teacherCollection;
-    }
-
-    public void setTeacherCollection(Collection<Teacher> teacherCollection) {
-        this.teacherCollection = teacherCollection;
     }
 
     @Override

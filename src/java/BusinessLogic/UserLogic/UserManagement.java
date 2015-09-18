@@ -44,35 +44,7 @@ public class UserManagement {
                 return "The account could not created";
             }
         }
-        if(roll.equals("teacher")){
-            Teacher account = new Teacher();
-            account.setTeachDocument(document);
-            account.setTeachUsername(userName);
-            account.setTeachName(name);
-            account.setTeachLastName(lastName);
-            account.setTeachPassword(password);
-            account.setTeachEmail(email);
-            account.setTeachTelephone(telephone);
-            account.setTeachAddress(addres);
-
-            account.setTeachAge(age);
-
-            
-            account.setTeachGender(gender);
-            account.setTeachRoll(roll);
-            
-            account.setTeachProfile("Vacio");
-            account.setTeachSalary(BigDecimal.valueOf(500000));
-            
-            
-            TeacherDAO accountDAO = new TeacherDAO();
-            Teacher accountE = accountDAO.persist(account);
-            if(accountE != null){
-                return "The account was created,"+ account.getTeachUsername();
-            }else{
-                return "The account could not created";
-            }
-        }
+        
         if(roll.equals("administrative")){
             Administrative account = new Administrative();
             account.setAdmDocument(document);

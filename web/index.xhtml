@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <head>
         <title>Entidad educativa</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -16,8 +17,11 @@
         <script type='text/javascript' src='js/demo.js'></script>
     </head>
     <h:body class="gradent" >
+
         <div class="container" >
+            
             <div class="row">
+                
 
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
@@ -47,7 +51,14 @@
                     </div><!-- /.container-fluid -->
                 </nav>
             </div>
-
+            
+            <c:if test="#{login.errorLogin != null}">
+                <div class="row">
+                    <div class="col-lg-12 list-group-item-danger">
+                        <h3 class="text-center"><h:outputText value="#{login.errorLogin}"/></h3>
+                    </div>
+                </div>
+            </c:if>
 
             <div id="myModal11" class="modal" data-easein="bounceUpIn"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
@@ -91,7 +102,7 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Nombre de usuario</label>
-                                                    <h:inputText id="userName" class="form-control" value="#{createAccount.userName}" required = "true" requiredMessage="Falta nombre de usuario !" />  
+                                                    <h:inputText id="userName" class="form-control" value="#{createAccount.userName}" required = "true" requiredMessage="Falta nombre de usuario !"/>
                                                     <h:message class="alert-danger" for="userName"/>
                                                 </div>
                                                 <div class="form-group">
@@ -111,7 +122,9 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputPassword1">Documento</label>
-                                                    <h:inputText id="docum"  class="form-control" value="#{createAccount.document}" required = "true" requiredMessage="Falta documento!" />
+                                                    <h:inputText id="docum"  class="form-control" value="#{createAccount.document}" required = "true" requiredMessage="Falta documento!">
+                                                        <f:convertNumber type="number"/>
+                                                    </h:inputText>
                                                     <h:message class="alert-danger" for="docum"/>
                                                 </div>
                                                 

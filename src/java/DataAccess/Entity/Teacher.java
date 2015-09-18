@@ -116,6 +116,8 @@ public class Teacher implements Serializable {
     private Collection<Course> courseCollection;
     @ManyToMany(mappedBy = "teacherCollection")
     private Collection<Administrator> administratorCollection;
+    @ManyToMany(mappedBy = "teacherCollection1")
+    private Collection<Course> courseCollection1;
     @OneToMany(mappedBy = "tEACHERteachestid")
     private Collection<Payment> paymentCollection;
 
@@ -269,6 +271,15 @@ public class Teacher implements Serializable {
 
     public void setAdministratorCollection(Collection<Administrator> administratorCollection) {
         this.administratorCollection = administratorCollection;
+    }
+
+    @XmlTransient
+    public Collection<Course> getCourseCollection1() {
+        return courseCollection1;
+    }
+
+    public void setCourseCollection1(Collection<Course> courseCollection1) {
+        this.courseCollection1 = courseCollection1;
     }
 
     @XmlTransient

@@ -5,8 +5,10 @@
  */
 package GUI.Bean;
 
+import BusinessLogic.AdminLogic.AdminManagement;
 import BusinessLogic.UserLogic.UserManagement;
 import DataAccess.Entity.Administrative;
+import DataAccess.Entity.Administrator;
 import DataAccess.Entity.Student;
 import DataAccess.Entity.Teacher;
 import java.io.IOException;
@@ -25,13 +27,15 @@ public class Login {
     private Student userStu;
     private Teacher userTea;
     private Administrative userAdm;
+    private Administrator userAdmin;
     private String message;
     private String userName;
-     private String password ;
-       private String roll;
+    private String password ;
+    private String roll;
+    private String errorLogin;
     
      public Login() {
-         
+         errorLogin = null;
     }
      
     public String getUserName() {
@@ -64,51 +68,32 @@ public class Login {
         this.roll = roll;
     }
 
-    public void login() throws IOException {
-        UserManagement manageAccount = new UserManagement();
-        if(roll.equals("student")){
-        Student userDatabase = manageAccount.findStudent(userName, password);
-        if(userDatabase!=null){
-        userStu = userDatabase;
-        userTea = null;
-        userAdm = null;
-        }}
-        if(roll.equals("teacher")){
-        Teacher userDatabase = manageAccount.findTeacher(userName, password);
-        if(userDatabase!=null){
-        userTea = userDatabase;
-        userStu = null;
-        userAdm = null;
-        }}
-        if(roll.equals("administrative")){
-        Administrative userDatabase = manageAccount.findAdministrative(userName, password);
-        if(userDatabase!=null){
-        userAdm = userDatabase;
-        userTea = null;
-        userStu = null;
-        
-        }}
-        if(!isLoggedIn()){
-            message = "usuario o contraseÃ±a incorrectos";
-        }
-        else{
-            message = "login exitoso";
-        FacesContext.getCurrentInstance().getExternalContext().redirect("user.xhtml");
-        }
-        
-        
-        
+    public String getErrorLogin() {
+        return errorLogin;
     }
 
+    public void setErrorLogin(String errorLogin) {
+        this.errorLogin = errorLogin;
+    }
+    
     public void logout() throws IOException {
         userStu = null;
         userTea = null;
         userAdm = null;
+        userAdmin = null;
+        errorLogin = null;
+        
+        FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+    }
+    
+    public void profileError() throws IOException {
+        errorLogin = "Error no esta logeado";
         FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
     }
 
     public boolean isLoggedIn() {
-        return userStu != null || userTea != null || userAdm != null;
+        errorLogin = null;
+        return userStu != null || userTea != null || userAdm != null || userAdmin != null;
     }
 
     public Student getCurrentStu() {
@@ -135,4 +120,73 @@ public class Login {
         this.userAdm = userAdm;
 
     }
+
+    public Administrator getCurrentAdmin() {
+        return userAdmin;
+    }
+
+    public void setCurrentAdmin(Administrator userAdmin) {
+        this.userAdmin = userAdmin;
+    }
+    
+    
+    
+
+    public void login() throws IOException {
+        UserManagement manageAccount = new UserManagement();
+        AdminManagement manageAdmin = new AdminManagement();
+        if(roll.equals("student")){
+            Student userDatabase = manageAccount.findStudent(userName, password);
+            
+            if(userDatabase!=null){
+                userStu = userDatabase;
+                userTea = null;
+                userAdm = null;
+                userAdmin = null;
+            }
+        }
+        if(roll.equals("teacher")){
+            Teacher userDatabase = manageAccount.findTeacher(userName, password);
+            if(userDatabase!=null){
+                userTea = userDatabase;
+                userStu = null;
+                userAdm = null;
+                userAdmin = null;
+            }
+        }
+        if(roll.equals("administrative")){
+            Administrative userDatabase = manageAccount.findAdministrative(userName, password);
+            if(userDatabase!=null){
+                userAdm = userDatabase;
+                userTea = null;
+                userStu = null;
+                userAdmin = null;
+            }
+        }
+        if(roll.equals("administrator")){
+            Administrator userDatabase = manageAdmin.findAdmin(userName, password);
+            if(userDatabase!=null){
+                userAdmin = userDatabase;
+                userTea = null;
+                userStu = null;
+                userAdm = null;
+            }
+        }
+        if(!isLoggedIn()){
+            message = "usuario o contraseÃ±a incorrectos";
+        }
+        else{
+            if(!roll.equals("administrator")){
+                message = "login exitoso";
+                FacesContext.getCurrentInstance().getExternalContext().redirect("user.xhtml");
+            }else{
+                message = "login exitoso";
+                FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
+            }
+        }
+        errorLogin = null;
+        
+        
+    }
+    
 }

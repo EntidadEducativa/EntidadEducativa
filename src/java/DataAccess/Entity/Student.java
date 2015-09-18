@@ -100,6 +100,8 @@ public class Student implements Serializable {
     @Column(name = "est_roll")
     private String estRoll;
     @ManyToMany(mappedBy = "studentCollection")
+    private Collection<Course> courseCollection;
+    @ManyToMany(mappedBy = "studentCollection")
     private Collection<Administrator> administratorCollection;
     @OneToMany(mappedBy = "sTUDENTestid")
     private Collection<Payment> paymentCollection;
@@ -218,6 +220,15 @@ public class Student implements Serializable {
 
     public void setEstRoll(String estRoll) {
         this.estRoll = estRoll;
+    }
+
+    @XmlTransient
+    public Collection<Course> getCourseCollection() {
+        return courseCollection;
+    }
+
+    public void setCourseCollection(Collection<Course> courseCollection) {
+        this.courseCollection = courseCollection;
     }
 
     @XmlTransient

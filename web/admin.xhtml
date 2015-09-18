@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="font-awesome-4.4.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.min.css"/>
+
+        <script type='text/javascript' src='js/jquery.min.js'></script>
+        <script type='text/javascript' src='js/jquery.particleground.js'></script>
+        <script type='text/javascript' src='js/demo.js'></script>
+    </h:head>
+    <h:body>
+        <div class="container" >
+            <div class="col-lg-12 col-sm-12">
+                <div class="card hovercard">
+                    <div class="card-background">
+                        <img class="card-bkimg" alt="" src="Images/appleSchool.svg"/>
+                        <!-- http://lorempixel.com/850/280/people/9/ -->
+                    </div>
+                    <div class="useravatar">
+                        <img alt="" src="Images/brackets.svg"/>
+                    </div>
+                    <div class="card-info"> <span class="card-title">#{login.currentAdmin.adminName} #{login.currentAdmin.adminLastname}</span>
+
+                    </div>
+                </div>
+                <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
+                    <div class="btn-group" role="group">
+                        <button type="button" id="stars" class="btn btn-primary" href="#tab1" data-toggle="tab"><img class="img-responsive img-menu center-block" src="Images/pencil.svg"/>
+                            <div class="hidden-xs">Usuarios</div>
+                        </button>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><img class="img-responsive img-menu center-block" src="Images/cursos.svg"/>
+                            <div class="hidden-xs">Cursos</div>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="well">
+                    <div class="row">
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active" id="tab1">
+                                
+                                <h:form>
+                                   
+                                    <h:commandButton class="btn btn-default col-sm-6 col-xs-offset-3"  action="#{createAccount.formTeacher()}" value="Crear Profesor"/>
+                                </h:form>
+                            </div>
+                            <div class="tab-pane fade in" id="tab2">
+                               Informacion de los Cursos y poderes
+                            </div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+        </div>
+ </div>
+
+
+<script src="js/bootstrap.min.js"></script>
+<script src="js/velocity.min.js"></script>
+<script src="js/velocity.ui.min.js"></script>
+<script>
+    // add the animation to the modal
+    $( ".modal" ).each(function(index) {
+        $(this).on('show.bs.modal', function (e) {
+            var open = $(this).attr('data-easein');
+            if(open == 'shake') {
+                $('.modal-dialog').velocity('callout.' + open);
+            } else if(open == 'pulse') {
+                $('.modal-dialog').velocity('callout.' + open);
+            } else if(open == 'tada') {
+                $('.modal-dialog').velocity('callout.' + open);
+            } else if(open == 'flash') {
+                $('.modal-dialog').velocity('callout.' + open);
+            }  else if(open == 'bounce') {
+                $('.modal-dialog').velocity('callout.' + open);
+            } else if(open == 'swing') {
+                $('.modal-dialog').velocity('callout.' + open);
+            }else {
+                $('.modal-dialog').velocity('transition.' + open);
+            }
+
+        });
+    });
+    $(document).ready(function() {
+        $(".btn-pref .btn").click(function () {
+            $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
+            // $(".tab").addClass("active"); // instead of this do the below
+            $(this).removeClass("btn-default").addClass("btn-primary");
+        });
+    });
+
+
+</script>
+    </h:body>
+</html>
+

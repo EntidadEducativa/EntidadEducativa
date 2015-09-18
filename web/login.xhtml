@@ -16,6 +16,7 @@
         <script type='text/javascript' src='js/demo.js'></script>
     </h:head>
     <h:body class="gradent">
+        #{login.errorLogin = null}
     
         <div class="container">
            
@@ -42,6 +43,7 @@
                                     <f:selectItem itemValue="student" itemLabel="Estudiante" />
                                     <f:selectItem itemValue="teacher" itemLabel="Profesor" />
                                     <f:selectItem itemValue="administrative" itemLabel="Administrativo" />
+                                    <f:selectItem itemValue="administrator" itemLabel="Administrador" />
                                 </h:selectOneMenu>
                             </div>
                     <div class="row">

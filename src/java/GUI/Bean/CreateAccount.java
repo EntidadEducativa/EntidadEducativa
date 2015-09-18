@@ -5,8 +5,8 @@
  */
 package GUI.Bean;
 
+import BusinessLogic.AdminLogic.AdminManagement;
 import BusinessLogic.UserLogic.UserManagement;
-import DataAccess.Entity.Student;
 import java.io.IOException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -49,6 +49,10 @@ public class CreateAccount {
     private String roll;
     
     private String message;
+    
+    private String profile;
+    
+    private long payment;
     /**
      * Creates a new instance of CreateAccount
      */
@@ -159,6 +163,24 @@ public class CreateAccount {
     public void setMessage(String message) {
         this.message = message;
     }
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
+
+    public long getPayment() {
+        return payment;
+    }
+
+    public void setPayment(long payment) {
+        this.payment = payment;
+    }
+
+
     
     
     
@@ -169,11 +191,22 @@ public class CreateAccount {
         login.setPassword(password);
         login.setRoll(roll);
         login.login();
+        login.setErrorLogin(null);
     }
     public void form() throws IOException{
+        login.setErrorLogin(null);
         FacesContext.getCurrentInstance().getExternalContext().redirect("user.xhtml");
     }
     
+    public void formTeacher() throws IOException{
+        login.setErrorLogin(null);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("registerTeacher.xhtml");
+    }
+
+    public void createTeacher(){
+        AdminManagement manageAccount = new AdminManagement();
+        message = manageAccount.createTeacher(name, document, userName, lastName, password, email, telephone, addres, age, gender, roll, profile, payment);
+    }
     
     
     

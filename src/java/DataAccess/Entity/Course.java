@@ -87,6 +87,18 @@ public class Course implements Serializable {
         @JoinColumn(name = "TEACHER_teach_est_id", referencedColumnName = "teach_est_id")})
     @ManyToMany
     private Collection<Teacher> teacherCollection;
+    @JoinTable(name = "STUDENT_has_COURSE", joinColumns = {
+        @JoinColumn(name = "COURSE_course_id", referencedColumnName = "course_id")}, inverseJoinColumns = {
+        @JoinColumn(name = "STUDENT_est_id", referencedColumnName = "est_id")})
+    @ManyToMany
+    private Collection<Student> studentCollection;
+    @ManyToMany(mappedBy = "courseCollection")
+    private Collection<Administrative> administrativeCollection;
+    @JoinTable(name = "TEACHER_has_COURSE", joinColumns = {
+        @JoinColumn(name = "COURSE_course_id", referencedColumnName = "course_id")}, inverseJoinColumns = {
+        @JoinColumn(name = "TEACHER_teach_est_id", referencedColumnName = "teach_est_id")})
+    @ManyToMany
+    private Collection<Teacher> teacherCollection1;
 
     public Course() {
     }
@@ -177,6 +189,33 @@ public class Course implements Serializable {
 
     public void setTeacherCollection(Collection<Teacher> teacherCollection) {
         this.teacherCollection = teacherCollection;
+    }
+
+    @XmlTransient
+    public Collection<Student> getStudentCollection() {
+        return studentCollection;
+    }
+
+    public void setStudentCollection(Collection<Student> studentCollection) {
+        this.studentCollection = studentCollection;
+    }
+
+    @XmlTransient
+    public Collection<Administrative> getAdministrativeCollection() {
+        return administrativeCollection;
+    }
+
+    public void setAdministrativeCollection(Collection<Administrative> administrativeCollection) {
+        this.administrativeCollection = administrativeCollection;
+    }
+
+    @XmlTransient
+    public Collection<Teacher> getTeacherCollection1() {
+        return teacherCollection1;
+    }
+
+    public void setTeacherCollection1(Collection<Teacher> teacherCollection1) {
+        this.teacherCollection1 = teacherCollection1;
     }
 
     @Override

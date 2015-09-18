@@ -113,6 +113,11 @@ public class Administrative implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "adm_dependence")
     private String admDependence;
+    @JoinTable(name = "ADMINISTRATIVE_has_COURSE", joinColumns = {
+        @JoinColumn(name = "ADMINISTRATIVE_adm_est_id", referencedColumnName = "adm_est_id")}, inverseJoinColumns = {
+        @JoinColumn(name = "COURSE_course_id", referencedColumnName = "course_id")})
+    @ManyToMany
+    private Collection<Course> courseCollection;
     @JoinTable(name = "ADMINISTRATOR_has_ADMINISTRATIVE", joinColumns = {
         @JoinColumn(name = "ADMINISTRATIVE_adm_est_id", referencedColumnName = "adm_est_id")}, inverseJoinColumns = {
         @JoinColumn(name = "ADMINISTRATOR_admin_id", referencedColumnName = "admin_id")})
@@ -253,6 +258,15 @@ public class Administrative implements Serializable {
 
     public void setAdmDependence(String admDependence) {
         this.admDependence = admDependence;
+    }
+
+    @XmlTransient
+    public Collection<Course> getCourseCollection() {
+        return courseCollection;
+    }
+
+    public void setCourseCollection(Collection<Course> courseCollection) {
+        this.courseCollection = courseCollection;
     }
 
     @XmlTransient
