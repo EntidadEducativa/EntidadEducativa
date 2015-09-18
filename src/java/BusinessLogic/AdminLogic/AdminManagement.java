@@ -49,6 +49,27 @@ public class AdminManagement {
             account.setTeachSalary(BigDecimal.valueOf(500000));
             
             
+            Student accountS = new Student();
+            accountS.setEstDocument(document);
+            accountS.setEstUsername(userName);
+            accountS.setEstName(name);
+            accountS.setEstLastName(lastName);
+            accountS.setEstPassword(password);
+            accountS.setEstEmail(email);
+            accountS.setEstTelephone(telephone);
+            if (addres != null){
+                accountS.setEstAddress(addres);
+            }
+            accountS.setEstAge(age);
+            accountS.setEstGender(gender);
+            accountS.setEstRoll("student");
+
+
+
+            StudentDAO accountSDAO = new StudentDAO();
+            Student accountSE = accountSDAO.persist(accountS);
+            
+            
             TeacherDAO accountDAO = new TeacherDAO();
             Teacher accountE = accountDAO.persist(account);
             if(accountE != null){

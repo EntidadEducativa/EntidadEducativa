@@ -62,6 +62,28 @@ public class UserManagement {
             account.setAdmDependence("-------");
             account.setAdmPosition("-------");
             
+            Student accountS = new Student();
+            accountS.setEstDocument(document);
+            accountS.setEstUsername(userName);
+            accountS.setEstName(name);
+            accountS.setEstLastName(lastName);
+            accountS.setEstPassword(password);
+            accountS.setEstEmail(email);
+            accountS.setEstTelephone(telephone);
+            if (addres != null){
+                accountS.setEstAddress(addres);
+            }
+            accountS.setEstAge(age);
+            accountS.setEstGender(gender);
+            accountS.setEstRoll("student");
+
+
+
+            StudentDAO accountSDAO = new StudentDAO();
+            Student accountSE = accountSDAO.persist(accountS);
+            
+            
+            
             AdministrativeDAO accountDAO = new AdministrativeDAO();
             Administrative accountE = accountDAO.persist(account);
             if(accountE != null){
@@ -69,6 +91,7 @@ public class UserManagement {
             }else{
                 return "The account could not created";
             }
+           
             
         }
         
