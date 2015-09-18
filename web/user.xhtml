@@ -34,6 +34,15 @@ and open the template in the editor.
 
         <div class="container" >
             <div class="col-lg-12 col-sm-12">
+                 <c:if test="#{login.dualStuTea==true}">
+                    <div > <span class="card-title">Cambiar tu rol Profesor - Estudiante </span>
+                   </div>
+                        </c:if>
+                        <c:if test="#{login.dualStuAdm==true}">
+                    <div > <span class="card-title">Cambiar tu rol Administrativo - Estudiante </span>
+                   </div>
+                        
+                        </c:if>
                 <div class="card hovercard">
                     <div class="card-background">
                         <img class="card-bkimg" alt="" src="Images/headerProfile.png"/>
@@ -42,6 +51,8 @@ and open the template in the editor.
                     <div class="useravatar">
                         <img alt="" src="Images/pencil.png"/>
                     </div>
+                    
+                   
                     
                     <c:if test="#{login.currentStu!=null}">
                     <div class="card-info"> <span class="card-title">#{login.currentStu.estName} #{createAccount.login.currentStu.estLastName}</span>

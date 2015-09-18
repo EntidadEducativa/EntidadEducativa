@@ -43,7 +43,7 @@ public class AdminManagement {
 
             
             account.setTeachGender(gender);
-            account.setTeachRoll(roll);
+            account.setTeachRoll("teacher");
             
             account.setTeachProfile("LOL");
             account.setTeachSalary(BigDecimal.valueOf(500000));
