@@ -17,7 +17,9 @@ import java.sql.Date;
  */
 public class UserManagement {
     public String createAccount (String name,long document,String userName, String lastName ,String password ,String email, long telephone,String addres,int age,String gender,String roll){
-        
+        StudentDAO existStudent = new StudentDAO();
+            Student alreadyReg=existStudent.findByUsername(userName);
+            if(alreadyReg==null){
         if(roll.equals("student")){
             Student account = new Student();
             account.setEstDocument(document);
@@ -39,9 +41,9 @@ public class UserManagement {
             StudentDAO accountDAO = new StudentDAO();
             Student accountE = accountDAO.persist(account);
             if(accountE == account){
-                return "The account was created,"+ account.getEstUsername();
+                return "La cuenta estudiante fue creada,"+ account.getEstUsername();
             }else{
-                return "The account could not created";
+                return "error: el username es correcto pero algunos datos son incorrectos";
             }
         }
         
@@ -82,20 +84,22 @@ public class UserManagement {
             StudentDAO accountSDAO = new StudentDAO();
             Student accountSE = accountSDAO.persist(accountS);
             
+            if(accountS==accountSE){
             
             
             AdministrativeDAO accountDAO = new AdministrativeDAO();
+            
             Administrative accountE = accountDAO.persist(account);
-            if(accountE != null){
-                return "The account was created,"+ account.getAdmUsername();
-            }else{
-                return "The account could not created";
+            if(accountE == account  ){
+                return "La cuenta administrativo fue creada,"+ account.getAdmUsername();
+            }
+                return "error: algunos datos no permiten la creacion de un administrativo, pero fue creado un estudiante";
             }
            
-            
+            return "error: Este documento ya existe";
         }
-        
-        return roll;
+    }
+        return "error: El username ya ha sido usado";
             
   
     }

@@ -28,15 +28,17 @@ public class AdministratorDAO {
     
     
     public Administrator persist (Administrator account){
+       Administrator created = account;
         em.getTransaction().begin();
         try{
             em.persist(account);
             em.getTransaction().commit();
         }catch(Exception e){
             em.getTransaction().rollback();
+            created=null;
         }finally{
             em.close();
-            return account;
+            return created;
         }
     }
     

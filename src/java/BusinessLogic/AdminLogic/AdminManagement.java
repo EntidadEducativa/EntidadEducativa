@@ -28,7 +28,10 @@ public class AdminManagement {
     }
    
     public String createTeacher (String name,long document,String userName, String lastName ,String password ,String email, long telephone,String addres,int age,String gender,String roll,String profile,long payment){
-            Teacher account = new Teacher();
+            StudentDAO existStudent = new StudentDAO();
+            Student alreadyReg=existStudent.findByUsername(userName);
+            if(alreadyReg==null){
+        Teacher account = new Teacher();
             
             account.setTeachDocument(document);
             account.setTeachUsername(userName);
@@ -68,16 +71,19 @@ public class AdminManagement {
 
             StudentDAO accountSDAO = new StudentDAO();
             Student accountSE = accountSDAO.persist(accountS);
-            
+            if(accountS==accountSE){
+
             
             TeacherDAO accountDAO = new TeacherDAO();
             Teacher accountE = accountDAO.persist(account);
-            if(accountE != null){
-                return "The account was created,"+ account.getTeachUsername()+ "," + accountE.getTeachUsername();
-            }else{
-                return "The account could not created";
+            if(accountE == account ){
+                return "La cuenta profesor fue creada,"+ account.getTeachUsername()+ "," + accountE.getTeachUsername();
             }
-
+                return "error: algunos datos no permiten la creacion de un profesor, pero fue creado un estudiante";
+            }
+            return "error: Este documento ya existe";
+    }
+            return "error: El username ya ha sido usado";
     }
     
 }

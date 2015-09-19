@@ -187,11 +187,12 @@ public class CreateAccount {
     public void createAccount() throws IOException{
         UserManagement manageAccount = new UserManagement();
         message = manageAccount.createAccount(name, document, userName, lastName, password, email, telephone, addres, age, gender, roll);
+        if(!message.contains("error")){
         login.setUserName(userName);
         login.setPassword(password);
         login.setRoll(roll);
         login.login();
-        login.setErrorLogin(null);
+        login.setErrorLogin(null);}
     }
     public void form() throws IOException{
         login.setErrorLogin(null);

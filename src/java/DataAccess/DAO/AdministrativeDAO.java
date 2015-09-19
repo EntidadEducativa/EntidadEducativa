@@ -28,15 +28,17 @@ public class AdministrativeDAO {
     
     
     public Administrative persist (Administrative account){
+          Administrative created = account;
         em.getTransaction().begin();
         try{
             em.persist(account);
             em.getTransaction().commit();
         }catch(Exception e){
             em.getTransaction().rollback();
+            created=null;
         }finally{
             em.close();
-            return account;
+            return created;
         }
     }
     public Administrative findStu (String username, String password){
