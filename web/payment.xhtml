@@ -7,7 +7,8 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <head>
         <title>Payment</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -23,25 +24,53 @@ and open the template in the editor.
 
     </head>
     <body>
-       
-            <ui:insert name="headerTemplate" >
-                <ui:include src="headerTemplate.xhtml" />
-            </ui:insert>
-    <div class="container">
-        <div class="col-lg-12 col-sm-12">
-            <div class="well">
-                <div class="tab-content">
-                    
-                   <div class="tab-pane fade in active" id="tab3">
 
-                        <h1>Hola mundo</h1>
+        <ui:insert name="headerTemplate" >
+            <ui:include src="headerTemplate.xhtml" />
+        </ui:insert>
+        <div class="container">
+            <div class="col-lg-12 col-sm-12">
+                <div class="well">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tab3">
+                            <c:if test="#{searchBean.coursesList.size() == 0}" >
+                                <h3>No ha seleccionado ningun curso.</h3>
+                            </c:if>
+                            <c:if test="#{searchBean.coursesList.size() > 0}">
+                                <c:forEach items="#{searchBean.coursesList}" var="item">
+                                    <div class="thumbnail">
+                                        <div class="caption-full">    
+                                            <h4 class="pull-right">$${item.coursePrice}</h4>
+                                            <h4>${item.courseName}</h4>
+                                            <p>Nombre docente: ${item.TEACHERteachestid.teachName} ${item.TEACHERteachestid.teachLastName}</p>
+                                            <p>Fecha inicio: ${item.courseStartDate}</p>
+                                            <p>Fecha fin: ${item.courseEndDate}</p>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+
+
+
+                                <div class="tab-content">
+
+                                    <h:form>
+                                        <h:commandButton class="btn btn-success col-sm-2 col-xs-offset-5" action="#{searchBean.generatePayment()}" value="Generar recibo"/>
+                                        <
+                                    </h:form>
+
+                                </div>
+
+
+                            </c:if>
+                        </div>
                     </div>
+
                 </div>
-           
             </div>
         </div>
-        </div>
 
-      
+        
+
+
     </body>
 </html>
