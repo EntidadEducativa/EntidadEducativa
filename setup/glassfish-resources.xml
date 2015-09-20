@@ -22,4 +22,5 @@
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="entidad_educativa_ds" object-type="user" pool-name="mysql_entidad_educativa_database_rootPool"/>
     <jdbc-resource enabled="true" jndi-name="entidadDS" object-type="user" pool-name="mysql_entidad_educativa_database_rootPool"/>
+    <jdbc-resource enabled="true" jndi-name="EntidadEducativaDS" object-type="user" pool-name="mysql_entidad_educativa_database_rootPool"/>
 </resources>

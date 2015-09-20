@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <meta content='text/html;charset=UTF-8' http-equiv='Content-type'/>
+        <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+        <title>English Level 5</title>
+        <meta name="description" content="Ingles nivel 5" />
+        <link href="https://d1tijy5l7mg5kk.cloudfront.net/assets/application-0368aa8f0ebaf958e2da64c3997cee8a.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,300" media="screen" rel="stylesheet" type="text/css" />
+    </h:head>
+
+    <h:body style="margin-bottom: -340px">
+        <main class='content' role='main'>
+        <div class='courseBanner courseBanner--dark row' style="background: #464742 url('http://silviahartmann.com/background-tile-art/images/gray-background-repeating-2.jpg') top center ;">   
+            <div class='cell well well--xl'>
+                <div class='g'>
+                    <div class='g-b g-b--m--3of4'>
+                        <div class='bucket bucket--l bucket--flag mts--m tac tal--m'>
+                            <div class='bucket-media'>
+                                <div>
+                                    <img  height="200" src="http://www.señalesdetransito.com/img/chicos.gif" width="200" />
+                                </div>
+                            </div>
+                            <div class='bucket-content'>
+                                <p class='mbxs'><a href="#" class="opf tag tag--javascript">Cursos!</a></p>
+                                <h1 class='courseBanner-title mbs ttu'>#{browserCourse.courseName}</h1>
+                                <a href="#" class="btn btn--l sentry sentry--animate sentry--animate--bounce " >Comprar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='row row--a bdrb'>
+            <div class='cell well'>
+                <div class='g'>
+                    <div class='g-b g-b--l--3of5'>
+                        <div class='mbm mbf--l tac tal--l'>
+                            <p class="h3">INVERSIÓN: $#{browserCourse.nameCour.coursePrice}</p>
+                        </div>
+                    </div>
+                    <div class='g-b g-b--l--2of5'>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='row has-sector'>
+            <div class='cell'>
+                <div class='g'>
+                    <div class='g-b g-b--l--3of5'>
+                        <div class='well well--l'>
+                            <div class='mbl'>
+                                <div class='mbl--m'>
+
+                                    <h2 class='label'>Fecha de Inicio del curso</h2>
+                                    <p>#{browserCourse.nameCour.courseStartDate}</p>
+                                        <h2 class='label'>Fecha de Finalización del curso</h2>
+                                    <p>#{browserCourse.nameCour.courseEndDate}</p>
+                                    <br>
+                                    </br>
+                                        <h2 class='label'>Descripción del curso</h2>
+                                    <p>Asignaturas que permitirán a nuestros miembros, adquirir conocimientos en el área de sistemas. 
+                                       Son interdisciplinarias y con el propósito de fomantar la execelencia académica.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='g-b g-b--l--2of5 sector'>
+                        <div class='well well--l'>
+                            <div class='sector-content'>
+                                <div class='bdrb mbm pbm'>
+                                    
+                                    <div class='bucket mbm'>
+                                        <div class='bucket-media dn db--m'>
+                                        <img   src="Images/appleSchool.svg" width="100" />
+                                        </div>
+                                        <div class='bucket-content'>
+                                            <h6 class='label'>#{browserCourse.nameCour.TEACHERteachestid.teachLastName}</h6>
+                                            <p class='mbf tss'>Profesor asociado de nuestra entidad educativa. Docente perteneciente al area de sistemas, computación e informática.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class='row row--fade patternRow patternRow--pixel tac tal--m is-hidden' data-enroll-block='show'>
+            <div class='cell cell--m well well--l'>
+                <div class='bucket bucket--flag bucket--l'>
+                    <div class='bucket-media dn db--m'>
+                        <img alt="Official Student Badge" class="thumb" height="220" src="https://d1tijy5l7mg5kk.cloudfront.net/assets/badge-student-affbbc7722793e244dc64655cb32b7a6.svg" width="220" />
+                    </div>
+                    <div class='bucket-content'>
+                        <p class='mbs tci tsxl twl'>Enroll yourself or your team in Code School and get unlimited access to all courses, screencasts, build your report card, and more.</p>
+                        <p class='mbs'>
+                            <a href="/enroll" class="btn btn--l bc-cadet-dark mrs" data-segment-link="User Clicked Enroll" data-segment-properties="{&quot;course_title&quot;:&quot;JavaScript Road Trip Part 1&quot;}">Enroll Now</a>
+                            <a href="https://www.codeschool.com/users/sign_in" class="dib link link--invert--hover tss">Or Sign In to Your Account</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='row row--a' id='reviews'>
+            <br>
+            </br>
+            <div class='mbm mbl--m tac'>
+                <a href="#" class="btn btn--b btn--wide js-reviews-toggle">Volver a Cursos</a>
+            </div>
+        </div>
+        </main>
+    </h:body>
+</html>

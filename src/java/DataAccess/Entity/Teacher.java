@@ -26,10 +26,10 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author sergioalejandrodiazpinilla
+ * @author Daniel
  */
 @Entity
-@Table(name = "TEACHER")
+@Table(name = "teacher")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Teacher.findAll", query = "SELECT t FROM Teacher t"),
@@ -113,10 +113,10 @@ public class Teacher implements Serializable {
     @Column(name = "teach_salary")
     private BigDecimal teachSalary;
     @ManyToMany(mappedBy = "teacherCollection")
-    private Collection<Course> courseCollection;
-    @ManyToMany(mappedBy = "teacherCollection")
     private Collection<Administrator> administratorCollection;
-    @ManyToMany(mappedBy = "teacherCollection1")
+    @ManyToMany(mappedBy = "teacherCollection")
+    private Collection<Course> courseCollection;
+    @OneToMany(mappedBy = "tEACHERteachestid")
     private Collection<Course> courseCollection1;
     @OneToMany(mappedBy = "tEACHERteachestid")
     private Collection<Payment> paymentCollection;
@@ -256,21 +256,21 @@ public class Teacher implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Course> getCourseCollection() {
-        return courseCollection;
-    }
-
-    public void setCourseCollection(Collection<Course> courseCollection) {
-        this.courseCollection = courseCollection;
-    }
-
-    @XmlTransient
     public Collection<Administrator> getAdministratorCollection() {
         return administratorCollection;
     }
 
     public void setAdministratorCollection(Collection<Administrator> administratorCollection) {
         this.administratorCollection = administratorCollection;
+    }
+
+    @XmlTransient
+    public Collection<Course> getCourseCollection() {
+        return courseCollection;
+    }
+
+    public void setCourseCollection(Collection<Course> courseCollection) {
+        this.courseCollection = courseCollection;
     }
 
     @XmlTransient

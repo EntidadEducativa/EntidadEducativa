@@ -18,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -30,19 +31,19 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author sergioalejandrodiazpinilla
+ * @author Daniel
  */
 @Entity
-@Table(name = "COURSE")
+@Table(name = "course")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Course.findAll", query = "SELECT c FROM Course c"),
     @NamedQuery(name = "Course.findByCourseId", query = "SELECT c FROM Course c WHERE c.courseId = :courseId"),
     @NamedQuery(name = "Course.findByCourseName", query = "SELECT c FROM Course c WHERE c.courseName = :courseName"),
+    @NamedQuery(name = "Course.findByCourseStartDate", query = "SELECT c FROM Course c WHERE c.courseStartDate = :courseStartDate"),
     @NamedQuery(name = "Course.findByCourseEndDate", query = "SELECT c FROM Course c WHERE c.courseEndDate = :courseEndDate"),
     @NamedQuery(name = "Course.findByCourseSchedule", query = "SELECT c FROM Course c WHERE c.courseSchedule = :courseSchedule"),
-    @NamedQuery(name = "Course.findByCoursePrice", query = "SELECT c FROM Course c WHERE c.coursePrice = :coursePrice"),
-    @NamedQuery(name = "Course.findByCourseEstate", query = "SELECT c FROM Course c WHERE c.courseEstate = :courseEstate")})
+    @NamedQuery(name = "Course.findByCoursePrice", query = "SELECT c FROM Course c WHERE c.coursePrice = :coursePrice")})
 public class Course implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -55,8 +56,9 @@ public class Course implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "course_name")
     private String courseName;
-    @Basic(optional = false)
-    @NotNull
+    @Column(name = "course_start_date")
+    @Temporal(TemporalType.DATE)
+    private Date courseStartDate;
     @Column(name = "course_end_date")
     @Temporal(TemporalType.DATE)
     private Date courseEndDate;
@@ -70,35 +72,28 @@ public class Course implements Serializable {
     @NotNull
     @Column(name = "course_price")
     private BigDecimal coursePrice;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "course_estate")
-    private String courseEstate;
     @ManyToMany(mappedBy = "courseCollection")
     private Collection<Administrator> administratorCollection;
-    @JoinTable(name = "PAYMENT_has_COURSE", joinColumns = {
-        @JoinColumn(name = "COURSE_course_id", referencedColumnName = "course_id")}, inverseJoinColumns = {
-        @JoinColumn(name = "PAYMENT_pay_id", referencedColumnName = "pay_id")})
-    @ManyToMany
-    private Collection<Payment> paymentCollection;
-    @JoinTable(name = "COURSE_has_TEACHER", joinColumns = {
-        @JoinColumn(name = "COURSE_course_id", referencedColumnName = "course_id")}, inverseJoinColumns = {
-        @JoinColumn(name = "TEACHER_teach_est_id", referencedColumnName = "teach_est_id")})
-    @ManyToMany
-    private Collection<Teacher> teacherCollection;
-    @JoinTable(name = "STUDENT_has_COURSE", joinColumns = {
+    @JoinTable(name = "student_has_course", joinColumns = {
         @JoinColumn(name = "COURSE_course_id", referencedColumnName = "course_id")}, inverseJoinColumns = {
         @JoinColumn(name = "STUDENT_est_id", referencedColumnName = "est_id")})
     @ManyToMany
     private Collection<Student> studentCollection;
+    @JoinTable(name = "payment_has_course", joinColumns = {
+        @JoinColumn(name = "COURSE_course_id", referencedColumnName = "course_id")}, inverseJoinColumns = {
+        @JoinColumn(name = "PAYMENT_pay_id", referencedColumnName = "pay_id")})
+    @ManyToMany
+    private Collection<Payment> paymentCollection;
     @ManyToMany(mappedBy = "courseCollection")
     private Collection<Administrative> administrativeCollection;
-    @JoinTable(name = "TEACHER_has_COURSE", joinColumns = {
+    @JoinTable(name = "teacher_has_course", joinColumns = {
         @JoinColumn(name = "COURSE_course_id", referencedColumnName = "course_id")}, inverseJoinColumns = {
         @JoinColumn(name = "TEACHER_teach_est_id", referencedColumnName = "teach_est_id")})
     @ManyToMany
-    private Collection<Teacher> teacherCollection1;
+    private Collection<Teacher> teacherCollection;
+    @JoinColumn(name = "TEACHER_teach_est_id", referencedColumnName = "teach_est_id")
+    @ManyToOne
+    private Teacher tEACHERteachestid;
 
     public Course() {
     }
@@ -107,13 +102,11 @@ public class Course implements Serializable {
         this.courseId = courseId;
     }
 
-    public Course(Integer courseId, String courseName, Date courseEndDate, String courseSchedule, BigDecimal coursePrice, String courseEstate) {
+    public Course(Integer courseId, String courseName, String courseSchedule, BigDecimal coursePrice) {
         this.courseId = courseId;
         this.courseName = courseName;
-        this.courseEndDate = courseEndDate;
         this.courseSchedule = courseSchedule;
         this.coursePrice = coursePrice;
-        this.courseEstate = courseEstate;
     }
 
     public Integer getCourseId() {
@@ -130,6 +123,14 @@ public class Course implements Serializable {
 
     public void setCourseName(String courseName) {
         this.courseName = courseName;
+    }
+
+    public Date getCourseStartDate() {
+        return courseStartDate;
+    }
+
+    public void setCourseStartDate(Date courseStartDate) {
+        this.courseStartDate = courseStartDate;
     }
 
     public Date getCourseEndDate() {
@@ -156,14 +157,6 @@ public class Course implements Serializable {
         this.coursePrice = coursePrice;
     }
 
-    public String getCourseEstate() {
-        return courseEstate;
-    }
-
-    public void setCourseEstate(String courseEstate) {
-        this.courseEstate = courseEstate;
-    }
-
     @XmlTransient
     public Collection<Administrator> getAdministratorCollection() {
         return administratorCollection;
@@ -171,24 +164,6 @@ public class Course implements Serializable {
 
     public void setAdministratorCollection(Collection<Administrator> administratorCollection) {
         this.administratorCollection = administratorCollection;
-    }
-
-    @XmlTransient
-    public Collection<Payment> getPaymentCollection() {
-        return paymentCollection;
-    }
-
-    public void setPaymentCollection(Collection<Payment> paymentCollection) {
-        this.paymentCollection = paymentCollection;
-    }
-
-    @XmlTransient
-    public Collection<Teacher> getTeacherCollection() {
-        return teacherCollection;
-    }
-
-    public void setTeacherCollection(Collection<Teacher> teacherCollection) {
-        this.teacherCollection = teacherCollection;
     }
 
     @XmlTransient
@@ -201,6 +176,15 @@ public class Course implements Serializable {
     }
 
     @XmlTransient
+    public Collection<Payment> getPaymentCollection() {
+        return paymentCollection;
+    }
+
+    public void setPaymentCollection(Collection<Payment> paymentCollection) {
+        this.paymentCollection = paymentCollection;
+    }
+
+    @XmlTransient
     public Collection<Administrative> getAdministrativeCollection() {
         return administrativeCollection;
     }
@@ -210,12 +194,20 @@ public class Course implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Teacher> getTeacherCollection1() {
-        return teacherCollection1;
+    public Collection<Teacher> getTeacherCollection() {
+        return teacherCollection;
     }
 
-    public void setTeacherCollection1(Collection<Teacher> teacherCollection1) {
-        this.teacherCollection1 = teacherCollection1;
+    public void setTeacherCollection(Collection<Teacher> teacherCollection) {
+        this.teacherCollection = teacherCollection;
+    }
+
+    public Teacher getTEACHERteachestid() {
+        return tEACHERteachestid;
+    }
+
+    public void setTEACHERteachestid(Teacher tEACHERteachestid) {
+        this.tEACHERteachestid = tEACHERteachestid;
     }
 
     @Override

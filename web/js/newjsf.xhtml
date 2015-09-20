@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <head>
+        <title>Triangulo</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="font-awesome-4.4.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.min.css"/>
+
+        <script type='text/javascript' src='js/jquery.min.js'></script>
+        <script type='text/javascript' src='js/jquery.particleground.js'></script>
+        <script type='text/javascript' src='js/demo.js'></script>
+
+    </head>
+
+    <body>
+        <ui:insert name="headerTemplate" >
+            <ui:include src="headerTemplate.xhtml" />
+        </ui:insert>
+
+        <div class="container">
+            <div class="col-lg-12 col-sm-12">
+        <div class="well">
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="tab1">
+
+                    <c:if test="#{login.currentStu!=null}">
+                        <div class="row" >
+                            <div class="col-md-6">
+                                <h3>Informacion del perfil</h3>
+                                <h4>Nombre:#{login.currentStu.estName} #{createAccount.login.currentStu.estLastName}</h4>
+                                <h4>Rol: #{login.currentStu.estRoll}</h4>
+                                <h4>Telefono: #{login.currentStu.estTelephone}</h4>
+                                <h4>Documento: #{login.currentStu.estDocument}</h4>
+                                <h4>email: #{login.currentStu.estEmail}</h4>
+                            </div>
+                            <div>
+                                <h3>Informacion</h3>
+                                <h4>Cursos aprovados:5</h4>
+                            </div>
+                            <h:form>
+                                <h:button class="btn btn-success col-sm-6 col-xs-offset-3" outcome="payment" value="ir a pagos"/>
+                                <h:commandButton   
+                                    action="#{createAccount.login.logout()}" value="Logout"/>
+
+                            </h:form>
+                        </div>
+                    </c:if>
+
+                    <c:if test="#{login.currentTea!=null}">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3>Informacion del perfil</h3>
+                                <h4>Nombre:#{login.currentTea.teachName} #{createAccount.login.currentTea.teachLastName}</h4>
+                                <h4>Rol: #{login.currentTea.teachRoll}</h4>
+                                <h4>Telefono: #{login.currentTea.teachTelephone}</h4>
+                                <h4>Documento: #{login.currentTea.teachDocument}</h4>
+                                <h4>email: #{login.currentTea.teachEmail}</h4>
+                            </div>
+                            <div>
+                                <h3>Informacion</h3>
+                                <h4>Cursos aprovados:5</h4>
+                            </div>
+                            <h:form>
+
+                                <h:commandButton   
+                                    action="#{createAccount.login.logout()}" value="Logout"/>
+
+                            </h:form>
+                        </div>
+                    </c:if>
+
+                    <c:if test="#{login.currentAdm!=null}">
+<<<<<<< HEAD
+                        <div class="card-info"> <span class="card-title">#{login.currentAdm.admName} #{createAccount.login.currentAdm.admLastName}</span>
+                   </div>
+                        </c:if>
+                    
+                </div>
+                <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
+                    <div class="btn-group" role="group">
+                        <button type="button" id="stars" class="btn btn-primary" href="#tab1" data-toggle="tab"><img class="img-responsive img-menu center-block" src="Images/pencil.svg"/>
+                            <div class="hidden-xs">Mi perfil</div>
+                        </button>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><img class="img-responsive img-menu center-block" src="Images/cursos.svg"/>
+                            <div class="hidden-xs">Cursos</div>
+                        </button>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <button type="button" id="following" class="btn btn-default" href="#tab3" data-toggle="tab"><img class="img-responsive img-menu center-block" src="Images/history.svg"/>
+                            <div class="hidden-xs">Historiales</div>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="well">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tab1">
+                            
+                            <c:if test="#{login.currentStu!=null}">
+                            <div class="row" >
+                                <div class="col-md-6">
+                                    <h3>Informacion del perfil</h3>
+                                    <h4>Nombre:#{login.currentStu.estName} #{createAccount.login.currentStu.estLastName}</h4>
+                                    <h4>Rol: #{login.currentStu.estRoll}</h4>
+                                    <h4>Telefono: #{login.currentStu.estTelephone}</h4>
+                                    <h4>Documento: #{login.currentStu.estDocument}</h4>
+                                    <h4>email: #{login.currentStu.estEmail}</h4>
+                                </div>
+                                <div>
+                                    <h3>Informacion</h3>
+                                    <h4>Cursos aprovados:5</h4>
+                                </div>
+                                <h:form>
+
+                                    <h:commandButton   
+                                        action="#{createAccount.login.logout()}" value="Logout"/>
+
+                                </h:form>
+=======
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3>Informacion del perfil</h3>
+                                <h4>Nombre:#{login.currentAdm.admName} #{createAccount.login.currentAdm.admLastName}</h4>
+                                <h4>Rol: #{login.currentAdm.admRoll}</h4>
+                                <h4>Telefono: #{login.currentAdm.admTelephone}</h4>
+                                <h4>Documento: #{login.currentAdm.admDocument}</h4>
+                                <h4>email: #{login.currentAdm.admEmail}</h4>
+>>>>>>> origin/master
+                            </div>
+                            <div>
+                                <h3>Informacion</h3>
+                                <h4>Cursos aprovados:5</h4>
+                            </div>
+                            <h:form>
+
+                                <h:commandButton   
+                                    action="#{createAccount.login.logout()}" value="Logout"/>
+
+                            </h:form>
+                        </div>
+<<<<<<< HEAD
+                        <div class="tab-pane fade in" id="tab2">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3>Mis cursos</h3>
+                                    <ul>
+                                        <li>CursoX</li>
+                                        <li>CursoX</li>
+                                        <li>CursoX</li>
+                                        <li>CursoX</li>
+                                        <li>CursoX</li>
+                                    </ul>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Nombre de usuario</label>
+                                    <h:inputText id="courName" class="form-control" value="#{browserCourse.courName}" required = "true" requiredMessage="Is necesary a name!" />
+                                    <h:message for="courName" class="alert-danger"/>
+                                </div>
+                            </div>
+                            
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="col-lg-6">
+                                <h:commandButton class="btn btn-success col-sm-6 col-xs-offset-3"  action="#{browserCourse.login()}" value="Buscar"/>
+                            </div>
+                        </div>
+                    </div>
+                            
+                            <h:outputText value="#{browserCourse.message}"/>
+=======
+                    </c:if>
+>>>>>>> origin/master
+
+
+
+                </div>
+             
+               
+            </div>
+        </div>
+            </div>
+           
+
+
+        </div>
+
+    <!--
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/velocity.min.js"></script>
+        <script src="js/velocity.ui.min.js"></script>
+        <script>
+            // add the animation to the modal
+  
+    $(".modal").each(function (index) {
+                $(this).on('show.bs.modal', function (e) {
+                    var open = $(this).attr('data-easein');
+                    if (open == 'shake') {
+                        $('.modal-dialog').velocity('callout.' + open);
+                    } else if (open == 'pulse') {
+                        $('.modal-dialog').velocity('callout.' + open);
+                    } else if (open == 'tada') {
+                        $('.modal-dialog').velocity('callout.' + open);
+                    } else if (open == 'flash') {
+                        $('.modal-dialog').velocity('callout.' + open);
+                    } else if (open == 'bounce') {
+                        $('.modal-dialog').velocity('callout.' + open);
+                    } else if (open == 'swing') {
+                        $('.modal-dialog').velocity('callout.' + open);
+                    } else {
+                        $('.modal-dialog').velocity('transition.' + open);
+                    }
+
+                });
+            });
+            $(document).ready(function () {
+                $(".btn-pref .btn").click(function () {
+                    $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
+                    // $(".tab").addClass("active"); // instead of this do the below
+                   // $(this).removeClass("btn-default").addClass("btn-primary");
+                });
+            });
+
+
+        </script>
+-->
+    </body>
+
+</html>

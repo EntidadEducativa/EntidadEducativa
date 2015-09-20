@@ -2,9 +2,11 @@
 package BusinessLogic.UserLogic;
 
 import DataAccess.DAO.AdministrativeDAO;
+import DataAccess.DAO.CourseDAO;
 import DataAccess.DAO.StudentDAO;
 import DataAccess.DAO.TeacherDAO;
 import DataAccess.Entity.Administrative;
+import DataAccess.Entity.Course;
 import DataAccess.Entity.Student;
 import DataAccess.Entity.Teacher;
 import java.math.BigDecimal;
@@ -125,4 +127,12 @@ public class UserManagement {
         return admDAO.findStu(userName,password);
          
     }
+    
+    public Course findCourse(String courseName){
+        
+        CourseDAO courDAO = new CourseDAO();
+        Course newcour;
+        return courDAO.findCourse(courseName);
+         
+    }    
 }
