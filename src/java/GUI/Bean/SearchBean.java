@@ -21,10 +21,10 @@ import javax.faces.context.FacesContext;
 public class SearchBean {
 
     ArrayList<Course> coursesList;
-    /**
-     * Creates a new instance of SearchBean
-     */
+   
+    
     public SearchBean() {
+       
         coursesList = new ArrayList<>();
         coursesList.add(new Course(1));
         coursesList.add(new Course(2));
@@ -37,8 +37,9 @@ public class SearchBean {
     public void setCoursesList(ArrayList<Course> coursesList) {
         this.coursesList = coursesList;
     }
-    
+
     public void generatePayment() throws IOException{
-        FacesContext.getCurrentInstance().getExternalContext().redirect("user.xhtml");
+       //aca se deberia crear el DAO para guardar el pago en la base de datos
+     
     }
 }

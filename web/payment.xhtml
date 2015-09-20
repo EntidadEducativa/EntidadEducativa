@@ -48,15 +48,12 @@ and open the template in the editor.
                                         </div>
                                     </div>
                                 </c:forEach>
-
-
-
                                 <div class="tab-content">
 
                                     <h:form>
-                                        <h:commandButton class="btn btn-success col-sm-2 col-xs-offset-5" action="#{searchBean.generatePayment()}" value="Generar recibo"/>
-                                        <
-                                    </h:form>
+                                        <button type="button" class="btn btn-success col-sm-2 col-xs-offset-5" data-toggle="modal" data-target="#myModal">Pagar</button>
+                                      <!--  <h:commandButton class="btn btn-success col-sm-2 col-xs-offset-5"  action="#{searchBean.generatePayment()}" value="Generar recibo"/>-->
+                                        </h:form>
 
                                 </div>
 
@@ -68,9 +65,37 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
-
+         <script src="js/bootstrap.min.js"></script>
+        <script src="js/velocity.min.js"></script>
+        <script src="js/velocity.ui.min.js"></script>
         
+<!-- Trigger the modal with a button -->
 
 
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+        <h4 class="modal-title">Pago realizado</h4>
+      </div>
+      <div class="modal-body">
+        <p>Su transaccion ha sido realizada, por favor revise su historial de pagos para verificar el pago.</p>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" onclick="window.location.href= '#{searchBean.generatePayment()}'" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+        
+        
+        
+       
+        
     </body>
 </html>
