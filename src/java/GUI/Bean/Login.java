@@ -97,8 +97,9 @@ public class Login {
     }
 
     public void profileError() throws IOException {
+        errorLogin = null;
         errorLogin = "Error no esta logeado";
-        FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+        FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
     }
 
     public boolean isLoggedIn() {

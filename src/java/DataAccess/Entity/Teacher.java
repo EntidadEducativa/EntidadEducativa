@@ -113,13 +113,13 @@ public class Teacher implements Serializable {
     @Column(name = "teach_salary")
     private BigDecimal teachSalary;
     @ManyToMany(mappedBy = "teacherCollection")
-    private Collection<Course> courseCollection;
-    @ManyToMany(mappedBy = "teacherCollection")
     private Collection<Administrator> administratorCollection;
-    @ManyToMany(mappedBy = "teacherCollection1")
-    private Collection<Course> courseCollection1;
+    @ManyToMany(mappedBy = "teacherCollection")
+    private Collection<Course> courseCollection;
     @OneToMany(mappedBy = "tEACHERteachestid")
     private Collection<Payment> paymentCollection;
+    @OneToMany(mappedBy = "tEACHERteachestid")
+    private Collection<Course> courseCollection1;
 
     public Teacher() {
     }
@@ -256,15 +256,6 @@ public class Teacher implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Course> getCourseCollection() {
-        return courseCollection;
-    }
-
-    public void setCourseCollection(Collection<Course> courseCollection) {
-        this.courseCollection = courseCollection;
-    }
-
-    @XmlTransient
     public Collection<Administrator> getAdministratorCollection() {
         return administratorCollection;
     }
@@ -274,12 +265,12 @@ public class Teacher implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Course> getCourseCollection1() {
-        return courseCollection1;
+    public Collection<Course> getCourseCollection() {
+        return courseCollection;
     }
 
-    public void setCourseCollection1(Collection<Course> courseCollection1) {
-        this.courseCollection1 = courseCollection1;
+    public void setCourseCollection(Collection<Course> courseCollection) {
+        this.courseCollection = courseCollection;
     }
 
     @XmlTransient
@@ -289,6 +280,15 @@ public class Teacher implements Serializable {
 
     public void setPaymentCollection(Collection<Payment> paymentCollection) {
         this.paymentCollection = paymentCollection;
+    }
+
+    @XmlTransient
+    public Collection<Course> getCourseCollection1() {
+        return courseCollection1;
+    }
+
+    public void setCourseCollection1(Collection<Course> courseCollection1) {
+        this.courseCollection1 = courseCollection1;
     }
 
     @Override
