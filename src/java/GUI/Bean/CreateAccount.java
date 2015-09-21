@@ -198,15 +198,17 @@ public class CreateAccount {
         login.setErrorLogin(null);
         FacesContext.getCurrentInstance().getExternalContext().redirect("user.xhtml");
     }
+
     
     public void formTeacher() throws IOException{
         login.setErrorLogin(null);
         FacesContext.getCurrentInstance().getExternalContext().redirect("registerTeacher.xhtml");
     }
 
-    public void createTeacher(){
+    public void createTeacher() throws IOException{
         AdminManagement manageAccount = new AdminManagement();
-        message = manageAccount.createTeacher(name, document, userName, lastName, password, email, telephone, addres, age, gender, roll, profile, payment);
+        manageAccount.createTeacher(name, document, userName, lastName, password, email, telephone, addres, age, gender, roll, profile, payment);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
     }
     
     
