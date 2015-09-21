@@ -24,14 +24,13 @@ public class SearchBean {
     //@ManagedProperty("#{BrowserCourse}")
     //private BrowserCourse browserCourse;
 
-    ArrayList<Course> coursesList;
-   
+   static ArrayList<Course> coursesList = new ArrayList<>();
+
     
     public SearchBean() {
        
-        coursesList = new ArrayList<>();
-        coursesList.add(new Course(1));
-        coursesList.add(new Course(2));
+     
+       
     }
 
     public ArrayList<Course> getCoursesList() {
@@ -51,5 +50,8 @@ public class SearchBean {
         coursesList.add(nameCour);
         FacesContext.getCurrentInstance().getExternalContext().redirect("courses.xhtml");
         System.out.println("Lista de cursos:" + coursesList);
+        
     }
+    
+    
 }
