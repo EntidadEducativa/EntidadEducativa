@@ -36,6 +36,8 @@ public class Login {
     private Boolean dualStuAdm;
     private Boolean dualStuTea;
     
+    
+    
 
     public Login() {
 
