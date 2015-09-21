@@ -61,8 +61,12 @@
                                 </h:form>
                             </div>
                             <div class="tab-pane fade in" id="tab2">
-                               Informacion de los Cursos y poderes
-                            </div>
+                                <h:form>
+                                    <h:commandButton class="btn btn-default col-sm-6 col-xs-offset-3"  action ="#{course.formCourse()}" value="Crear Curso"/>
+                                    <h:commandButton class="btn btn-default col-sm-6 col-xs-offset-3"  value="Modificar Curso"/>
+                                    <h:commandButton class="btn btn-default col-sm-6 col-xs-offset-3"   value="Buscar Curso"/>
+                                    <h:commandButton class="btn btn-default col-sm-6 col-xs-offset-3"   value="Eliminar Curso"/>
+                                </h:form>                            </div>
 
                         </div>
                     </div>
