@@ -49,10 +49,10 @@ and open the template in the editor.
                                     </div>
                                 </c:forEach>
                                 <div class="tab-content">
-
+                                    <p>Total a pagar: #{searchBean.totalPriceCourses()}</p>
                                     <h:form>
                                         <button type="button" class="btn btn-success col-sm-2 col-xs-offset-5" data-toggle="modal" data-target="#myModal">Pagar</button>
-                                      <!--  <h:commandButton class="btn btn-success col-sm-2 col-xs-offset-5"  action="#{searchBean.generatePayment()}" value="Generar recibo"/>-->
+                                      
                                         </h:form>
 
                                 </div>

@@ -180,10 +180,6 @@ public class CreateAccount {
         this.payment = payment;
     }
 
-
-    
-    
-    
     public void createAccount() throws IOException{
         UserManagement manageAccount = new UserManagement();
         message = manageAccount.createAccount(name, document, userName, lastName, password, email, telephone, addres, age, gender, roll);

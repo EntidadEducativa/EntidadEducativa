@@ -5,10 +5,15 @@
  */
 package GUI.Bean;
 
+import DataAccess.DAO.PaymentDAO;
 import DataAccess.Entity.Course;
+import DataAccess.Entity.Payment;
 import GUI.Bean.BrowserCourse;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -23,13 +28,13 @@ import javax.faces.context.FacesContext;
 public class SearchBean {
     //@ManagedProperty("#{BrowserCourse}")
     //private BrowserCourse browserCourse;
-
+    @ManagedProperty("#{login}")
+    private Login login;
    static ArrayList<Course> coursesList = new ArrayList<>();
+   static long payId = 0;
 
     
     public SearchBean() {
-       
-     
        
     }
 
@@ -42,16 +47,39 @@ public class SearchBean {
     }
 
     public void generatePayment() throws IOException{
-       //aca se deberia crear el DAO para guardar el pago en la base de datos
+     PaymentDAO paymentDAO = new PaymentDAO();
+     Payment payment = new Payment();
+     payment.setPayId((long)payId);
+     payment.setPayValue(BigDecimal.valueOf(totalPriceCourses()));
+     payment.setPayDate(new Date());
      
+     paymentDAO.persist(payment);
+     
+     payId++;     
     }
     
     public void addCourseList(Course nameCour) throws IOException{
         coursesList.add(nameCour);
         FacesContext.getCurrentInstance().getExternalContext().redirect("courses.xhtml");
         System.out.println("Lista de cursos:" + coursesList);
+        System.out.println("user: " + login.getUserName());
         
     }
     
+    public double totalPriceCourses(){
+        double total = 0;
+        for (int i = 0; i < coursesList.size(); i++) {
+            total += coursesList.get(0).getCoursePrice().doubleValue();
+        }
+        return total;
+    }
+
+    public Login getLogin() {
+        return login;
+    }
+
+    public void setLogin(Login login) {
+        this.login = login;
+    }
     
 }
