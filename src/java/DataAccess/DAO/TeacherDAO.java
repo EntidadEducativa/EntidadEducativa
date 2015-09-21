@@ -59,4 +59,13 @@ public class TeacherDAO {
             return null;
         
     }
+    
+     public List<Teacher> findAllTeachers() {
+        em.getTransaction().begin();
+        List<Teacher> teachers = null;
+        teachers= (List<Teacher>)em.createNamedQuery("Teacher.findAll").getResultList();
+        em.close();
+        
+        return teachers; 
+    }
 }
