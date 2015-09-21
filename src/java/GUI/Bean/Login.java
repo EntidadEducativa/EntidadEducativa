@@ -97,8 +97,9 @@ public class Login {
     }
 
     public void profileError() throws IOException {
+        errorLogin = null;
         errorLogin = "Error no esta logeado";
-        FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+        FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
     }
 
     public boolean isLoggedIn() {
@@ -142,6 +143,39 @@ public class Login {
 
     public void setCurrentAdmin(Administrator userAdmin) {
         this.userAdmin = userAdmin;
+    }
+    public void changeLoginAdm() throws IOException{
+        if(dualStuAdm==true){
+            if(userAdm!=null){
+                
+                UserManagement manageAccount = new UserManagement();
+                userStu = manageAccount.findStudent(userAdm.getAdmUsername(),userAdm.getAdmPassword());
+                userAdm=null;
+            }
+            else{
+                UserManagement manageAccount = new UserManagement();
+                userAdm = manageAccount.findAdministrative(userStu.getEstUsername(), userStu.getEstPassword());
+                userStu=null;
+            }
+            FacesContext.getCurrentInstance().getExternalContext().redirect("user.xhtml");
+        }
+    }
+    public void changeLoginTea() throws IOException{
+        if(dualStuTea==true){
+            if(userTea!=null){
+                
+                UserManagement manageAccount = new UserManagement();
+                userStu = manageAccount.findStudent(userTea.getTeachUsername(),userTea.getTeachPassword());
+                userTea=null;
+            }
+            else{
+                UserManagement manageAccount = new UserManagement();
+                userTea = manageAccount.findTeacher(userStu.getEstUsername(), userStu.getEstPassword());
+                userStu=null;
+            }
+            FacesContext.getCurrentInstance().getExternalContext().redirect("user.xhtml");
+        }
+        
     }
 
     public void login() throws IOException {
@@ -223,6 +257,14 @@ public class Login {
 
     public void setDualStuTea(Boolean dualStuTea) {
         this.dualStuTea = dualStuTea;
+    }
+    public void backProfile() throws IOException{
+        if(isLoggedIn()){
+            if(userAdmin!=null)
+            FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
+            else
+                FacesContext.getCurrentInstance().getExternalContext().redirect("user.xhtml");
+        }
     }
 
 }

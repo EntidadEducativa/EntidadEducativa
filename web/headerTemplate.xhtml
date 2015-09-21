@@ -8,7 +8,8 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      >
+          
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
     <head>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -25,22 +26,35 @@ and open the template in the editor.
 
     <body class="gradent" >
         <ui:composition>
+            
             <c:if test="#{!login.loggedIn}">
-                #{login.logout()}
+               
                 #{login.profileError()}
             </c:if>
 
             <div class="container" >
-                <div class="col-lg-12 col-sm-12">
-                    <c:if test="#{login.dualStuTea==true}">
-                        <div > <span class="card-title">Cambiar tu rol Profesor - Estudiante </span>
-                        </div>
+                <c:if test="#{login.dualStuTea==true}">
+                    
+                    <h:form>
+                        <div class="col-lg-6">
+                            <h:commandButton class="btn btn-success col-sm-6 col-xs-offset-3"  action="#{login.changeLoginTea()}" value="Profesor-Estudiante"/>
+                            </div>
+                    </h:form>
+                        
                     </c:if>
-                    <c:if test="#{login.dualStuAdm==true}">
-                        <div > <span class="card-title">Cambiar tu rol Administrativo - Estudiante </span>
-                        </div>
+                
+                <c:if test="#{login.dualStuAdm==true}">
+                        <h:form>
+                        <div class="col-lg-6">
+                            <h:commandButton class="btn btn-success col-sm-6 col-xs-offset-3"  action="#{login.changeLoginAdm()}" value="Administrativo-Estudiante"/>
+                            </div>
+                            </h:form>
 
                     </c:if>
+                
+                <div class="col-lg-12 col-sm-12">
+                    
+                    
                     <div class="card hovercard">
                         <div class="card-background">
                             <img class="card-bkimg" alt="" src="Images/headerProfile.png"/>
@@ -82,6 +96,11 @@ and open the template in the editor.
                         <div class="btn-group" role="group">
                             <button type="button" id="payment" class="btn btn-primary" href="#tab3" onclick="window.location.href= 'payment.xhtml'" data-toggle="tab"><img class="img-responsive img-menu center-block" src="Images/pencil.svg"/>
                                 <div class="hidden-xs">Pagos</div>
+                            </button> 
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" id="payment" class="btn btn-primary" href="#tab4" onclick="window.location.href= 'paymentHistory.xhtml'" data-toggle="tab"><img class="img-responsive img-menu center-block" src="Images/pencil.svg"/>
+                                <div class="hidden-xs">Historial de pagos</div>
                             </button> 
                         </div>
                     </div>
