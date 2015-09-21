@@ -32,7 +32,9 @@ and open the template in the editor.
                             <div class='bucket-content'>
                                 <p class='mbxs'><a href="#" class="opf tag tag--javascript">Cursos!</a></p>
                                 <h1 class='courseBanner-title mbs ttu'>#{browserCourse.courseName}</h1>
-                                <a href="#" class="btn btn--l sentry sentry--animate sentry--animate--bounce " >Comprar</a>
+                                <h:form>
+                                    <h:commandButton class="btn btn--l sentry sentry--animate sentry--animate--bounce " action="#{searchBean.addCourseList(browserCourse.nameCour)}" value="Comprar"/>
+                                </h:form>
                             </div>
                         </div>
                     </div>

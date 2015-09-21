@@ -7,7 +7,6 @@ package GUI.Bean;
 
 import BusinessLogic.AdminLogic.AdminManagement;
 import BusinessLogic.CourseLogic.CourseManagment;
-import DataAccess.Entity.Course_;
 import DataAccess.Entity.Teacher;
 import java.io.IOException;
 import java.math.BigDecimal;

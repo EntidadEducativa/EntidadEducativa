@@ -6,19 +6,23 @@
 package GUI.Bean;
 
 import DataAccess.Entity.Course;
+import GUI.Bean.BrowserCourse;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 /**
  *
- * @author Samuel
+ * @author Daniel
  */
 @ManagedBean
 @RequestScoped
 public class SearchBean {
+    //@ManagedProperty("#{BrowserCourse}")
+    //private BrowserCourse browserCourse;
 
     ArrayList<Course> coursesList;
    
@@ -41,5 +45,11 @@ public class SearchBean {
     public void generatePayment() throws IOException{
        //aca se deberia crear el DAO para guardar el pago en la base de datos
      
+    }
+    
+    public void addCourseList(Course nameCour) throws IOException{
+        coursesList.add(nameCour);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("courses.xhtml");
+        System.out.println("Lista de cursos:" + coursesList);
     }
 }
