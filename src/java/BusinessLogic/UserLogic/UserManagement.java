@@ -3,14 +3,17 @@ package BusinessLogic.UserLogic;
 
 import DataAccess.DAO.AdministrativeDAO;
 import DataAccess.DAO.CourseDAO;
+import DataAccess.DAO.PaymentDAO;
 import DataAccess.DAO.StudentDAO;
 import DataAccess.DAO.TeacherDAO;
 import DataAccess.Entity.Administrative;
 import DataAccess.Entity.Course;
+import DataAccess.Entity.Payment;
 import DataAccess.Entity.Student;
 import DataAccess.Entity.Teacher;
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.List;
 
 
 /**
@@ -135,4 +138,10 @@ public class UserManagement {
         return courDAO.findCourse(courseName);
          
     }    
+    
+    public List<Payment> mypayments(Student estId){
+        PaymentDAO payDAO = new PaymentDAO();
+        List<Payment> myPayments = (List<Payment>)payDAO.findAllPaySt(estId);
+        return myPayments;
+    }
 }

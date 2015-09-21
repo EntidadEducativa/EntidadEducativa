@@ -9,9 +9,11 @@ import BusinessLogic.AdminLogic.AdminManagement;
 import BusinessLogic.UserLogic.UserManagement;
 import DataAccess.Entity.Administrative;
 import DataAccess.Entity.Administrator;
+import DataAccess.Entity.Payment;
 import DataAccess.Entity.Student;
 import DataAccess.Entity.Teacher;
 import java.io.IOException;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -35,6 +37,7 @@ public class Login {
     private String errorLogin;
     private Boolean dualStuAdm;
     private Boolean dualStuTea;
+    private List<Payment> myPayment;
     
     
     
@@ -44,6 +47,8 @@ public class Login {
         errorLogin = null;
         dualStuAdm=false;
         dualStuTea=false;
+        
+        
     }
 
     public String getUserName() {
@@ -94,6 +99,7 @@ public class Login {
         errorLogin = null;
         dualStuAdm=false;
         dualStuTea=false;
+        myPayment = null;
 
         FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
     }
@@ -189,6 +195,7 @@ public class Login {
         dualStuAdm=false;
         dualStuTea=false;
         
+        
         UserManagement manageAccount = new UserManagement();
         AdminManagement manageAdmin = new AdminManagement();
 
@@ -217,6 +224,8 @@ public class Login {
                     userTea = null;
                     userAdm = null;
                     userAdmin = null;
+                    UserManagement user = new UserManagement();
+                    setMyPayment(user.mypayments(userStu));
                 }
 
                 if (userAr != null) {
@@ -268,5 +277,16 @@ public class Login {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("user.xhtml");
         }
     }
+    
+
+    public List<Payment> getMyPayment() {
+        return myPayment;
+    }
+
+    public void setMyPayment(List<Payment> myPayment) {
+        this.myPayment = myPayment;
+    }
+    
+    
 
 }

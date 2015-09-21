@@ -6,6 +6,7 @@
 package DataAccess.DAO;
 
 import DataAccess.Entity.Payment;
+import DataAccess.Entity.Student;
 import DataAccess.Entity.Teacher;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -51,6 +52,17 @@ public class PaymentDAO {
            
             return hola.get(0);
 
+    }
+    
+    public List<Payment> findAllPaySt(Student estId){
+        em.getTransaction().begin();
+        List<Payment> hola = null;
+        
+        //createQuery("select s from Student s WHERE s.est_username LIKE :custUser", Student.class).setParameter("custUser", username).getResultList();
+        hola= (List<Payment>)em.createNamedQuery("Payment.findByEstId").setParameter("estId",estId).getResultList();
+        em.close();
+
+        return hola;
     }
     
     public List<Payment> findAllPay(){

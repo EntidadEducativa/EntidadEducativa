@@ -32,8 +32,8 @@ and open the template in the editor.
                     
                     <div class="tab-pane fade in active" id="tab4">
                         
-                        <c:if test="#{login.currentStu.paymentCollection.size() != 0}">
-                            <c:forEach items="#{login.currentStu.paymentCollection}" var="item">
+                        <c:if test="#{login.myPayment.size() != 0}">
+                            <c:forEach items="#{login.myPayment}" var="item">
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <h3>Id</h3>
@@ -50,7 +50,7 @@ and open the template in the editor.
                                 </div>
                             </c:forEach>
                         </c:if>
-                        <c:if test="#{login.currentStu.paymentCollection.size() == 0}">
+                        <c:if test="#{login.myPayment == null}">
                             <h1> NO HAY PAGOS</h1>
                         </c:if>
                     </div>
