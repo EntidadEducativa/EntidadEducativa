@@ -39,7 +39,7 @@ and open the template in the editor.
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Nombre de curso</label>
-                                <h:inputText id="courseName" class="form-control" value="#{course.courseName}" required = "true" requiredMessage="Falta nombre de curso !" />  
+                                <h:inputText id="courseName" class="form-control" value="#{courseAdmin.courseName}" required = "true" requiredMessage="Falta nombre de curso !" />  
                                 <h:message class="alert-danger" for="courseName"/>
                             </div>
                             
@@ -47,9 +47,9 @@ and open the template in the editor.
                                
                                 <label for="exampleInputEmail1">Profesor</label>
                                 
-                                <h:selectOneMenu value="#{course.indexCourseTeacher}" class="form-control" >
-                                    <c:forEach begin="0" end="#{course.teacherCollection.size()-1}" var="item">
-                                        <f:selectItem itemValue="${item}" itemLabel="${course.obteinTeacherCollectionName(item)}" />
+                                <h:selectOneMenu value="#{courseAdmin.indexCourseTeacher}" class="form-control" >
+                                    <c:forEach begin="0" end="#{courseAdmin.teacherCollection.size()-1}" var="item">
+                                        <f:selectItem itemValue="${item}" itemLabel="${courseAdmin.obteinTeacherCollectionName(item)}" />
                                     </c:forEach>
                                         
                                         
@@ -61,7 +61,7 @@ and open the template in the editor.
                             
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Precio</label>
-                                <h:inputText id="price"  class="form-control" value="#{course.coursePrice}" required = "true" requiredMessage="Falta precio" />
+                                <h:inputText id="price"  class="form-control" value="#{courseAdmin.coursePrice}" required = "true" requiredMessage="Falta precio" />
                                 <h:message class="alert-danger" for="price"/>
                             </div>
                         </div>
@@ -74,14 +74,14 @@ and open the template in the editor.
                                     
                                 
                                     <div class="col-lg-4">
-                                        <h:selectOneMenu value="#{course.courseStartDay}" class="form-control" >
+                                        <h:selectOneMenu value="#{courseAdmin.courseStartDay}" class="form-control" >
                                             <c:forEach var="i" begin="1" end="31">                                                
                                                 <f:selectItem itemValue="${i}" itemLabel="${i}" />
                                             </c:forEach>
                                         </h:selectOneMenu>
                                     </div>
                                     <div class="col-lg-4">
-                                        <h:selectOneMenu value="#{course.courseStartMonth}" class="form-control" >
+                                        <h:selectOneMenu value="#{courseAdmin.courseStartMonth}" class="form-control" >
                                             <c:forEach var="i" begin="1" end="12">                                                
                                                 <f:selectItem itemValue="${i}" itemLabel="${i}" />
                                             </c:forEach>
@@ -89,7 +89,7 @@ and open the template in the editor.
                                      </div>
 
                                     <div class="col-lg-4">
-                                    <h:selectOneMenu value="#{course.courseStartYear}" class="form-control" >
+                                    <h:selectOneMenu value="#{courseAdmin.courseStartYear}" class="form-control" >
                                         <c:forEach var="i" begin="15" end="99">                                                
                                                 <f:selectItem itemValue="${i}" itemLabel="${i}" />
                                         </c:forEach>
@@ -103,21 +103,21 @@ and open the template in the editor.
                                 <div class="row">
                                     <div class="col-lg-4">
                                         
-                                        <h:selectOneMenu value="#{course.courseEndDay}" class="form-control" >
+                                        <h:selectOneMenu value="#{courseAdmin.courseEndDay}" class="form-control" >
                                             <c:forEach var="i" begin="1" end="31">                                                
                                                 <f:selectItem itemValue="${i}" itemLabel="${i}" />
                                             </c:forEach>
                                         </h:selectOneMenu>
                                     </div>
                                     <div class="col-lg-4">
-                                        <h:selectOneMenu value="#{course.courseEndMonth}" class="form-control" >
+                                        <h:selectOneMenu value="#{courseAdmin.courseEndMonth}" class="form-control" >
                                             <c:forEach var="i" begin="1" end="12">                                                
                                                 <f:selectItem itemValue="${i}" itemLabel="${i}" />
                                             </c:forEach>
                                         </h:selectOneMenu>
                                     </div>
                                     <div class="col-lg-4">
-                                        <h:selectOneMenu value="#{course.courseEndYear}" class="form-control" >
+                                        <h:selectOneMenu value="#{courseAdmin.courseEndYear}" class="form-control" >
                                             <c:forEach var="i" begin="15" end="99">                                                
                                                 <f:selectItem itemValue="${i}" itemLabel="${i}" />
                                             </c:forEach>
@@ -130,7 +130,7 @@ and open the template in the editor.
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
-                                <h:commandButton class="btn btn-success col-sm-6 col-xs-offset-3"  action="#{course.createCourse()}" value="Aceptar"/>
+                                <h:commandButton class="btn btn-success col-sm-6 col-xs-offset-3"  action="#{courseAdmin.createCourse()}" value="Aceptar"/>
                             </div>
                             <div class="col-lg-6">
                                 <h:link class="btn btn-success col-sm-6 col-xs-offset-3"   value="Regresar" outcome="admin.xhtml"/>
@@ -140,7 +140,7 @@ and open the template in the editor.
                         
 
                         <br/>
-                        <h:outputText value="#{course.getMessage()}"/>
+                        <h:outputText value="#{courseAdmin.getMessage()}"/>
                     </h:form>
                 </div>
                     </div>

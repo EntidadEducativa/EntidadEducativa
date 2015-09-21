@@ -38,13 +38,19 @@ and open the template in the editor.
                             <h:form>
                                 <div class="form-group">
                                 <label for="exampleInputEmail1">Digite el curso a eliminar</label>
-                                    <h:inputText id="courseName" class="form-control" value="#{course.courseName}" required = "true" requiredMessage="Falta nombre de curso !" />  
+                                    <h:inputText id="courseName" class="form-control" value="#{courseAdmin.courseName}" required = "true" requiredMessage="Falta nombre de curso !" />  
                                     <h:message class="alert-danger" for="courseName"/>
                                 </div>
                             
 
-                                <h:commandButton class="btn btn-success col-sm-6 col-xs-offset-3"  action="#{course.deleteCourse()}" value="Eliminar"/>
+                                <div class="col-lg-6">
+                                    <h:commandButton class="btn btn-success col-sm-6 col-xs-offset-3"  action="#{courseAdmin.deleteCourse()}" value="Eliminar"/>
+                                </div>
+                                <div class="col-lg-6">
+                                    <h:link class="btn btn-success col-sm-6 col-xs-offset-3"   value="Regresar" outcome="admin.xhtml"/>
+                                </div>                            
                             </h:form>
+                            
                         </div>
                     </div>
                 </h:form>

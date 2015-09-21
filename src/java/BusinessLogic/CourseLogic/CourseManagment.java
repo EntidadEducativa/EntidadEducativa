@@ -5,6 +5,7 @@
  */
 package BusinessLogic.CourseLogic;
 
+import DataAccess.DAO.CourseAdminDAO;
 import DataAccess.DAO.CourseDAO;
 import DataAccess.DAO.TeacherDAO;
 import DataAccess.Entity.Course;
@@ -47,17 +48,15 @@ public class CourseManagment {
         return teaDAO.findAllTeachers();
               
     }
-    /*
-    public Course ObteinOneCourse( ){
+    public List<Course> keepAllCourses(){
+        CourseAdminDAO courseAdminDAO = new CourseAdminDAO();
         
-        CourseDAO teaDAO = new TeacherDAO();
-        
-        return teaDAO.findAllTeachers();
-              
-    }*/
-    /*
-    public String deleteCourse(String courseName){
-        CourseDAO courseDAO = new CourseDAO();
-        Course course = courseDAO 
-    }*/
+        return courseAdminDAO.findAllCourses();
+    }
+
+    
+    public String deleteCourse(String courseId){
+        CourseAdminDAO courseDAO = new CourseAdminDAO();
+        return courseDAO.removeCours(courseId);
+    }
 }
