@@ -8,10 +8,11 @@ package GUI.Bean;
 import BusinessLogic.AdminLogic.AdminManagement;
 import BusinessLogic.CourseLogic.CourseManagment;
 import DataAccess.Entity.Course;
-import DataAccess.Entity.Course_;
 import DataAccess.Entity.Teacher;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -51,18 +52,14 @@ public class CourseAdmin {
     //private Collection<Administrator> administratorCollection;
     //private Collection<Payment> paymentCollection;
     private List<Teacher> teacherCollection;
-    
     private List<Course> courseCollection;
+    private ArrayList<String> selectManyCourses;
 
-   
-
-
-   
     
     private int indexCourseTeacher=0;
  
     public CourseAdmin() {
-        
+        selectManyCourses = new ArrayList<String>();
     }
     
     
@@ -172,6 +169,14 @@ public class CourseAdmin {
         this.courseCollection = courseCollection;
     }
     
+    public ArrayList<String> getSelectManyCourses() {
+        return selectManyCourses;
+    }
+
+    public void setSelectManyCourses(ArrayList<String> selectManyCourses) {
+        this.selectManyCourses = selectManyCourses;
+    }
+    
      public void createCourse() throws IOException{
         CourseManagment manageCourse = new CourseManagment();
         
@@ -187,21 +192,24 @@ public class CourseAdmin {
     
     public void formCourse()throws IOException{
         CourseManagment courseManage = new CourseManagment();
+        
         setTeacherCollection(courseManage.keepAllTeachers());
         FacesContext.getCurrentInstance().getExternalContext().redirect("registerCourse.xhtml");
     }
     
     public void formDeleteCourse() throws IOException{
-        CourseManagment courseManage = new CourseManagment();
+        CourseManagment courseManage = new CourseManagment();     
         setCourseCollection(courseManage.keepAllCourses());
         FacesContext.getCurrentInstance().getExternalContext().redirect("deleteCourse.xhtml");
     }
     
     public void deleteCourse() throws IOException{
         CourseManagment manageCourse = new CourseManagment();
-        //message = manageCourse.createCourse(courseName, courseTeacher,courseStartYear, courseStartMonth, courseStartDay , courseEndYear, courseEndMonth, courseEndDay, coursePrice);
-        message = manageCourse.deleteCourse(courseName);
         
+        for(String x : selectManyCourses)
+            message = manageCourse.deleteCourse( x );
+   
+        FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
     }
    
 }

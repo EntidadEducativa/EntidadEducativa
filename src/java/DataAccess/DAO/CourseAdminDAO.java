@@ -43,28 +43,38 @@ public class CourseAdminDAO {
         List<Course> courses = null;
         courses= (List<Course>)em.createNamedQuery("Course.findAll").getResultList();
         em.close();
-
         return courses; 
     }
 
-    public String removeCours(String id){
-        Course c = new Course();
-        Course cE = new Course();
-       
+    public String removeCours(int cId){
         try {
-            c = em.find(Course.class, "id");
+            System.out.println("AHORA SOY UN ENTERO: " + cId);
+            
             em.getTransaction().begin();
-            em.remove(c);
+            List<Course> courses = null;
+            courses = (List<Course>) em.createNamedQuery("Course.findByCourseId")
+                    .setParameter("courseId", cId).getResultList();
             em.getTransaction().commit();
             
-            if(c == null){
+            em.getTransaction().begin();
+            em.remove(courses.get(0));
+            em.getTransaction().commit();
+            
+            em.getTransaction().begin();
+            Course courseE = em.find(Course.class, cId);
+            em.getTransaction().commit();
+            System.out.println("Curso eliminado: "+courseE);
+            
+            if(courses == null){
                 return "Curso removido con exito";
             }else{
                 return "El curso no se ha podido remover";
             }
         } catch (Exception e) {
+            System.out.println("TENGO EL ERROR: " + e);
             em.close();
         }
+        
         return null;
     }
     

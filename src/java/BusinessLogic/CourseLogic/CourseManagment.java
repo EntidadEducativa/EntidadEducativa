@@ -12,6 +12,7 @@ import DataAccess.Entity.Course;
 import DataAccess.Entity.Teacher;
 import java.awt.BorderLayout;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -50,13 +51,12 @@ public class CourseManagment {
     }
     public List<Course> keepAllCourses(){
         CourseAdminDAO courseAdminDAO = new CourseAdminDAO();
-        
         return courseAdminDAO.findAllCourses();
     }
 
     
-    public String deleteCourse(String courseId){
+    public String deleteCourse( String courseId){
         CourseAdminDAO courseDAO = new CourseAdminDAO();
-        return courseDAO.removeCours(courseId);
+        return courseDAO.removeCours(Integer.parseInt(courseId.trim()));
     }
 }

@@ -65,8 +65,9 @@
                                     <h:commandButton class="btn btn-default col-sm-6 col-xs-offset-3"  action ="#{courseAdmin.formCourse()}" value="Crear Curso"/>
                                     <!--<h:commandButton class="btn btn-default col-sm-6 col-xs-offset-3"  value="Modificar Curso"/>-->
                                     <h:link class="btn btn-default col-sm-6 col-xs-offset-3"   value="Buscar Curso" outcome="findCourse.xhtml"/>
-                                    <!--<h:commandButton class="btn btn-default col-sm-6 col-xs-offset-3"   action ="" value="Eliminar Curso"/>-->
-                                </h:form>                               </div>
+                                    <h:commandButton class="btn btn-default col-sm-6 col-xs-offset-3"   action ="#{courseAdmin.formDeleteCourse()}" value="Eliminar Curso"/>
+                                </h:form>                               
+                            </div>
 
                         </div>
                     </div>

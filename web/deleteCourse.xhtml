@@ -8,7 +8,8 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <title>Delete Course</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -36,21 +37,34 @@ and open the template in the editor.
                             <h3 class="center-block text-center">Entidad educativa</h3>
                             
                             <h:form>
-                                <div class="form-group">
-                                <label for="exampleInputEmail1">Digite el curso a eliminar</label>
-                                    <h:inputText id="courseName" class="form-control" value="#{courseAdmin.courseName}" required = "true" requiredMessage="Falta nombre de curso !" />  
-                                    <h:message class="alert-danger" for="courseName"/>
-                                </div>
-                            
+                                <h5 align="center">Seleccione los cursos a eliminar</h5>
+                                
+                                <c:if test="${courseAdmin.courseCollection.size() == 0}">
+                                    <div align="center">
+                                       <br> ******************************************* </br>
+                                       <br> * No hay cursos registrados en el sistema * </br>
+                                       <br> ******************************************* </br>
+                                    </div>
+                                </c:if>
+                                <div align="center">
 
+                                    <h:selectManyCheckbox value="#{courseAdmin.selectManyCourses}" layout="pageDirection">
+
+                                        <c:forEach  items="#{courseAdmin.courseCollection}" var="item" >
+                                            <f:selectItem itemValue="${item.courseId} " itemLabel=" ${item.courseName}" />
+                                        </c:forEach>
+
+                                    </h:selectManyCheckbox>
+                                    
+                                </div>
                                 <div class="col-lg-6">
                                     <h:commandButton class="btn btn-success col-sm-6 col-xs-offset-3"  action="#{courseAdmin.deleteCourse()}" value="Eliminar"/>
                                 </div>
                                 <div class="col-lg-6">
                                     <h:link class="btn btn-success col-sm-6 col-xs-offset-3"   value="Regresar" outcome="admin.xhtml"/>
                                 </div>                            
-                            </h:form>
-                            
+                                
+                            </h:form> 
                         </div>
                     </div>
                 </h:form>
