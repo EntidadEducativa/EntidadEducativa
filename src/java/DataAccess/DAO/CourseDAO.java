@@ -28,8 +28,9 @@ public class CourseDAO {
     
     
     public Course persist (Course account){
-        em.getTransaction().begin();
+        
         try{
+            em.getTransaction().begin();
             em.persist(account);
             em.getTransaction().commit();
         }catch(Exception e){
@@ -40,21 +41,26 @@ public class CourseDAO {
         }
     }
     public Course findCourse (String courName){
-        em.getTransaction().begin();
+        
         List<Course> listCourse = null;
         
-        //createQuery("select s from Student s WHERE s.est_username LIKE :custUser", Student.class).setParameter("custUser", username).getResultList();
+        try{
+            em.getTransaction().begin();
             listCourse = (List<Course>)em.createNamedQuery("Course.findByCourseName").setParameter("courseName", courName).getResultList();
-            em.close();
+            em.getTransaction().commit();
             
-            
-            
-           if(listCourse.size() > 0){
-                return listCourse.get(0);
-           }else{
-               
+        }catch(Exception e){
+            em.getTransaction().rollback();
+        }
+        em.close();
+        
+        if(listCourse.size() > 0){
+            return listCourse.get(0);
+        }else{       
             return null;
-           }
+        }
     }
+    
+    
 }
 

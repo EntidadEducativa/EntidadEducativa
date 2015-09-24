@@ -24,22 +24,30 @@ public class CourseManagment {
 
     public String createCourse(String courseName, Teacher courseTeacher, int courseStartYear, int courseStartMonth, int courseStartDay, int courseEndYear, int courseEndMonth, int courseEndDay, long coursePrice) {
         
-        Course course = new Course();
-        course.setCourseName(courseName);
-        course.setTEACHERteachestid(courseTeacher); // aqui debo buscar un profesor que ya exista.
-        course.setCourseStartDate( new Date(courseStartYear, courseStartMonth, courseStartDay) );
-        course.setCourseEndDate( new Date(courseEndYear, courseEndMonth, courseEndDay) );
-        course.setCourseSchedule("tarde");
-        course.setCoursePrice(new BigDecimal(coursePrice));
-        
         CourseDAO courseDAO = new CourseDAO();
-        Course courseE = courseDAO.persist(course);
         
-        if(courseE != null){
-            return "El curso " + course.getCourseName() + " ha sido creado con exito." ;
+        if(courseDAO.findCourse(courseName) != null){
+            return "El curso " + courseName + " ya ha sido registrado en la Base de Datos. Intente con otros datos";
         }else{
-            return "El curso no se ha podido crear.";
+        
+            courseDAO = new CourseDAO();
+            Course course = new Course();
+            course.setCourseName(courseName);
+            course.setTEACHERteachestid(courseTeacher); // aqui debo buscar un profesor que ya exista.
+            course.setCourseStartDate( new Date(courseStartYear + 100, courseStartMonth, courseStartDay) );
+            course.setCourseEndDate( new Date(courseEndYear + 100, courseEndMonth, courseEndDay) );
+            course.setCourseSchedule("tarde");
+            course.setCoursePrice(new BigDecimal(coursePrice));
+        
+            Course courseE = courseDAO.persist(course);
+        
+            if(courseE != null){
+                return "El curso " + course.getCourseName() + " ha sido creado con exito." ;
+            }else{
+                return "El curso no se ha podido crear.";
+            }
         }
+        
     }
     
     public List<Teacher> keepAllTeachers ( ){
@@ -59,4 +67,21 @@ public class CourseManagment {
         CourseAdminDAO courseDAO = new CourseAdminDAO();
         return courseDAO.removeCours(Integer.parseInt(courseId.trim()));
     }
+    
+    public String updateCourse(int id, String courseName, Teacher courseTeacher, int courseStartYear, int courseStartMonth, int courseStartDay, int courseEndYear, int courseEndMonth, int courseEndDay, long coursePrice){
+        
+        Course course = new Course();
+
+        course.setCourseId(id);
+        course.setCourseName(courseName);
+        course.setTEACHERteachestid(courseTeacher); // aqui debo buscar un profesor que ya exista.
+        course.setCourseStartDate( new Date(courseStartYear, courseStartMonth, courseStartDay) );
+        course.setCourseEndDate( new Date(courseEndYear, courseEndMonth, courseEndDay) );
+        course.setCourseSchedule("tarde");
+        course.setCoursePrice(new BigDecimal(coursePrice));
+        
+        return null;
+        
+    }
+    
 }

@@ -1,12 +1,156 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        Hello from Facelets
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <head>
+        <title>Update Course</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="font-awesome-4.4.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.min.css"/>
+
+        <script type='text/javascript' src='js/jquery.min.js'></script>
+        <script type='text/javascript' src='js/jquery.particleground.js'></script>
+        <script type='text/javascript' src='js/demo.js'></script>
+    </head>
+    
+    <h:body class="gradent">
+    
+        <div class="container">
+           
+            <div class="row" style="padding-top: 10%;">
+                <div class="col-md-2">
+                </div>
+                <h:form>
+                    <div class="col-md-8">
+                        <div class="row list-group-item">
+                            <img style="width: 20%; height: 20%;" class="img-responsive center-block" src="Images/appleSchool.svg"/>
+                            <h3 class="center-block text-center">Entidad educativa</h3>
+                            
+                    <h:form>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Nombre de curso</label>
+                                <h:inputText id="courseName" class="form-control" value="#{courseAdmin.courseName}" required = "true" requiredMessage="Falta nombre de curso !" />  
+                                <h:message class="alert-danger" for="courseName"/>
+                            </div>
+                            
+                            <div class="form-group">
+                               
+                                <label for="exampleInputEmail1">Profesor</label>
+                                
+                                <h:selectOneMenu value="#{courseAdmin.indexCourseTeacher}" class="form-control" >
+                                    <c:forEach begin="0" end="#{courseAdmin.teacherCollection.size()-1}" var="item">
+                                        <f:selectItem itemValue="${item}" itemLabel="${courseAdmin.obteinTeacherCollectionName(item)}" />
+                                    </c:forEach>
+                                        
+                                        
+                                   
+                                </h:selectOneMenu>
+                            </div>
+                            
+                          
+                            
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Precio</label>
+                                <h:inputText id="price"  class="form-control" value="#{courseAdmin.coursePrice}" required = "true" requiredMessage="Falta precio" />
+                                <h:message class="alert-danger" for="price"/>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Fecha de inicio</label>
+                                <div class="row">
+                                    
+                                
+                                    <div class="col-lg-4">
+                                        <h:selectOneMenu value="#{courseAdmin.courseStartDay}" class="form-control" >
+                                            <c:forEach var="i" begin="1" end="31">                                                
+                                                <f:selectItem itemValue="${i}" itemLabel="${i}" />
+                                            </c:forEach>
+                                        </h:selectOneMenu>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <h:selectOneMenu value="#{courseAdmin.courseStartMonth}" class="form-control" >
+                                            <c:forEach var="i" begin="1" end="12">                                                
+                                                <f:selectItem itemValue="${i}" itemLabel="${i}" />
+                                            </c:forEach>
+                                        </h:selectOneMenu>
+                                     </div>
+
+                                    <div class="col-lg-4">
+                                    <h:selectOneMenu value="#{courseAdmin.courseStartYear}" class="form-control" >
+                                        <c:forEach var="i" begin="15" end="99">                                                
+                                                <f:selectItem itemValue="${i}" itemLabel="${i}" />
+                                        </c:forEach>
+                                    </h:selectOneMenu>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Fechas de cierre</label>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        
+                                        <h:selectOneMenu value="#{courseAdmin.courseEndDay}" class="form-control" >
+                                            <c:forEach var="i" begin="1" end="31">                                                
+                                                <f:selectItem itemValue="${i}" itemLabel="${i}" />
+                                            </c:forEach>
+                                        </h:selectOneMenu>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <h:selectOneMenu value="#{courseAdmin.courseEndMonth}" class="form-control" >
+                                            <c:forEach var="i" begin="1" end="12">                                                
+                                                <f:selectItem itemValue="${i}" itemLabel="${i}" />
+                                            </c:forEach>
+                                        </h:selectOneMenu>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <h:selectOneMenu value="#{courseAdmin.courseEndYear}" class="form-control" >
+                                            <c:forEach var="i" begin="15" end="99">                                                
+                                                <f:selectItem itemValue="${i}" itemLabel="${i}" />
+                                            </c:forEach>
+                                        </h:selectOneMenu> 
+                                    </div>    
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h:commandButton class="btn btn-success col-sm-6 col-xs-offset-3"  action="#{courseAdmin.updateCourse()}" value="Aceptar"/>
+                            </div>
+                            <div class="col-lg-6">
+                                <h:link class="btn btn-success col-sm-6 col-xs-offset-3"   value="Regresar" outcome="amendCourse.xhtml"/>
+                            </div>
+                            
+                        </div>
+                        
+
+                        <br/>
+                        <h:outputText value="#{courseAdmin.getMessage()}"/>
+                    </h:form>
+                    </div>
+                    </div>
+                
+                </h:form>
+                <div class="col-md-2">
+                </div>
+            </div>
+        </div>
+            
+       
     </h:body>
 </html>
-

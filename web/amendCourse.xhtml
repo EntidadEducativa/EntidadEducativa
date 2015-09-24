@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    
+    <h:head>
+        <title>Amend Course</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="font-awesome-4.4.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.min.css"/>
+
+        <script type='text/javascript' src='js/jquery.min.js'></script>
+        <script type='text/javascript' src='js/jquery.particleground.js'></script>
+        <script type='text/javascript' src='js/demo.js'></script>
+    </h:head>
+
+    <h:body class="gradent">
+    
+        <div class="container">
+           
+            <div class="row" style="padding-top: 10%;">
+                <div class="col-md-2">
+                </div>
+                <h:form>
+                    <div class="col-md-8">
+                        <div class="row list-group-item">
+                            <img style="width: 20%; height: 20%;" class="img-responsive center-block" src="Images/appleSchool.svg"/>
+                            <h3 class="center-block text-center">Entidad educativa</h3>
+                            
+                            <h:form>
+                                <h5 align="center">Seleccione el curso a modificar</h5>
+                                
+                                <c:if test="${courseAdmin.courseCollection.size() == 0}">
+                                    <div align="center">
+                                       <br> ******************************************* </br>
+                                       <br> * No hay cursos registrados en el sistema * </br>
+                                       <br> ******************************************* </br>
+                                    </div>
+                                </c:if>
+                                
+                                <c:if test="${courseAdmin.courseCollection.size() > 0}">
+                                    <div align="center">
+
+                                        <h:selectOneMenu value="#{courseAdmin.indexCourse}" >
+                                            <c:forEach begin="0" end="#{courseAdmin.courseCollection.size()-1}" var="item">
+                                                <f:selectItem itemValue="${item}" itemLabel="${courseAdmin.obteinCourseCollectionName(item)}" />
+                                            </c:forEach>
+                                        </h:selectOneMenu>
+
+                                    </div>
+                                </c:if>
+                                
+                                <div class="col-lg-6">
+                                    <h:commandButton class="btn btn-success col-sm-6 col-xs-offset-3"  action="#{courseAdmin.formUpdateCourse()}" value="Modificar"/>
+                                </div>
+                                
+                                <div class="col-lg-6">
+                                    <h:link class="btn btn-success col-sm-6 col-xs-offset-3"   value="Regresar" outcome="admin.xhtml"/>
+                                </div>                            
+                                
+                            </h:form> 
+                        </div>
+                    </div>
+                </h:form>
+                <div class="col-md-2">
+                </div>
+            </div>
+        </div>
+       
+    </h:body>
+</html>
