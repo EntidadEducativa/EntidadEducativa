@@ -219,8 +219,8 @@ public class CourseAdmin {
         
         for(String x : selectManyCourses)
             message = manageCourse.deleteCourse( x );
-   
-       FacesContext.getCurrentInstance().getExternalContext().redirect("deleteCourse.xhtml");
+        
+        formDeleteCourse();
     }
     
     public void formAmedCourse() throws IOException{
