@@ -33,12 +33,12 @@ public class CourseManagment {
             courseDAO = new CourseDAO();
             Course course = new Course();
             course.setCourseName(courseName);
-            course.setTEACHERteachestid(courseTeacher); // aqui debo buscar un profesor que ya exista.
-            course.setCourseStartDate( new Date(courseStartYear + 100, courseStartMonth, courseStartDay) );
-            course.setCourseEndDate( new Date(courseEndYear + 100, courseEndMonth, courseEndDay) );
+            course.setTEACHERteachestid(courseTeacher); 
+            course.setCourseStartDate( new Date(courseStartYear + 100, courseStartMonth-1, courseStartDay) );
+            course.setCourseEndDate( new Date(courseEndYear + 100, courseEndMonth-1, courseEndDay) );
             course.setCourseSchedule("tarde");
             course.setCoursePrice(new BigDecimal(coursePrice));
-        
+           
             Course courseE = courseDAO.persist(course);
         
             if(courseE != null){
@@ -52,8 +52,7 @@ public class CourseManagment {
     
     public List<Teacher> keepAllTeachers ( ){
         
-        TeacherDAO teaDAO = new TeacherDAO();
-        
+        TeacherDAO teaDAO = new TeacherDAO();        
         return teaDAO.findAllTeachers();
               
     }
@@ -70,17 +69,19 @@ public class CourseManagment {
     
     public String updateCourse(int id, String courseName, Teacher courseTeacher, int courseStartYear, int courseStartMonth, int courseStartDay, int courseEndYear, int courseEndMonth, int courseEndDay, long coursePrice){
         
+        CourseAdminDAO courseDAO = new CourseAdminDAO();
         Course course = new Course();
 
         course.setCourseId(id);
         course.setCourseName(courseName);
-        course.setTEACHERteachestid(courseTeacher); // aqui debo buscar un profesor que ya exista.
-        course.setCourseStartDate( new Date(courseStartYear, courseStartMonth, courseStartDay) );
-        course.setCourseEndDate( new Date(courseEndYear, courseEndMonth, courseEndDay) );
+        course.setTEACHERteachestid(courseTeacher); 
+        course.setCourseStartDate( new Date(courseStartYear + 100, courseStartMonth - 1, courseStartDay) );
+        course.setCourseEndDate( new Date(courseEndYear + 100, courseEndMonth - 1, courseEndDay) );
         course.setCourseSchedule("tarde");
         course.setCoursePrice(new BigDecimal(coursePrice));
         
-        return null;
+        
+        return courseDAO.updateCourse(course);
         
     }
     

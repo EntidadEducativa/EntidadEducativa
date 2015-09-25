@@ -133,11 +133,10 @@ and open the template in the editor.
                                 <h:commandButton class="btn btn-success col-sm-6 col-xs-offset-3"  action="#{courseAdmin.updateCourse()}" value="Aceptar"/>
                             </div>
                             <div class="col-lg-6">
-                                <h:link class="btn btn-success col-sm-6 col-xs-offset-3"   value="Regresar" outcome="amendCourse.xhtml"/>
+                                <h:commandButton class="btn btn-success col-sm-6 col-xs-offset-3"   action="#{courseAdmin.formAmedCourse()}" value="Regresar" />
                             </div>
                             
                         </div>
-                        
 
                         <br/>
                         <h:outputText value="#{courseAdmin.getMessage()}"/>

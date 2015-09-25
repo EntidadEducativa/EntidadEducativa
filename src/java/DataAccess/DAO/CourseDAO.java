@@ -28,7 +28,7 @@ public class CourseDAO {
     
     
     public Course persist (Course account){
-        
+       
         try{
             em.getTransaction().begin();
             em.persist(account);

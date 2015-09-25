@@ -48,7 +48,6 @@ public class CourseAdminDAO {
 
     public String removeCours(int cId){
         try {
-            System.out.println("AHORA SOY UN ENTERO: " + cId);
             
             em.getTransaction().begin();
             List<Course> courses = null;
@@ -71,12 +70,24 @@ public class CourseAdminDAO {
                 return "El curso no se ha podido remover";
             }
         } catch (Exception e) {
-            System.out.println("TENGO EL ERROR: " + e);
             em.close();
         }
         
         return null;
     }
     
-
+    public String updateCourse(Course course){
+        em.getTransaction().begin();
+        try{
+            em.merge(course);
+            em.getTransaction().commit();
+            return "El curso se ha actualizado con exito";
+        }catch(Exception e){
+            em.getTransaction().rollback();
+        }finally{
+            em.close();
+        }
+        return null;
+    }
+ 
 }

@@ -35,27 +35,15 @@ public class CourseAdmin {
     private int courseEndDay;
     private int courseEndMonth;
     private int courseEndYear;
-    
-    //private Date courseStartDate;
     private int courseStartDay;
     private int courseStartMonth;
     private int courseStartYear;
-    
     private String courseSchedule;
     private long coursePrice;
-    
     private String message;
-
-   
-
-    
-    //private Collection<Administrator> administratorCollection;
-    //private Collection<Payment> paymentCollection;
     private List<Teacher> teacherCollection;
     private List<Course> courseCollection;
     private ArrayList<String> selectManyCourses;
-
-    
     private int indexCourseTeacher=0;
     private int indexCourse=0;
 
@@ -94,7 +82,6 @@ public class CourseAdmin {
     public void setCourseEndYear(int courseEndYear) {
         this.courseEndYear = courseEndYear;
     }
-
 
     public int getCourseStartDay() {
         return courseStartDay;
@@ -144,11 +131,12 @@ public class CourseAdmin {
     public void setIndexCourseTeacher(int indexCourseTeacher) {
         this.indexCourseTeacher = indexCourseTeacher;
     }
-     public String getMessage() {
+    
+    public String getMessage() {
         return message;
     }
 
-     public int getIndexCourse() {
+    public int getIndexCourse() {
         return indexCourse;
     }
 
@@ -189,8 +177,9 @@ public class CourseAdmin {
         
         if(verificationDate()){
             message = manageCourse.createCourse(courseName, teacherCollection.get(indexCourseTeacher),
-                    courseStartYear, courseStartMonth, courseStartDay , courseEndYear, courseEndMonth, 
-                    courseEndDay, coursePrice);
+            courseStartYear, courseStartMonth, courseStartDay , 
+            courseEndYear, courseEndMonth, courseEndDay, 
+            coursePrice);
         }
         resetAttributes();
     }
@@ -236,16 +225,18 @@ public class CourseAdmin {
         Course c = courseCollection.get(indexCourse);
         courseName = c.getCourseName();
 
-        courseStartDay = c.getCourseStartDate().getDay();
-        courseStartMonth = c.getCourseStartDate().getMonth();
+        courseStartDay = c.getCourseStartDate().getDate();
+        courseStartMonth = c.getCourseStartDate().getMonth()+1;
         courseStartYear = c.getCourseStartDate().getYear()-100;
-        courseEndDay = c.getCourseEndDate().getDay();
-        courseEndMonth = c.getCourseEndDate().getMonth();
+        courseEndDay = c.getCourseEndDate().getDate();
+        courseEndMonth = c.getCourseEndDate().getMonth()+1;
         courseEndYear = c.getCourseEndDate().getYear()-100;
         
         courseSchedule = c.getCourseSchedule();
         coursePrice = c.getCoursePrice().longValueExact();
         indexCourseTeacher = teacherCollection.indexOf(c.getTEACHERteachestid());
+
+        message = null;
         
         FacesContext.getCurrentInstance().getExternalContext().redirect("updateCourse.xhtml");
     }
@@ -256,13 +247,14 @@ public class CourseAdmin {
    
     public void updateCourse(){
         CourseManagment manageCourse = new CourseManagment();
-        
+        if(verificationDate()){
         message = manageCourse.updateCourse(
                 courseCollection.get(indexCourse).getCourseId(),
                 courseName, teacherCollection.get(indexCourseTeacher),
                 courseStartYear, courseStartMonth, courseStartDay , 
                 courseEndYear, courseEndMonth, courseEndDay, 
                 coursePrice);
+        }
     }
     
     public void formFindCourse() throws IOException{
@@ -291,7 +283,6 @@ public class CourseAdmin {
     public boolean verificationDate(){
     
         boolean v = true;
-        
         
         if( courseStartYear > courseEndYear ){
             v = false;
