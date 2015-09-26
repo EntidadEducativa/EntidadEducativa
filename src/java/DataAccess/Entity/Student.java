@@ -25,10 +25,10 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Miguel
+ * @author sergioalejandrodiazpinilla
  */
 @Entity
-@Table(name = "student")
+@Table(name = "STUDENT")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Student.findAll", query = "SELECT s FROM Student s"),
@@ -100,9 +100,9 @@ public class Student implements Serializable {
     @Column(name = "est_roll")
     private String estRoll;
     @ManyToMany(mappedBy = "studentCollection")
-    private Collection<Administrator> administratorCollection;
-    @ManyToMany(mappedBy = "studentCollection")
     private Collection<Course> courseCollection;
+    @ManyToMany(mappedBy = "studentCollection")
+    private Collection<Administrator> administratorCollection;
     @OneToMany(mappedBy = "sTUDENTestid")
     private Collection<Payment> paymentCollection;
 
@@ -223,21 +223,21 @@ public class Student implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Administrator> getAdministratorCollection() {
-        return administratorCollection;
-    }
-
-    public void setAdministratorCollection(Collection<Administrator> administratorCollection) {
-        this.administratorCollection = administratorCollection;
-    }
-
-    @XmlTransient
     public Collection<Course> getCourseCollection() {
         return courseCollection;
     }
 
     public void setCourseCollection(Collection<Course> courseCollection) {
         this.courseCollection = courseCollection;
+    }
+
+    @XmlTransient
+    public Collection<Administrator> getAdministratorCollection() {
+        return administratorCollection;
+    }
+
+    public void setAdministratorCollection(Collection<Administrator> administratorCollection) {
+        this.administratorCollection = administratorCollection;
     }
 
     @XmlTransient

@@ -144,4 +144,11 @@ public class UserManagement {
         List<Payment> myPayments = (List<Payment>)payDAO.findAllPaySt(estId);
         return myPayments;
     }
+    
+    public List<Course> myCourseT(Teacher teaId){
+        CourseDAO couDAO = new CourseDAO();
+        List<Course> myCourse = (List<Course>)couDAO.findCourseTeacher(teaId);
+        return myCourse;
+    }
 }
+    

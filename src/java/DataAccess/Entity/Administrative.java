@@ -27,10 +27,10 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Miguel
+ * @author sergioalejandrodiazpinilla
  */
 @Entity
-@Table(name = "administrative")
+@Table(name = "ADMINISTRATIVE")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Administrative.findAll", query = "SELECT a FROM Administrative a"),
@@ -113,16 +113,16 @@ public class Administrative implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "adm_dependence")
     private String admDependence;
-    @JoinTable(name = "administrator_has_administrative", joinColumns = {
-        @JoinColumn(name = "ADMINISTRATIVE_adm_est_id", referencedColumnName = "adm_est_id")}, inverseJoinColumns = {
-        @JoinColumn(name = "ADMINISTRATOR_admin_id", referencedColumnName = "admin_id")})
-    @ManyToMany
-    private Collection<Administrator> administratorCollection;
-    @JoinTable(name = "administrative_has_course", joinColumns = {
+    @JoinTable(name = "ADMINISTRATIVE_has_COURSE", joinColumns = {
         @JoinColumn(name = "ADMINISTRATIVE_adm_est_id", referencedColumnName = "adm_est_id")}, inverseJoinColumns = {
         @JoinColumn(name = "COURSE_course_id", referencedColumnName = "course_id")})
     @ManyToMany
     private Collection<Course> courseCollection;
+    @JoinTable(name = "ADMINISTRATOR_has_ADMINISTRATIVE", joinColumns = {
+        @JoinColumn(name = "ADMINISTRATIVE_adm_est_id", referencedColumnName = "adm_est_id")}, inverseJoinColumns = {
+        @JoinColumn(name = "ADMINISTRATOR_admin_id", referencedColumnName = "admin_id")})
+    @ManyToMany
+    private Collection<Administrator> administratorCollection;
     @OneToMany(mappedBy = "aDMINISTRATIVEadmestid1")
     private Collection<Payment> paymentCollection;
 
@@ -261,21 +261,21 @@ public class Administrative implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Administrator> getAdministratorCollection() {
-        return administratorCollection;
-    }
-
-    public void setAdministratorCollection(Collection<Administrator> administratorCollection) {
-        this.administratorCollection = administratorCollection;
-    }
-
-    @XmlTransient
     public Collection<Course> getCourseCollection() {
         return courseCollection;
     }
 
     public void setCourseCollection(Collection<Course> courseCollection) {
         this.courseCollection = courseCollection;
+    }
+
+    @XmlTransient
+    public Collection<Administrator> getAdministratorCollection() {
+        return administratorCollection;
+    }
+
+    public void setAdministratorCollection(Collection<Administrator> administratorCollection) {
+        this.administratorCollection = administratorCollection;
     }
 
     @XmlTransient

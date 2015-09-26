@@ -9,6 +9,7 @@ import BusinessLogic.AdminLogic.AdminManagement;
 import BusinessLogic.UserLogic.UserManagement;
 import DataAccess.Entity.Administrative;
 import DataAccess.Entity.Administrator;
+import DataAccess.Entity.Course;
 import DataAccess.Entity.Payment;
 import DataAccess.Entity.Student;
 import DataAccess.Entity.Teacher;
@@ -38,6 +39,7 @@ public class Login {
     private Boolean dualStuAdm;
     private Boolean dualStuTea;
     private List<Payment> myPayment;
+    private List<Course> myCoursesT;
     
     
     
@@ -200,13 +202,15 @@ public class Login {
         AdminManagement manageAdmin = new AdminManagement();
 
         Teacher userT = manageAccount.findTeacher(userName, password);
-
+        setMyPayment(manageAccount.mypayments(manageAccount.findStudent(userName, password)));
         if (userT != null) {
             dualStuTea=true;
             userTea = userT;
             userStu = null;
             userAdm = null;
             userAdmin = null;
+            setMyCoursesT(manageAccount.myCourseT(userT));
+            
         } else {
             Administrative userAe = manageAccount.findAdministrative(userName, password);
             if (userAe != null) {
@@ -223,9 +227,7 @@ public class Login {
                     userStu = userS;
                     userTea = null;
                     userAdm = null;
-                    userAdmin = null;
-                    UserManagement user = new UserManagement();
-                    setMyPayment(user.mypayments(userStu));
+                    userAdmin = null;         
                 }
 
                 if (userAr != null) {
@@ -286,6 +288,15 @@ public class Login {
     public void setMyPayment(List<Payment> myPayment) {
         this.myPayment = myPayment;
     }
+
+    public List<Course> getMyCoursesT() {
+        return myCoursesT;
+    }
+
+    public void setMyCoursesT(List<Course> myCoursesT) {
+        this.myCoursesT = myCoursesT;
+    }
+
     
     
 

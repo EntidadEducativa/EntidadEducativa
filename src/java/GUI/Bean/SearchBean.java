@@ -32,7 +32,6 @@ public class SearchBean {
     @ManagedProperty("#{login}")
     private Login login;
    static ArrayList<Course> coursesList = new ArrayList<>();
-   static long payId = 0;
 
     
     public SearchBean() {
@@ -50,15 +49,14 @@ public class SearchBean {
     public void generatePayment() throws IOException{
      PaymentDAO paymentDAO = new PaymentDAO();
      Payment payment = new Payment();
-     payment.setPayId((long)payId);
      payment.setPayValue(BigDecimal.valueOf(totalPriceCourses()));
      payment.setPayDate(new Date());
      payment.setSTUDENTestid(login.getCurrentStu());
+     payment.setADMINISTRATIVEadmestid1(null);
      
      paymentDAO.persist(payment);
      UserManagement user = new UserManagement();
      login.setMyPayment(user.mypayments(login.getCurrentStu()));
-     payId++;
     }
     
     public void addCourseList(Course nameCour) throws IOException{

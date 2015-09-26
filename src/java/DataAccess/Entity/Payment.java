@@ -12,6 +12,8 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
@@ -21,27 +23,27 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Miguel
+ * @author sergioalejandrodiazpinilla
  */
 @Entity
-@Table(name = "payment")
+@Table(name = "PAYMENT")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Payment.findAll", query = "SELECT p FROM Payment p"),
     @NamedQuery(name = "Payment.findByPayId", query = "SELECT p FROM Payment p WHERE p.payId = :payId"),
     @NamedQuery(name = "Payment.findByPayValue", query = "SELECT p FROM Payment p WHERE p.payValue = :payValue"),
-    @NamedQuery(name = "Payment.findByPayDate", query = "SELECT p FROM Payment p WHERE p.payDate = :payDate")})
+    @NamedQuery(name = "Payment.findByPayDate", query = "SELECT p FROM Payment p WHERE p.payDate = :payDate"),
+    @NamedQuery(name = "Payment.findByEstId", query = "SELECT p FROM Payment p WHERE p.sTUDENTestid = :estId")})
 public class Payment implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "pay_id")
     private Long payId;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation

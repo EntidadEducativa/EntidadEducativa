@@ -26,10 +26,10 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Miguel
+ * @author sergioalejandrodiazpinilla
  */
 @Entity
-@Table(name = "administrator")
+@Table(name = "ADMINISTRATOR")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Administrator.findAll", query = "SELECT a FROM Administrator a"),
@@ -65,21 +65,21 @@ public class Administrator implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "admin_lastname")
     private String adminLastname;
-    @JoinTable(name = "administrator_has_course", joinColumns = {
+    @JoinTable(name = "ADMINISTRATOR_has_COURSE", joinColumns = {
         @JoinColumn(name = "ADMINISTRATOR_admin_id", referencedColumnName = "admin_id")}, inverseJoinColumns = {
         @JoinColumn(name = "COURSE_course_id", referencedColumnName = "course_id")})
     @ManyToMany
     private Collection<Course> courseCollection;
-    @JoinTable(name = "administrator_has_student", joinColumns = {
-        @JoinColumn(name = "ADMINISTRATOR_admin_id", referencedColumnName = "admin_id")}, inverseJoinColumns = {
-        @JoinColumn(name = "STUDENT_est_id", referencedColumnName = "est_id")})
-    @ManyToMany
-    private Collection<Student> studentCollection;
-    @JoinTable(name = "administrator_has_teacher", joinColumns = {
+    @JoinTable(name = "ADMINISTRATOR_has_TEACHER", joinColumns = {
         @JoinColumn(name = "ADMINISTRATOR_admin_id", referencedColumnName = "admin_id")}, inverseJoinColumns = {
         @JoinColumn(name = "TEACHER_teach_est_id", referencedColumnName = "teach_est_id")})
     @ManyToMany
     private Collection<Teacher> teacherCollection;
+    @JoinTable(name = "ADMINISTRATOR_has_STUDENT", joinColumns = {
+        @JoinColumn(name = "ADMINISTRATOR_admin_id", referencedColumnName = "admin_id")}, inverseJoinColumns = {
+        @JoinColumn(name = "STUDENT_est_id", referencedColumnName = "est_id")})
+    @ManyToMany
+    private Collection<Student> studentCollection;
     @ManyToMany(mappedBy = "administratorCollection")
     private Collection<Administrative> administrativeCollection;
 
@@ -148,21 +148,21 @@ public class Administrator implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Student> getStudentCollection() {
-        return studentCollection;
-    }
-
-    public void setStudentCollection(Collection<Student> studentCollection) {
-        this.studentCollection = studentCollection;
-    }
-
-    @XmlTransient
     public Collection<Teacher> getTeacherCollection() {
         return teacherCollection;
     }
 
     public void setTeacherCollection(Collection<Teacher> teacherCollection) {
         this.teacherCollection = teacherCollection;
+    }
+
+    @XmlTransient
+    public Collection<Student> getStudentCollection() {
+        return studentCollection;
+    }
+
+    public void setStudentCollection(Collection<Student> studentCollection) {
+        this.studentCollection = studentCollection;
     }
 
     @XmlTransient

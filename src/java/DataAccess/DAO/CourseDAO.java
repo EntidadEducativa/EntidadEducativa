@@ -7,6 +7,9 @@ package DataAccess.DAO;
 
 import DataAccess.Entity.Administrative;
 import DataAccess.Entity.Course;
+import DataAccess.Entity.Payment;
+import DataAccess.Entity.Student;
+import DataAccess.Entity.Teacher;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -61,6 +64,16 @@ public class CourseDAO {
         }
     }
     
+    public List<Course> findCourseTeacher(Teacher teaId){
+        em.getTransaction().begin();
+        List<Course> hola = null;
+        
+        //createQuery("select s from Student s WHERE s.est_username LIKE :custUser", Student.class).setParameter("custUser", username).getResultList();
+        hola= (List<Course>)em.createNamedQuery("Course.findByteachEstId").setParameter("teachEstId",teaId).getResultList();
+        em.close();
+
+        return hola;
+    }
     
 }
 
