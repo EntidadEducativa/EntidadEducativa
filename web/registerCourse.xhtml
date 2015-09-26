@@ -50,10 +50,7 @@ and open the template in the editor.
                                 <h:selectOneMenu value="#{courseAdmin.indexCourseTeacher}" class="form-control" >
                                     <c:forEach begin="0" end="#{courseAdmin.teacherCollection.size()-1}" var="item">
                                         <f:selectItem itemValue="${item}" itemLabel="${courseAdmin.obteinTeacherCollectionName(item)}" />
-                                    </c:forEach>
-                                        
-                                        
-                                   
+                                    </c:forEach>                                        
                                 </h:selectOneMenu>
                             </div>
                             

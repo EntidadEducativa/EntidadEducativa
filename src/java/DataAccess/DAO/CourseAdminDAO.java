@@ -43,21 +43,28 @@ public class CourseAdminDAO {
         List<Course> courses = null;
         courses= (List<Course>)em.createNamedQuery("Course.findAll").getResultList();
         em.close();
-
         return courses; 
     }
 
-    public String removeCours(String id){
-        Course c = new Course();
-        Course cE = new Course();
-       
+    public String removeCours(int cId){
         try {
-            c = em.find(Course.class, "id");
+            
             em.getTransaction().begin();
-            em.remove(c);
+            List<Course> courses = null;
+            courses = (List<Course>) em.createNamedQuery("Course.findByCourseId")
+                    .setParameter("courseId", cId).getResultList();
             em.getTransaction().commit();
             
-            if(c == null){
+            em.getTransaction().begin();
+            em.remove(courses.get(0));
+            em.getTransaction().commit();
+            
+            em.getTransaction().begin();
+            Course courseE = em.find(Course.class, cId);
+            em.getTransaction().commit();
+            System.out.println("Curso eliminado: "+courseE);
+            
+            if(courses == null){
                 return "Curso removido con exito";
             }else{
                 return "El curso no se ha podido remover";
@@ -65,8 +72,22 @@ public class CourseAdminDAO {
         } catch (Exception e) {
             em.close();
         }
+        
         return null;
     }
     
-
+    public String updateCourse(Course course){
+        em.getTransaction().begin();
+        try{
+            em.merge(course);
+            em.getTransaction().commit();
+            return "El curso se ha actualizado con exito";
+        }catch(Exception e){
+            em.getTransaction().rollback();
+        }finally{
+            em.close();
+        }
+        return null;
+    }
+ 
 }
