@@ -33,9 +33,14 @@ and open the template in the editor.
                 <div class="well">
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="tab3">
-                            <c:if test="#{searchBean.coursesList.size() == 0}" >
-                                <h3>No ha seleccionado ningun curso.</h3>
+                            <c:if test="#{searchBean.donePayment == true}" >
+                                <h3>Pago realizado.#{searchBean.isPaymentDone()}</h3>
                             </c:if>
+                            <c:if test="#{searchBean.coursesList.size() == 0}" >
+                                <c:if test="#{searchBean.donePayment == false}">
+                                    <h3>No ha seleccionado ningun curso.</h3>
+                                </c:if>
+                                </c:if>
                             <c:if test="#{searchBean.coursesList.size() > 0}">
                                 <c:forEach items="#{searchBean.coursesList}" var="item">
                                     <div class="thumbnail">
@@ -51,8 +56,10 @@ and open the template in the editor.
                                 <div class="tab-content">
                                     <p>Total a pagar: #{searchBean.totalPriceCourses()}</p>
                                     <h:form>
-                                        <h:commandButton action="#{searchBean.generatePayment()}" class="btn btn-success col-sm-2 col-xs-offset-5" value="Pagar"></h:commandButton>
-                                    </h:form>
+                                      
+                                        <h:commandButton class="btn btn-success col-sm-2 col-xs-offset-5" action="#{searchBean.setDonePayment(true)}" value="Pagar"/>
+                                      
+                                        </h:form>
 
                                 </div>
 
@@ -64,34 +71,6 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
-         <script src="js/bootstrap.min.js"></script>
-        <script src="js/velocity.min.js"></script>
-        <script src="js/velocity.ui.min.js"></script>
-        
-<!-- Trigger the modal with a button -->
-
-
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
-        <h4 class="modal-title">Pago realizado</h4>
-      </div>
-      <div class="modal-body">
-        <p>Su transaccion ha sido realizada, por favor revise su historial de pagos para verificar el pago.</p>
-      </div>
-      <div class="modal-footer">
-      </div>
-    </div>
-
-  </div>
-</div>
-        
-        
         
        
         

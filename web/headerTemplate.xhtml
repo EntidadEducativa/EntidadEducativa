@@ -94,7 +94,6 @@ and open the template in the editor.
                                 <div class="hidden-xs">Cursos</div>
                             </button> 
                         </div>
-                        <c:if test="#{login.currentStu != null || login.currentAdm != null}">
                         <div class="btn-group" role="group">
                             <button type="button" id="payment" class="btn btn-primary" href="#tab3" onclick="window.location.href= 'payment.xhtml'" data-toggle="tab"><img class="img-responsive img-menu center-block" src="Images/pencil.svg"/>
                                 <div class="hidden-xs">Pagos</div>
@@ -105,7 +104,6 @@ and open the template in the editor.
                                 <div class="hidden-xs">Historial de pagos</div>
                             </button> 
                         </div>
-                        </c:if>
                         <c:if test="#{login.currentTea != null}">
                             <div class="btn-group" role="group">
                                 <button type="button" id="payment" class="btn btn-primary" href="#tab3" onclick="window.location.href= 'courseHistoryT.xhtml'" data-toggle="tab"><img class="img-responsive img-menu center-block" src="Images/pencil.svg"/>
