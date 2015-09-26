@@ -7,7 +7,6 @@ package DataAccess.DAO;
 
 import DataAccess.Entity.Payment;
 import DataAccess.Entity.Student;
-import DataAccess.Entity.Teacher;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

@@ -225,7 +225,7 @@ public class Login {
                     userAdm = null;
                     userAdmin = null;
                     UserManagement user = new UserManagement();
-                    setMyPayment(user.mypayments(userStu));
+                 //   setMyPayment(user.mypayments(userStu));
                 }
 
                 if (userAr != null) {

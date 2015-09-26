@@ -5,6 +5,7 @@
  */
 package GUI.Bean;
 
+import BusinessLogic.PaymentLogic.PaymentManagement;
 import DataAccess.DAO.PaymentDAO;
 import DataAccess.Entity.Course;
 import DataAccess.Entity.Payment;
@@ -29,13 +30,15 @@ public class SearchBean {
     //@ManagedProperty("#{BrowserCourse}")
     //private BrowserCourse browserCourse;
     @ManagedProperty("#{login}")
-    private Login login;
+   private Login login;
    static ArrayList<Course> coursesList = new ArrayList<>();
+   static ArrayList<String> coursesName = new ArrayList<>();
    static long payId = 0;
+   static boolean donePayment = false;
 
     
     public SearchBean() {
-       
+   
     }
 
     public ArrayList<Course> getCoursesList() {
@@ -47,22 +50,31 @@ public class SearchBean {
     }
 
     public void generatePayment() throws IOException{
-     PaymentDAO paymentDAO = new PaymentDAO();
-     Payment payment = new Payment();
-     payment.setPayId((long)payId);
-     payment.setPayValue(BigDecimal.valueOf(totalPriceCourses()));
-     payment.setPayDate(new Date());
      
-     paymentDAO.persist(payment);
-     
-     payId++;     
+        PaymentManagement paymentMan = new PaymentManagement();
+        if(login.getCurrentStu() != null){
+        paymentMan.createPayment(BigDecimal.valueOf(totalPriceCourses()), login.getCurrentStu());
+        }
+        else
+        if(login.getCurrentTea() != null){
+        paymentMan.createPayment(BigDecimal.valueOf(totalPriceCourses()), login.getCurrentTea());
+        }
+        else
+        if(login.getCurrentAdm() != null){
+        paymentMan.createPayment(BigDecimal.valueOf(totalPriceCourses()), login.getCurrentAdm());
+        }
+   
+     coursesList.clear();
+     coursesName.clear();
     }
     
     public void addCourseList(Course nameCour) throws IOException{
-        coursesList.add(nameCour);
+        if(!coursesName.contains(nameCour.getCourseName())){
+            coursesList.add(nameCour);
+            coursesName.add(nameCour.getCourseName());
+        }
+        
         FacesContext.getCurrentInstance().getExternalContext().redirect("courses.xhtml");
-        System.out.println("Lista de cursos:" + coursesList);
-        System.out.println("user: " + login.getUserName());
         
     }
     
@@ -81,5 +93,30 @@ public class SearchBean {
     public void setLogin(Login login) {
         this.login = login;
     }
+
+    public boolean isDonePayment() {
+        return donePayment;
+    }
+
+    public void setDonePayment(boolean donePayment) throws IOException {
+        this.donePayment = donePayment;
+        generatePayment();
+        FacesContext.getCurrentInstance().getExternalContext().redirect("payment.xhtml");
+         
+    }
+    
+    public void isPaymentDone() throws IOException{
+       
+        if( donePayment )
+            donePayment = false;
+        else
+            donePayment = true;
+        
+         
+    }
+    
+    
+    
+    
     
 }
