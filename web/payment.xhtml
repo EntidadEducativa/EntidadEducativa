@@ -51,9 +51,8 @@ and open the template in the editor.
                                 <div class="tab-content">
                                     <p>Total a pagar: #{searchBean.totalPriceCourses()}</p>
                                     <h:form>
-                                        <button type="button" class="btn btn-success col-sm-2 col-xs-offset-5" data-toggle="modal" data-target="#myModal">Pagar</button>
-                                      
-                                        </h:form>
+                                        <h:commandButton action="#{searchBean.generatePayment()}" class="btn btn-success col-sm-2 col-xs-offset-5" value="Pagar"></h:commandButton>
+                                    </h:form>
 
                                 </div>
 
@@ -86,7 +85,6 @@ and open the template in the editor.
         <p>Su transaccion ha sido realizada, por favor revise su historial de pagos para verificar el pago.</p>
       </div>
       <div class="modal-footer">
-          <button type="button" class="btn btn-default" onclick="window.location.href= '#{searchBean.generatePayment()}'" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
 

@@ -5,6 +5,7 @@
  */
 package GUI.Bean;
 
+import BusinessLogic.UserLogic.UserManagement;
 import DataAccess.DAO.PaymentDAO;
 import DataAccess.Entity.Course;
 import DataAccess.Entity.Payment;
@@ -52,10 +53,12 @@ public class SearchBean {
      payment.setPayId((long)payId);
      payment.setPayValue(BigDecimal.valueOf(totalPriceCourses()));
      payment.setPayDate(new Date());
+     payment.setSTUDENTestid(login.getCurrentStu());
      
      paymentDAO.persist(payment);
-     
-     payId++;     
+     UserManagement user = new UserManagement();
+     login.setMyPayment(user.mypayments(login.getCurrentStu()));
+     payId++;
     }
     
     public void addCourseList(Course nameCour) throws IOException{
