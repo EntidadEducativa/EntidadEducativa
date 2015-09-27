@@ -37,6 +37,14 @@ and open the template in the editor.
                             
                            <h:form>
                                 <div class="form-group">
+                                <c:if test="${courseAdmin.courseCollection.size() == 0}">
+                                    <div align="center">
+                                       <br> ******************************************* </br>
+                                       <br> * No hay cursos registrados en el sistema * </br>
+                                       <br> ******************************************* </br>
+                                    </div>
+                                </c:if>
+                                <c:if test="${courseAdmin.courseCollection.size() > 0}">
                                     <label for="exampleInputEmail1">Nombre del curso</label>
                                     
                                     <h:selectOneMenu value="#{courseAdmin.indexCourse}" class="form-control" >
@@ -45,15 +53,21 @@ and open the template in the editor.
                                         </c:forEach>                                        
                                     </h:selectOneMenu>
                                     <h:message for="courseName" class="alert-danger"/>
+                                </c:if>
                                 </div>
+                               
                                 <div class="row">
                                     <div class="col-lg-12">
+                                        <c:if test="${courseAdmin.courseCollection.size() > 0}">
+                                        
                                         <div class="col-lg-6">
                                             <h:commandButton class="btn btn-success col-sm-6 col-xs-offset-3"  action="#{courseAdmin.findcourse()}" value="Buscar"/>
                                         </div>
-                                    <div class="col-lg-6">
-                                        <h:link class="btn btn-success col-sm-6 col-xs-offset-3"   value="Regresar" outcome="admin.xhtml"/>
-                                    </div>
+                                            
+                                        </c:if>
+                                        <div class="col-lg-6">
+                                            <h:link class="btn btn-success col-sm-6 col-xs-offset-3"   value="Regresar" outcome="admin.xhtml"/>
+                                        </div>
                                     </div>
                                 </div>
                                 <br/>    

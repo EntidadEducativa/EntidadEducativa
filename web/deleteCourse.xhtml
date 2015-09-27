@@ -57,9 +57,12 @@ and open the template in the editor.
                                     </h:selectManyCheckbox>
                                     
                                 </div>
+                                
+                                <c:if test="${courseAdmin.courseCollection.size() > 0}">
                                 <div class="col-lg-6">
                                     <h:commandButton class="btn btn-success col-sm-6 col-xs-offset-3"  action="#{courseAdmin.deleteCourse()}" value="Eliminar"/>
                                 </div>
+                                </c:if>
                                 <div class="col-lg-6">
                                     <h:link class="btn btn-success col-sm-6 col-xs-offset-3"   value="Regresar" outcome="admin.xhtml"/>
                                 </div>                            
