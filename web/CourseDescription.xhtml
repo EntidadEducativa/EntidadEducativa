@@ -11,7 +11,7 @@ and open the template in the editor.
     <h:head>
         <meta content='text/html;charset=UTF-8' http-equiv='Content-type'/>
         <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
-        <title>English Level 5</title>
+        <title>CourseDescription</title>
         <meta name="description" content="Ingles nivel 5" />
         <link href="https://d1tijy5l7mg5kk.cloudfront.net/assets/application-0368aa8f0ebaf958e2da64c3997cee8a.css" media="screen" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,300" media="screen" rel="stylesheet" type="text/css" />
@@ -31,7 +31,7 @@ and open the template in the editor.
                             </div>
                             <div class='bucket-content'>
                                 <p class='mbxs'><a href="#" class="opf tag tag--javascript">Cursos!</a></p>
-                                <h1 class='courseBanner-title mbs ttu'>#{browserCourse.courseName}</h1>
+                                <h1 class='courseBanner-title mbs ttu'>#{browserCourse.nameCour.courseName}</h1>
                                 <h:form>
                                     <h:commandButton class="btn btn--l sentry sentry--animate sentry--animate--bounce " action="#{searchBean.addCourseList(browserCourse.nameCour)}" value="Comprar"/>
                                 </h:form>
@@ -121,7 +121,9 @@ and open the template in the editor.
             <br>
             </br>
             <div class='mbm mbl--m tac'>
-                <h:link class="btn btn--b btn--wide js-reviews-toggle " value="Voler a Buscador de cursos" outcome="courses" />
+                <h:form>
+                    <h:link class="btn btn--b btn--wide js-reviews-toggle " value="Voler a Buscador de cursos" outcome="courses.xhtml"/>
+                </h:form>
             </div>
         </div>
         </main>

@@ -7,7 +7,9 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Courses</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -37,15 +39,15 @@ and open the template in the editor.
 
                         <h1>Buscador de Cursos</h1>
                         <h:form>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <label for="exampleInputEmail1">Escriba el Nombre del Curso</label>
-                                    <h:inputText id="courseName" class="form-control" value="#{browserCourse.courseName}" required = "true" requiredMessage="Is necesary a name!" />
-                                    <h:message for="courseName" class="alert-danger"/>
-                                </div>    
-                            </div>
-                        </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label for="exampleInputEmail1">Escriba el Nombre del Curso</label>
+                                            <h:inputText id="courseNames" class="form-control" value="#{browserCourse.courseName}" required = "true" requiredMessage="Es necesario un nombre!" />
+                                            <h:message for="courseNames" class="alert-danger"/>
+                                        </div>    
+                                    </div>
+                                </div>
                         <div class="row">
                         <div class="col-lg-12">
                             <div class="col-lg-6">
