@@ -34,7 +34,7 @@ public class BrowserCourse {
     public void setNameCour(Course nameCour) {
         this.nameCour = nameCour;
     }
-    private List<Course> courseCollectionEst;
+   // private List<Course> courseCollectionEst;
     private String message;
     private String courseName;
     private String errorBrowser;
@@ -100,7 +100,7 @@ public class BrowserCourse {
         this.nameCour = nameCour;
 
     }
-    
+ /*   
     public List<Course> getCourseCollectionEst() {
         return courseCollectionEst;
     }
@@ -119,5 +119,5 @@ public class BrowserCourse {
         setCourseCollectionEst(courseManage.keepAllCourses());
         FacesContext.getCurrentInstance().getExternalContext().redirect("courses.xhtml");
     }
-
+*/
 }
