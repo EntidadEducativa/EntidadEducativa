@@ -29,9 +29,8 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class CourseAdmin {
 
-    //private Integer courseId;
+    
     private String courseName;
-    //private Date courseEndDate;
     private int courseEndDay;
     private int courseEndMonth;
     private int courseEndYear;
@@ -46,11 +45,13 @@ public class CourseAdmin {
     private ArrayList<String> selectManyCourses;
     private int indexCourseTeacher=0;
     private int indexCourse=0;
+    private Course currentCourse;
 
+    
     public CourseAdmin() {
         selectManyCourses = new ArrayList<String>();
     }
-    
+
     public String getCourseName() {
         return courseName;
     }
@@ -172,6 +173,14 @@ public class CourseAdmin {
         this.selectManyCourses = selectManyCourses;
     }
     
+    public Course getCurrentCourse() {
+        return currentCourse;
+    }
+
+    public void setCurrentCourse(Course currentCourse) {
+        this.currentCourse = currentCourse;
+    }
+    
      public void createCourse() throws IOException{
         CourseManagment manageCourse = new CourseManagment();
         
@@ -263,6 +272,11 @@ public class CourseAdmin {
         setCourseCollection(courseManage.keepAllCourses());
         FacesContext.getCurrentInstance().getExternalContext().redirect("findCourse.xhtml");
     }
+    public void findcourse( ) throws IOException{
+        currentCourse = courseCollection.get(indexCourse);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("CourseDescriptionAdmin.xhtml");
+    }
+    
 
     private void resetAttributes() {
         courseName = null;
