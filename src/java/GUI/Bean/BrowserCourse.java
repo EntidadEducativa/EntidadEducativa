@@ -5,12 +5,14 @@
  */
 package GUI.Bean;
 
+import BusinessLogic.CourseLogic.CourseManagment;
 import BusinessLogic.UserLogic.UserManagement;
 import DataAccess.Entity.Administrative;
 import DataAccess.Entity.Course;
 import DataAccess.Entity.Student;
 import DataAccess.Entity.Teacher;
 import java.io.IOException;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -32,6 +34,7 @@ public class BrowserCourse {
     public void setNameCour(Course nameCour) {
         this.nameCour = nameCour;
     }
+   // private List<Course> courseCollectionEst;
     private String message;
     private String courseName;
     private String errorBrowser;
@@ -97,5 +100,24 @@ public class BrowserCourse {
         this.nameCour = nameCour;
 
     }
+ /*   
+    public List<Course> getCourseCollectionEst() {
+        return courseCollectionEst;
+    }
 
+    public void setCourseCollectionEst(List<Course> courseCollectionEst) {
+        this.courseCollectionEst = courseCollectionEst;
+    }
+    
+    public String obteinCourseCollectionName(int index){
+        return courseCollectionEst.get(index).getCourseName();
+    }
+    
+    public void formFindCourse() throws IOException{
+        message = null;
+        CourseManagment courseManage = new CourseManagment();
+        setCourseCollectionEst(courseManage.keepAllCourses());
+        FacesContext.getCurrentInstance().getExternalContext().redirect("courses.xhtml");
+    }
+*/
 }

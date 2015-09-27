@@ -35,12 +35,16 @@ and open the template in the editor.
                     
                    <div class="tab-pane fade in active" id="tab3">
 
-                        <h1>Todos los cursos</h1>
+                        <h1>Buscador de Cursos</h1>
                         <h:form>
                         <div class="form-group">
-                                    <label for="exampleInputEmail1">Nombre del curso</label>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="exampleInputEmail1">Escriba el Nombre del Curso</label>
                                     <h:inputText id="courseName" class="form-control" value="#{browserCourse.courseName}" required = "true" requiredMessage="Is necesary a name!" />
                                     <h:message for="courseName" class="alert-danger"/>
+                                </div>    
+                            </div>
                         </div>
                         <div class="row">
                         <div class="col-lg-12">
@@ -62,4 +66,3 @@ and open the template in the editor.
       
     </h:body>
 </html>
-
