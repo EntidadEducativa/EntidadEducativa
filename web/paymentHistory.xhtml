@@ -34,7 +34,7 @@ and open the template in the editor.
                         
                         <c:if test="#{login.myPayment.size() != 0}">
                             <c:forEach items="#{login.myPayment}" var="item">
-                                <div class="row">
+                                <div class="row list-group-item list-group-item-info">
                                     <div class="col-lg-4">
                                         <h3>Id</h3>
                                         <h4>#{item.payId}</h4>

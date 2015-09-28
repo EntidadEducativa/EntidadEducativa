@@ -86,7 +86,7 @@ public class SearchBean {
     public double totalPriceCourses(){
         double total = 0;
         for (int i = 0; i < coursesList.size(); i++) {
-            total += coursesList.get(0).getCoursePrice().doubleValue();
+            total += coursesList.get(i).getCoursePrice().doubleValue();
         }
         return total;
     }

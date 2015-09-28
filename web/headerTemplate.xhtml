@@ -55,28 +55,35 @@ and open the template in the editor.
                 <div class="col-lg-12 col-sm-12">
                     
                     
-                    <div class="card hovercard">
+                        <div class="card hovercard">
                         <div class="card-background">
                             <img class="card-bkimg" alt="" src="Images/headerProfile.png"/>
                             <!-- http://lorempixel.com/850/280/people/9/ -->
                         </div>
-                        <div class="useravatar">
-                            <img alt="" src="Images/pencil.png"/>
-                        </div>
+                        
 
 
 
                         <c:if test="#{login.currentStu!=null}">
+                            <div class="useravatar">
+                            <img alt="" src="Images/pencil.png"/>
+                            </div>
                             <div class="card-info"> <span class="card-title">#{login.currentStu.estName} #{createAccount.login.currentStu.estLastName}</span>
                             </div>
 
                         </c:if>
                         <c:if test="#{login.currentTea!=null}">
+                            <div class="useravatar">
+                                <img alt="" src="Images/globe.svg"/>
+                            </div>
                             <div class="card-info"> <span class="card-title">#{login.currentTea.teachName} #{createAccount.login.currentTea.teachLastName}</span>
                             </div>
                         </c:if>
 
                         <c:if test="#{login.currentAdm!=null}">
+                            <div class="useravatar">
+                                <img alt="" src="Images/appleSchool.svg"/>
+                        </div>
                             <div class="card-info"> <span class="card-title">#{login.currentAdm.admName} #{createAccount.login.currentAdm.admLastName}</span>
                             </div>
                         </c:if>

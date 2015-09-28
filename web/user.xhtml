@@ -39,7 +39,7 @@ and open the template in the editor.
                             <div class="col-md-6">
                                 <h3>Informacion del perfil</h3>
                                 <h4>Nombre:#{login.currentStu.estName} #{createAccount.login.currentStu.estLastName}</h4>
-                                <h4>Rol: #{login.currentStu.estRoll}</h4>
+                                <h4>Rol: ESTUDIANTE</h4>
                                 <h4>Telefono: #{login.currentStu.estTelephone}</h4>
                                 <h4>Documento: #{login.currentStu.estDocument}</h4>
                                 <h4>email: #{login.currentStu.estEmail}</h4>
@@ -50,8 +50,7 @@ and open the template in the editor.
                             </div>
                             <h:form>
                                
-                                <h:commandButton   
-                                    action="#{createAccount.login.logout()}" value="Logout"/>
+                                <h:commandButton class="btn btn-danger" action="#{createAccount.login.logout()}" value="Logout"/>
 
                             </h:form>
                         </div>
@@ -62,7 +61,7 @@ and open the template in the editor.
                             <div class="col-md-6">
                                 <h3>Informacion del perfil</h3>
                                 <h4>Nombre:#{login.currentTea.teachName} #{createAccount.login.currentTea.teachLastName}</h4>
-                                <h4>Rol: #{login.currentTea.teachRoll}</h4>
+                                <h4>Rol: PROFESOR</h4>
                                 <h4>Telefono: #{login.currentTea.teachTelephone}</h4>
                                 <h4>Documento: #{login.currentTea.teachDocument}</h4>
                                 <h4>email: #{login.currentTea.teachEmail}</h4>
@@ -73,8 +72,7 @@ and open the template in the editor.
                             </div>
                             <h:form>
 
-                                <h:commandButton   
-                                    action="#{createAccount.login.logout()}" value="Logout"/>
+                                <h:commandButton class="btn btn-danger" action="#{createAccount.login.logout()}" value="Logout"/>
 
                             </h:form>
                         </div>
@@ -85,7 +83,7 @@ and open the template in the editor.
                             <div class="col-md-6">
                                 <h3>Informacion del perfil</h3>
                                 <h4>Nombre:#{login.currentAdm.admName} #{createAccount.login.currentAdm.admLastName}</h4>
-                                <h4>Rol: #{login.currentAdm.admRoll}</h4>
+                                <h4>Rol: ADMINISTRATIVO</h4>
                                 <h4>Telefono: #{login.currentAdm.admTelephone}</h4>
                                 <h4>Documento: #{login.currentAdm.admDocument}</h4>
                                 <h4>email: #{login.currentAdm.admEmail}</h4>
@@ -96,8 +94,7 @@ and open the template in the editor.
                             </div>
                             <h:form>
 
-                                <h:commandButton   
-                                    action="#{createAccount.login.logout()}" value="Logout"/>
+                                <h:commandButton class="btn btn-danger" action="#{createAccount.login.logout()}" value="Logout"/>
 
                             </h:form>
                         </div>

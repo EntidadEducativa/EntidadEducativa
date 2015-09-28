@@ -20,7 +20,14 @@ and open the template in the editor.
         <script type='text/javascript' src='js/jquery.min.js'></script>
         <script type='text/javascript' src='js/jquery.particleground.js'></script>
         <script type='text/javascript' src='js/demo.js'></script>
-
+        <script>
+        printDivCSS = new String ('<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>');
+        function printDiv(divId) {
+            window.frames["print_frame"].document.body.innerHTML=printDivCSS + document.getElementById(divId).innerHTML;
+            window.frames["print_frame"].window.focus();
+            window.frames["print_frame"].window.print();
+        };
+        </script>
 
     </head>
     <body>
@@ -41,7 +48,9 @@ and open the template in the editor.
                                     <h3>No ha seleccionado ningun curso.</h3>
                                 </c:if>
                                 </c:if>
+                            
                             <c:if test="#{searchBean.coursesList.size() > 0}">
+                                <div id="bill">
                                 <c:forEach items="#{searchBean.coursesList}" var="item">
                                     <div class="thumbnail">
                                         <div class="caption-full">    
@@ -57,33 +66,29 @@ and open the template in the editor.
                                     <p>Total a pagar: #{searchBean.totalPriceCourses()}</p>
                                    
                                 </div>
+                            </div>
 
                        <h:form>          
                        <div class="row">
-                        <div class="col-lg-12">
                             <div class="col-lg-6">
-                                <Button class="btn btn-success col-sm-3 col-xs-offset-5" onclick="javascript:window.print()">Generar recibo</Button>
+                                <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
+                                <Button class="btn btn-success col-sm-3 col-xs-offset-5" onclick="javascript:printDiv('bill')">Generar recibo</Button>
                             </div>
                             <div class="col-lg-6">
                                 <h:commandButton class="btn btn-success col-sm-3 col-xs-offset-5" action="#{searchBean.setDonePayment(true)}" value="Pagar"/>
-                              
                             </div>
                         </div>
-                    </div>
-                            </h:form>
+                        
+                        </h:form>
                                 
-                                
-                                
-
-                            </c:if>
+                        </c:if>
+                        </div>
                         </div>
                     </div>
 
                 </div>
             </div>
-        </div>
-        
-       
+               
         
     </body>
 </html>

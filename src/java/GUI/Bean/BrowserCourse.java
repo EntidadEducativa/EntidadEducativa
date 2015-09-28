@@ -109,7 +109,7 @@ public class BrowserCourse {
         resultCourse.clear();
         
         for(Course x:courseCollectionEst){
-            if(x.getCourseName().contains(courseName)){
+            if(x.getCourseName().toLowerCase().contains(courseName.toLowerCase())){
                 resultCourse.add(x);
             }
         }
