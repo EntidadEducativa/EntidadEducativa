@@ -197,13 +197,13 @@ public class Login {
         dualStuAdm=false;
         dualStuTea=false;
         
-        
         UserManagement manageAccount = new UserManagement();
         AdminManagement manageAdmin = new AdminManagement();
-
-        Teacher userT = manageAccount.findTeacher(userName, password);
+        
+        if (roll.equals("teacher")){
+            Teacher userT = manageAccount.findTeacher(userName, password);
         setMyPayment(manageAccount.mypayments(manageAccount.findStudent(userName, password)));
-        if (userT != null) {
+         if (userT != null) {
             dualStuTea=true;
             userTea = userT;
             userStu = null;
@@ -211,7 +211,56 @@ public class Login {
             userAdmin = null;
             setMyCoursesT(manageAccount.myCourseT(userT));
             
+        }
+        }
+        else if(roll.equals("administrative")){
+            Administrative userAe = manageAccount.findAdministrative(userName, password);
+            if (userAe != null) {
+                dualStuAdm =true;
+                userTea = null;
+                userStu = null;
+                userAdm = userAe;
+                userAdmin = null;
+            }
+        }
+        else if(roll.equals("student")){
+            Student userS = manageAccount.findStudent(userName, password);
+                
+
+                if (userS != null) {
+                    userStu = userS;
+                    userTea = null;
+                    userAdm = null;
+                    userAdmin = null;         
+                }
+
+                
+        }
+        else if(roll.equals("administrator")){
+            Administrator userAr = manageAdmin.findAdmin(userName, password);
+            if (userAr != null) {
+                    userAdmin = userAr;
+                    userTea = null;
+                    userStu = null;
+                    userAdm = null;
+                      message = "login exitoso";
+                FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
+            
+                }
+        }
+        if (!isLoggedIn()) {
+            message = "usuario o contraseÃ±a incorrectos";
         } else {
+            if (userAdmin==null) {
+                message = "login exitoso";
+                FacesContext.getCurrentInstance().getExternalContext().redirect("user.xhtml");
+            
+        }
+        errorLogin = null;
+        }
+        
+
+        /* else {
             Administrative userAe = manageAccount.findAdministrative(userName, password);
             if (userAe != null) {
                 dualStuAdm =true;
@@ -254,7 +303,7 @@ public class Login {
         }
         errorLogin = null;
 
-    }}
+    }*/}
 
     public Boolean getDualStuAdm() {
         return dualStuAdm;
