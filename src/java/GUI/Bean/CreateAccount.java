@@ -8,6 +8,7 @@ package GUI.Bean;
 import BusinessLogic.AdminLogic.AdminManagement;
 import BusinessLogic.UserLogic.UserManagement;
 import java.io.IOException;
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
@@ -19,7 +20,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @ViewScoped
-public class CreateAccount {
+public class CreateAccount implements Serializable{
     
     
     @ManagedProperty("#{login}")

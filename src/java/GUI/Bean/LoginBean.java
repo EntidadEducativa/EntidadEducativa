@@ -14,6 +14,7 @@ import DataAccess.Entity.Payment;
 import DataAccess.Entity.Student;
 import DataAccess.Entity.Teacher;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -25,7 +26,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @SessionScoped
-public class LoginBean {
+public class LoginBean implements Serializable{
 
     private Student userStu;
     private Teacher userTea;

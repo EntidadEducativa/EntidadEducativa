@@ -12,6 +12,7 @@ import DataAccess.Entity.Course;
 import DataAccess.Entity.Payment;
 import GUI.Bean.BrowserCourse;
 import java.io.IOException;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @RequestScoped
-public class SearchBean {
+public class SearchBean implements Serializable {
     //@ManagedProperty("#{BrowserCourse}")
     //private BrowserCourse browserCourse;
     @ManagedProperty("#{login}")

@@ -10,6 +10,7 @@ import BusinessLogic.CourseLogic.CourseManagment;
 import DataAccess.Entity.Course;
 import DataAccess.Entity.Teacher;
 import java.io.IOException;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.AbstractList;
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @SessionScoped
-public class CourseAdminBean {
+public class CourseAdminBean implements Serializable {
 
     
     private String courseName;

@@ -12,6 +12,7 @@ import DataAccess.Entity.Course;
 import DataAccess.Entity.Student;
 import DataAccess.Entity.Teacher;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -24,7 +25,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @SessionScoped
-public class BrowserCourse {
+public class BrowserCourse implements Serializable {
 
     private Course nameCour;
 
