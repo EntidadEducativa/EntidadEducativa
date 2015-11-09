@@ -67,5 +67,18 @@ public class StudentDAO {
         }
 
     }
+    
+    public List<Student> findByBenefit() {
+        em.getTransaction().begin();
+        List<Student> stuList = null;
+
+        //createQuery("select s from Student s WHERE s.est_username LIKE :custUser", Student.class).setParameter("custUser", username).getResultList();
+        stuList = (List<Student>) em.createNamedQuery("Student.findByEstBenefit").setParameter("estBenefit", "yes").getResultList();
+        em.close();
+
+        return stuList;
+        
+
+    }
 
 }

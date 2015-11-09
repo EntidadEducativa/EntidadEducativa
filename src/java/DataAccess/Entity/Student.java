@@ -6,22 +6,18 @@
 package DataAccess.Entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -43,7 +39,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Student.findByEstAddress", query = "SELECT s FROM Student s WHERE s.estAddress = :estAddress"),
     @NamedQuery(name = "Student.findByEstAge", query = "SELECT s FROM Student s WHERE s.estAge = :estAge"),
     @NamedQuery(name = "Student.findByEstGender", query = "SELECT s FROM Student s WHERE s.estGender = :estGender"),
-    @NamedQuery(name = "Student.findByEstRoll", query = "SELECT s FROM Student s WHERE s.estRoll = :estRoll")})
+    @NamedQuery(name = "Student.findByEstRoll", query = "SELECT s FROM Student s WHERE s.estRoll = :estRoll"),
+    @NamedQuery(name = "Student.findByEstBenefit", query = "SELECT s FROM Student s WHERE s.estBenefit = :estBenefit")})
 public class Student implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -99,12 +96,9 @@ public class Student implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "est_roll")
     private String estRoll;
-    @ManyToMany(mappedBy = "studentCollection")
-    private Collection<Course> courseCollection;
-    @ManyToMany(mappedBy = "studentCollection")
-    private Collection<Administrator> administratorCollection;
-    @OneToMany(mappedBy = "sTUDENTestid")
-    private Collection<Payment> paymentCollection;
+    @Size(max = 10)
+    @Column(name = "est_benefit")
+    private String estBenefit;
 
     public Student() {
     }
@@ -222,31 +216,12 @@ public class Student implements Serializable {
         this.estRoll = estRoll;
     }
 
-    @XmlTransient
-    public Collection<Course> getCourseCollection() {
-        return courseCollection;
+    public String getEstBenefit() {
+        return estBenefit;
     }
 
-    public void setCourseCollection(Collection<Course> courseCollection) {
-        this.courseCollection = courseCollection;
-    }
-
-    @XmlTransient
-    public Collection<Administrator> getAdministratorCollection() {
-        return administratorCollection;
-    }
-
-    public void setAdministratorCollection(Collection<Administrator> administratorCollection) {
-        this.administratorCollection = administratorCollection;
-    }
-
-    @XmlTransient
-    public Collection<Payment> getPaymentCollection() {
-        return paymentCollection;
-    }
-
-    public void setPaymentCollection(Collection<Payment> paymentCollection) {
-        this.paymentCollection = paymentCollection;
+    public void setEstBenefit(String estBenefit) {
+        this.estBenefit = estBenefit;
     }
 
     @Override
