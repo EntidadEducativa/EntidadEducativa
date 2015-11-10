@@ -12,6 +12,7 @@ import DataAccess.Entity.Administrator;
 import DataAccess.Entity.Student;
 import DataAccess.Entity.Teacher;
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  *
@@ -48,6 +49,8 @@ public class AdminManagement {
             account.setTeachGender(gender);
             account.setTeachRoll("teacher");
             
+
+            
             account.setTeachProfile("LOL");
             account.setTeachSalary(BigDecimal.valueOf(500000));
             
@@ -66,6 +69,7 @@ public class AdminManagement {
             accountS.setEstAge(age);
             accountS.setEstGender(gender);
             accountS.setEstRoll("student");
+            accountS.setEstBenefit("no");
 
 
 
@@ -84,6 +88,23 @@ public class AdminManagement {
             return "error: Este documento ya existe";
     }
             return "error: El username ya ha sido usado";
+    }
+
+    public List<Student> keepAllStudents() {
+        StudentDAO stuDAO = new StudentDAO();
+        return stuDAO.findByNotBenefit();
+    }
+
+    public void saveStudents(List<String> studentCollection) {
+        StudentDAO stuDAO = new StudentDAO();
+        Student s;
+        for (String x : studentCollection) {
+            stuDAO = new StudentDAO();
+            s = stuDAO.findByUsername(x);
+            s.setEstBenefit("yes");
+            stuDAO = new StudentDAO();
+            stuDAO.updateStudent(s);
+        }
     }
     
 }

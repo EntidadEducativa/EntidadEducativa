@@ -6,25 +6,29 @@
 package DataAccess.Entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author sergioalejandrodiazpinilla
+ * @author Miguel
  */
 @Entity
-@Table(name = "STUDENT")
+@Table(name = "student")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Student.findAll", query = "SELECT s FROM Student s"),
@@ -99,6 +103,12 @@ public class Student implements Serializable {
     @Size(max = 10)
     @Column(name = "est_benefit")
     private String estBenefit;
+    @ManyToMany(mappedBy = "studentCollection")
+    private Collection<Administrator> administratorCollection;
+    @ManyToMany(mappedBy = "studentCollection")
+    private Collection<Course> courseCollection;
+    @OneToMany(mappedBy = "sTUDENTestid")
+    private Collection<Payment> paymentCollection;
 
     public Student() {
     }
@@ -222,6 +232,33 @@ public class Student implements Serializable {
 
     public void setEstBenefit(String estBenefit) {
         this.estBenefit = estBenefit;
+    }
+
+    @XmlTransient
+    public Collection<Administrator> getAdministratorCollection() {
+        return administratorCollection;
+    }
+
+    public void setAdministratorCollection(Collection<Administrator> administratorCollection) {
+        this.administratorCollection = administratorCollection;
+    }
+
+    @XmlTransient
+    public Collection<Course> getCourseCollection() {
+        return courseCollection;
+    }
+
+    public void setCourseCollection(Collection<Course> courseCollection) {
+        this.courseCollection = courseCollection;
+    }
+
+    @XmlTransient
+    public Collection<Payment> getPaymentCollection() {
+        return paymentCollection;
+    }
+
+    public void setPaymentCollection(Collection<Payment> paymentCollection) {
+        this.paymentCollection = paymentCollection;
     }
 
     @Override

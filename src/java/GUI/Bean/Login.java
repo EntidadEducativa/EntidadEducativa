@@ -42,9 +42,8 @@ public class Login implements Serializable{
     private List<Payment> myPayment;
     private List<Course> myCoursesT;
     private long sessionCounter;
-    
-    
-    
+    private List<Student> studentCollection;
+    private List<String> selectManyStudents;
 
     public Login() {
 
@@ -106,6 +105,22 @@ public class Login implements Serializable{
         this.errorLogin = errorLogin;
     }
 
+    public List<Student> getStudentCollection() {
+        return studentCollection;
+    }
+
+    public void setStudentCollection(List<Student> studentCollection) {
+        this.studentCollection = studentCollection;
+    }
+    
+    public List<String> getSelectManyStudents() {
+        return selectManyStudents;
+    }
+
+    public void setSelectManyStudents(List<String> selectManyStudents) {
+        this.selectManyStudents = selectManyStudents;
+    }
+    
     public void logout() throws IOException {
         userStu = null;
         userTea = null;
@@ -256,11 +271,14 @@ public class Login implements Serializable{
                     userTea = null;
                     userStu = null;
                     userAdm = null;
-                      message = "login exitoso";
+                    message = "login exitoso";
+                
+                setStudentCollection(manageAdmin.keepAllStudents());
                 FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
             
                 }
         }
+        
         if (!isLoggedIn()) {
             message = "usuario o contraseÃ±a incorrectos";
         } else {
@@ -342,6 +360,14 @@ public class Login implements Serializable{
         }
     }
     
+    public void saveBenefits() throws IOException{
+        AdminManagement am = new AdminManagement();
+        AdminManagement manageAdmin = new AdminManagement();
+
+        am.saveStudents(selectManyStudents);
+        setStudentCollection(manageAdmin.keepAllStudents());
+        FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
+    }
 
     public List<Payment> getMyPayment() {
         return myPayment;

@@ -31,10 +31,10 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author sergioalejandrodiazpinilla
+ * @author Miguel
  */
 @Entity
-@Table(name = "COURSE")
+@Table(name = "course")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Course.findAll", query = "SELECT c FROM Course c"),
@@ -43,8 +43,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Course.findByCourseStartDate", query = "SELECT c FROM Course c WHERE c.courseStartDate = :courseStartDate"),
     @NamedQuery(name = "Course.findByCourseEndDate", query = "SELECT c FROM Course c WHERE c.courseEndDate = :courseEndDate"),
     @NamedQuery(name = "Course.findByCourseSchedule", query = "SELECT c FROM Course c WHERE c.courseSchedule = :courseSchedule"),
-    @NamedQuery(name = "Course.findByCoursePrice", query = "SELECT c FROM Course c WHERE c.coursePrice = :coursePrice"),
-    @NamedQuery(name = "Course.findByteachEstId", query = "SELECT c FROM Course c WHERE c.tEACHERteachestid = :teachEstId")})
+    @NamedQuery(name = "Course.findByCoursePrice", query = "SELECT c FROM Course c WHERE c.coursePrice = :coursePrice")})
 public class Course implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -75,19 +74,19 @@ public class Course implements Serializable {
     private BigDecimal coursePrice;
     @ManyToMany(mappedBy = "courseCollection")
     private Collection<Administrator> administratorCollection;
-    @JoinTable(name = "PAYMENT_has_COURSE", joinColumns = {
-        @JoinColumn(name = "COURSE_course_id", referencedColumnName = "course_id")}, inverseJoinColumns = {
-        @JoinColumn(name = "PAYMENT_pay_id", referencedColumnName = "pay_id")})
-    @ManyToMany
-    private Collection<Payment> paymentCollection;
-    @JoinTable(name = "STUDENT_has_COURSE", joinColumns = {
+    @JoinTable(name = "student_has_course", joinColumns = {
         @JoinColumn(name = "COURSE_course_id", referencedColumnName = "course_id")}, inverseJoinColumns = {
         @JoinColumn(name = "STUDENT_est_id", referencedColumnName = "est_id")})
     @ManyToMany
     private Collection<Student> studentCollection;
+    @JoinTable(name = "payment_has_course", joinColumns = {
+        @JoinColumn(name = "COURSE_course_id", referencedColumnName = "course_id")}, inverseJoinColumns = {
+        @JoinColumn(name = "PAYMENT_pay_id", referencedColumnName = "pay_id")})
+    @ManyToMany
+    private Collection<Payment> paymentCollection;
     @ManyToMany(mappedBy = "courseCollection")
     private Collection<Administrative> administrativeCollection;
-    @JoinTable(name = "TEACHER_has_COURSE", joinColumns = {
+    @JoinTable(name = "teacher_has_course", joinColumns = {
         @JoinColumn(name = "COURSE_course_id", referencedColumnName = "course_id")}, inverseJoinColumns = {
         @JoinColumn(name = "TEACHER_teach_est_id", referencedColumnName = "teach_est_id")})
     @ManyToMany
@@ -168,21 +167,21 @@ public class Course implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Payment> getPaymentCollection() {
-        return paymentCollection;
-    }
-
-    public void setPaymentCollection(Collection<Payment> paymentCollection) {
-        this.paymentCollection = paymentCollection;
-    }
-
-    @XmlTransient
     public Collection<Student> getStudentCollection() {
         return studentCollection;
     }
 
     public void setStudentCollection(Collection<Student> studentCollection) {
         this.studentCollection = studentCollection;
+    }
+
+    @XmlTransient
+    public Collection<Payment> getPaymentCollection() {
+        return paymentCollection;
+    }
+
+    public void setPaymentCollection(Collection<Payment> paymentCollection) {
+        this.paymentCollection = paymentCollection;
     }
 
     @XmlTransient

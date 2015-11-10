@@ -26,10 +26,10 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author sergioalejandrodiazpinilla
+ * @author Miguel
  */
 @Entity
-@Table(name = "TEACHER")
+@Table(name = "teacher")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Teacher.findAll", query = "SELECT t FROM Teacher t"),
@@ -117,9 +117,9 @@ public class Teacher implements Serializable {
     @ManyToMany(mappedBy = "teacherCollection")
     private Collection<Course> courseCollection;
     @OneToMany(mappedBy = "tEACHERteachestid")
-    private Collection<Payment> paymentCollection;
-    @OneToMany(mappedBy = "tEACHERteachestid")
     private Collection<Course> courseCollection1;
+    @OneToMany(mappedBy = "tEACHERteachestid")
+    private Collection<Payment> paymentCollection;
 
     public Teacher() {
     }
@@ -274,21 +274,21 @@ public class Teacher implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Payment> getPaymentCollection() {
-        return paymentCollection;
-    }
-
-    public void setPaymentCollection(Collection<Payment> paymentCollection) {
-        this.paymentCollection = paymentCollection;
-    }
-
-    @XmlTransient
     public Collection<Course> getCourseCollection1() {
         return courseCollection1;
     }
 
     public void setCourseCollection1(Collection<Course> courseCollection1) {
         this.courseCollection1 = courseCollection1;
+    }
+
+    @XmlTransient
+    public Collection<Payment> getPaymentCollection() {
+        return paymentCollection;
+    }
+
+    public void setPaymentCollection(Collection<Payment> paymentCollection) {
+        this.paymentCollection = paymentCollection;
     }
 
     @Override

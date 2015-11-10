@@ -40,8 +40,7 @@ public class UserManagement {
             account.setEstAge(age);
             account.setEstGender(gender);
             account.setEstRoll(roll);
-
-
+            account.setEstBenefit("no");
 
             StudentDAO accountDAO = new StudentDAO();
             Student accountE = accountDAO.persist(account);
@@ -83,6 +82,7 @@ public class UserManagement {
             accountS.setEstAge(age);
             accountS.setEstGender(gender);
             accountS.setEstRoll("student");
+            accountS.setEstBenefit("no");
 
 
 
