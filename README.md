@@ -1,2 +1,2 @@
 # EntidadEducativa
-Entidad Educativa Universidad Nacional de Colombia
+Entidad Educativa -Arquitectura de software -Universidad Nacional de Colombia
