@@ -23,7 +23,7 @@ public class BestStudents {
      * This is a sample web service operation
      */
     @WebMethod(operationName = "getBestStudents")
-    public List<Student> getBestStudents() {
+    public ListStudents getBestStudents(int i) {
         AdminManagement afmM = new AdminManagement();
         return afmM.getBestStudents();
     }

@@ -11,6 +11,7 @@ import DataAccess.DAO.TeacherDAO;
 import DataAccess.Entity.Administrator;
 import DataAccess.Entity.Student;
 import DataAccess.Entity.Teacher;
+import WebServices.ListStudents;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -28,10 +29,12 @@ public class AdminManagement {
         
     }
     
-    public List<Student> getBestStudents(){
+    public ListStudents getBestStudents(){
         StudentDAO stuDAO = new StudentDAO();
         List<Student> benefitStudents = (List<Student>)stuDAO.findByBenefit();
-        return benefitStudents;
+        ListStudents students = new ListStudents();
+        students.students = benefitStudents;
+        return students;
     }
    
     public String createTeacher (String name,long document,String userName, String lastName ,String password ,String email, long telephone,String addres,int age,String gender,String roll,String profile,long payment){
