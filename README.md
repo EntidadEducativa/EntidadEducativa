@@ -1,2 +1,2 @@
 # EntidadEducativa
-LOL
+Entidad Educativa Universidad Nacional de Colombia
