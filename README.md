@@ -1,2 +1,2 @@
 # EntidadEducativa
-LOL
+Entidad Educativa -Arquitectura de software -Universidad Nacional de Colombia
