@@ -5,6 +5,7 @@
  */
 package GUI.Bean;
 
+import AGE.Rob;
 import BusinessLogic.AdminLogic.AdminManagement;
 import BusinessLogic.UserLogic.UserManagement;
 import DataAccess.Entity.Administrative;
@@ -182,6 +183,20 @@ public class Login implements Serializable{
     public void setCurrentAdmin(Administrator userAdmin) {
         this.userAdmin = userAdmin;
     }
+    
+    public void holaTRIPLE(){
+        UserManagement um = new UserManagement();
+        System.out.println("HOLA");
+        Rob holalll = um.holaMaldito(userStu.getEstEmail(), userStu.getEstPassword());
+        System.out.println("HOLA");
+        if(holalll.isSuccess()){
+            message =holalll.getData();
+        }else{
+            message = holalll.getErrMessage();
+        }
+        System.out.println(message);
+    }
+    
     public void changeLoginAdm() throws IOException{
         if(dualStuAdm==true){
             if(userAdm!=null){

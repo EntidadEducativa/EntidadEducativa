@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="EntidadESB" targetNamespace="http://j2ee.netbeans.org/wsdl/BusArq/src/EntidadESB" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://Service.BusinessLogic/" xmlns:tns="http://j2ee.netbeans.org/wsdl/BusArq/src/EntidadESB" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <xsd:schema targetNamespace="http://j2ee.netbeans.org/wsdl/BusArq/src/EntidadESB">
+            <xsd:import namespace="http://Service.BusinessLogic/" schemaLocation="http://192.168.43.181:8080/AgenciaViajes/MakeTransactionWS?xsd=1"/>
+        </xsd:schema>
+  </types>
+  <message name="EntidadESBOperationResponse">
+    <part name="rob" type="ns:rob">
+    </part>
+  </message>
+  <message name="EntidadESBOperationRequest">
+    <part name="email" type="xsd:string">
+    </part>
+    <part name="password" type="xsd:string">
+    </part>
+    <part name="planId" type="xsd:long">
+    </part>
+  </message>
+  <portType name="EntidadESBPortType">
+    <operation name="EntidadESBOperation">
+      <input name="input1" message="tns:EntidadESBOperationRequest">
+    </input>
+      <output name="output1" message="tns:EntidadESBOperationResponse">
+    </output>
+    </operation>
+  </portType>
+  <binding name="EntidadESBBinding" type="tns:EntidadESBPortType">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="EntidadESBOperation">
+      <soap:operation/>
+      <input name="input1">
+        <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/BusArq/src/EntidadESB"/>
+      </input>
+      <output name="output1">
+        <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/BusArq/src/EntidadESB"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="EntidadESBService">
+    <port name="EntidadESBPort" binding="tns:EntidadESBBinding">
+      <soap:address location="http://nodo1:9100/EntidadESBService/EntidadESBPort"/>
+    </port>
+  </service>
+    <plnk:partnerLinkType name="EntidadESB">
+        <!-- A partner link type is automatically generated when a new port type is added. Partner link types are used by BPEL processes. 
+In a BPEL process, a partner link represents the interaction between the BPEL process and a partner service. Each partner link is associated with a partner link type.
+A partner link type characterizes the conversational relationship between two services. The partner link type can have one or two roles.-->
+        <plnk:role name="EntidadESBPortTypeRole" portType="tns:EntidadESBPortType"/>
+    </plnk:partnerLinkType>
+</definitions>

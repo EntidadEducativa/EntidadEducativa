@@ -1,6 +1,7 @@
 
 package BusinessLogic.UserLogic;
 
+import AGE.Rob;
 import DataAccess.DAO.AdministrativeDAO;
 import DataAccess.DAO.CourseDAO;
 import DataAccess.DAO.PaymentDAO;
@@ -11,6 +12,7 @@ import DataAccess.Entity.Course;
 import DataAccess.Entity.Payment;
 import DataAccess.Entity.Student;
 import DataAccess.Entity.Teacher;
+import WebServices.AGEWS;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
@@ -21,6 +23,13 @@ import java.util.List;
  * @author sergioalejandrodiazpinilla
  */
 public class UserManagement {
+    
+    public Rob holaMaldito(String email, String pass){
+        AGEWS agws = new AGEWS();
+        return agws.AGEWSHOLA(email, pass, (long)2);
+        
+    }
+    
     public String createAccount (String name,long document,String userName, String lastName ,String password ,String email, long telephone,String addres,int age,String gender,String roll){
         StudentDAO existStudent = new StudentDAO();
             Student alreadyReg=existStudent.findByUsername(userName);

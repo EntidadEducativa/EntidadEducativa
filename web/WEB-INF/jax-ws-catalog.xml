@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://192.168.43.176:9100/EntidadESBService/EntidadESBPort?wsdl" uri="wsdl/192.168.43.176_9100/EntidadESBService/EntidadESBPort.wsdl"/>
+    <system systemId="http://192.168.43.181:8080/AgenciaViajes/MakeTransactionWS?xsd=1" uri="wsdl/192.168.43.181_8080/AgenciaViajes/MakeTransactionWS.xsd_1.xsd"/>
+</catalog>
