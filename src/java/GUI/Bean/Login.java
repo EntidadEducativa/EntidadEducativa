@@ -7,6 +7,7 @@ package GUI.Bean;
 
 import AGE.Rob;
 import BusinessLogic.AdminLogic.AdminManagement;
+import BusinessLogic.UserLogic.LoginLDAP;
 import BusinessLogic.UserLogic.UserManagement;
 import DataAccess.Entity.Administrative;
 import DataAccess.Entity.Administrator;
@@ -242,6 +243,12 @@ public class Login implements Serializable{
         
         UserManagement manageAccount = new UserManagement();
         AdminManagement manageAdmin = new AdminManagement();
+        LoginLDAP l = new LoginLDAP();
+        //Si existe en el ldap
+       
+        message = l.login(userName, password, roll);
+        if(message.equals("Login exitoso")){
+            System.out.println("paso el ldap");
         
         if (roll.equals("teacher")){
             Teacher userT = manageAccount.findTeacher(userName, password);
@@ -286,14 +293,12 @@ public class Login implements Serializable{
                     userTea = null;
                     userStu = null;
                     userAdm = null;
-                    message = "login exitoso";
-                
+                      message = "login exitoso";
                 setStudentCollection(manageAdmin.keepAllStudents());
                 FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
             
                 }
         }
-        
         if (!isLoggedIn()) {
             message = "usuario o contraseÃ±a incorrectos";
         } else {
@@ -350,6 +355,13 @@ public class Login implements Serializable{
         errorLogin = null;
 
     }*/}
+        else{
+        userName = null;
+        password = null;
+        roll = null;
+        }
+
+    }
 
     public Boolean getDualStuAdm() {
         return dualStuAdm;
