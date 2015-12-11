@@ -13,9 +13,12 @@ import DataAccess.Entity.Payment;
 import DataAccess.Entity.Student;
 import DataAccess.Entity.Teacher;
 import WebServices.AGEWS;
+import com.novell.ldap.LDAPException;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -26,14 +29,15 @@ public class UserManagement {
     
     public Rob holaMaldito(String email, String pass){
         AGEWS agws = new AGEWS();
-        return agws.AGEWSHOLA(email, pass, (long)2);
+        return agws.AGEWSHOLA(email, pass, (long)1);
         
     }
     
     public String createAccount (String name,long document,String userName, String lastName ,String password ,String email, long telephone,String addres,int age,String gender,String roll){
         StudentDAO existStudent = new StudentDAO();
+        LoginLDAP lp = new LoginLDAP();
             Student alreadyReg=existStudent.findByUsername(userName);
-            if(alreadyReg==null){
+        if(alreadyReg==null){
         if(roll.equals("student")){
             Student account = new Student();
             account.setEstDocument(document);
@@ -50,7 +54,14 @@ public class UserManagement {
             account.setEstGender(gender);
             account.setEstRoll(roll);
             account.setEstBenefit("no");
-
+            
+            try {
+                lp.addUserLDAP(userName, password);
+            } catch (Exception e) {
+                return "error: Creacion LDAP";
+            }
+            
+            
             StudentDAO accountDAO = new StudentDAO();
             Student accountE = accountDAO.persist(account);
             if(accountE == account){
@@ -97,7 +108,11 @@ public class UserManagement {
 
             StudentDAO accountSDAO = new StudentDAO();
             Student accountSE = accountSDAO.persist(accountS);
-            
+            try {
+                lp.addUserLDAP(userName, password);
+            } catch (LDAPException ex) {
+                return "error:  error LDAP";
+            }
             if(accountS==accountSE){
             
             

@@ -5,8 +5,10 @@
  */
 package GUI.Bean;
 
-import BusinessLogic.AdminLogic.AdminManagement;
+import BusinessLogic.UserLogic.AdminManagement;
+import BusinessLogic.UserLogic.LoginLDAP;
 import BusinessLogic.UserLogic.UserManagement;
+import com.novell.ldap.LDAPException;
 import java.io.IOException;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
@@ -204,7 +206,7 @@ public class CreateAccount implements Serializable{
 
     public void createTeacher() throws IOException{
         AdminManagement manageAccount = new AdminManagement();
-        manageAccount.createTeacher(name, document, userName, lastName, password, email, telephone, addres, age, gender, roll, profile, payment);
+        message = manageAccount.createTeacher(name, document, userName, lastName, password, email, telephone, addres, age, gender, roll, profile, payment);  
         FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
     }
     

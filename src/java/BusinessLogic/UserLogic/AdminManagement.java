@@ -12,8 +12,11 @@ import DataAccess.Entity.Administrator;
 import DataAccess.Entity.Student;
 import DataAccess.Entity.Teacher;
 import WebServices.ListStudents;
+import com.novell.ldap.LDAPException;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -40,8 +43,9 @@ public class AdminManagement {
     public String createTeacher (String name,long document,String userName, String lastName ,String password ,String email, long telephone,String addres,int age,String gender,String roll,String profile,long payment){
             StudentDAO existStudent = new StudentDAO();
             Student alreadyReg=existStudent.findByUsername(userName);
+            LoginLDAP lp = new LoginLDAP();
             if(alreadyReg==null){
-        Teacher account = new Teacher();
+            Teacher account = new Teacher();
             
             account.setTeachDocument(document);
             account.setTeachUsername(userName);
@@ -77,8 +81,13 @@ public class AdminManagement {
             accountS.setEstGender(gender);
             accountS.setEstRoll("student");
 
-
-
+            try {
+                    lp.addUserLDAP(userName, password);
+                    System.out.println("HOLA LDAP adentro ---------------------------------------------------");
+            }catch (LDAPException ex){
+                    System.out.println("ERROR LDAP");
+            }
+            
             StudentDAO accountSDAO = new StudentDAO();
             Student accountSE = accountSDAO.persist(accountS);
             if(accountS==accountSE){
@@ -87,6 +96,7 @@ public class AdminManagement {
             TeacherDAO accountDAO = new TeacherDAO();
             Teacher accountE = accountDAO.persist(account);
             if(accountE == account ){
+                
                 return "La cuenta profesor fue creada,"+ account.getTeachUsername()+ "," + accountE.getTeachUsername();
             }
                 return "error: algunos datos no permiten la creacion de un profesor, pero fue creado un estudiante";
@@ -94,6 +104,23 @@ public class AdminManagement {
             return "error: Este documento ya existe";
     }
             return "error: El username ya ha sido usado";
+    }
+    
+    public List<Student> keepAllStudents() {
+        StudentDAO stuDAO = new StudentDAO();
+        return stuDAO.findByNotBenefit();
+    }
+
+    public void saveStudents(List<String> studentCollection) {
+        StudentDAO stuDAO = new StudentDAO();
+        Student s;
+        for (String x : studentCollection) {
+            stuDAO = new StudentDAO();
+            s = stuDAO.findByUsername(x);
+            s.setEstBenefit("yes");
+            stuDAO = new StudentDAO();
+            stuDAO.updateStudent(s);
+        }
     }
     
 }

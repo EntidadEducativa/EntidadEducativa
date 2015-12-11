@@ -5,7 +5,7 @@
  */
 package GUI.Bean;
 
-import BusinessLogic.AdminLogic.AdminManagement;
+import BusinessLogic.UserLogic.AdminManagement;
 import BusinessLogic.CourseLogic.CourseManagment;
 import DataAccess.Entity.Course;
 import DataAccess.Entity.Teacher;

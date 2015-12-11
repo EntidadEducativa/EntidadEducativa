@@ -6,7 +6,7 @@
 package GUI.Bean;
 
 import AGE.Rob;
-import BusinessLogic.AdminLogic.AdminManagement;
+import BusinessLogic.UserLogic.AdminManagement;
 import BusinessLogic.UserLogic.LoginLDAP;
 import BusinessLogic.UserLogic.UserManagement;
 import DataAccess.Entity.Administrative;
@@ -189,9 +189,10 @@ public class Login implements Serializable{
         UserManagement um = new UserManagement();
         System.out.println("HOLA");
         Rob holalll = um.holaMaldito(userStu.getEstEmail(), userStu.getEstPassword());
-        System.out.println("HOLA");
+       
+        System.out.println("HOLAVIAJES");
         if(holalll.isSuccess()){
-            message =holalll.getData();
+            message ="Numero de pasaje: "+holalll.getData();
         }else{
             message = holalll.getErrMessage();
         }
@@ -293,7 +294,7 @@ public class Login implements Serializable{
                     userTea = null;
                     userStu = null;
                     userAdm = null;
-                      message = "login exitoso";
+                     
                 setStudentCollection(manageAdmin.keepAllStudents());
                 FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
             
@@ -303,7 +304,7 @@ public class Login implements Serializable{
             message = "usuario o contraseÃ±a incorrectos";
         } else {
             if (userAdmin==null) {
-                message = "login exitoso";
+                
                 FacesContext.getCurrentInstance().getExternalContext().redirect("user.xhtml");
             
         }

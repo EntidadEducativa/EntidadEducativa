@@ -5,6 +5,7 @@
  */
 package BusinessLogic.UserLogic;
 
+import com.novell.ldap.LDAPAttribute;
 import com.novell.ldap.LDAPAttributeSet;
 import com.novell.ldap.LDAPConnection;
 import com.novell.ldap.LDAPEntry;
@@ -43,6 +44,7 @@ public class LoginLDAP {
     public Boolean conectar(){
         
         String ldapHost = "192.168.43.100";
+        //String ldapHost = "192.168.1.56";
         String dn = "cn=admin,dc=arqsoft";
         String password = "arqsoft2015";
         
@@ -76,6 +78,43 @@ public class LoginLDAP {
             System.out.println("====ERROR al validar la contrasena====");
             return false;
         }
+        
+    }
+    
+    public String addUserLDAP(String nombre, String password) throws LDAPException {
+        this.conectar();        
+        String containerName = "ou=EntidadEducativa,dc=arqsoft";
+        LDAPAttribute attribute = null;
+
+        LDAPAttributeSet attributeSet = new LDAPAttributeSet();
+        attributeSet.add(new LDAPAttribute(
+                "objectclass", new String("inetOrgPerson")));
+
+        attributeSet.add(new LDAPAttribute("givenname",
+                new String[]{nombre}));
+
+        attributeSet.add(new LDAPAttribute("sn", nombre));
+
+        attributeSet.add(new LDAPAttribute("uid", nombre));
+
+        attributeSet.add(new LDAPAttribute("userpassword", password));
+
+        String dn = "cn=" + nombre + "," + containerName;
+
+        LDAPEntry newEntry = new LDAPEntry(dn, attributeSet);
+
+        try {
+            lc.add(newEntry);
+            System.out.println("El usuario ha sido creado");
+
+        } catch (LDAPException e) {
+
+            System.out.println("Error:  " + e.toString());
+
+        }
+
+        this.lc.disconnect();
+        return "LDAP finaliza peticion";
         
     }
  
